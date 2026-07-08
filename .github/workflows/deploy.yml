@@ -1,0 +1,17 @@
+name: Deploy Motoboy Campinas 24h
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deploy webhook
+        run: |
+          curl -f -s -X POST http://187.127.1.204:9000/hooks/deploy-motoboy-campinas \
+            -H "X-Deploy-Token: ${{ secrets.DEPLOY_TOKEN }}" \
+            --max-time 30
