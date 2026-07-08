@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   counters.forEach(function (el) { counterObserver.observe(el); });
 
-  // Contact form -> WhatsApp
+  // Contact form -> WhatsApp (só existe na home)
   var form = document.getElementById("contactForm");
-  form.addEventListener("submit", function (e) {
+  if (form) form.addEventListener("submit", function (e) {
     e.preventDefault();
     var nome = form.nome.value.trim();
     var whatsapp = form.whatsapp.value.trim();
