@@ -230,7 +230,7 @@ a { text-decoration: none; color: inherit; }
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
-.hero-card img { border-radius: 10px; }
+.hero-card img { width: 100%; height: auto; display: block; border-radius: 10px; }
 .hero-card-tag {
   position: absolute;
   left: 26px; bottom: 26px;
@@ -513,7 +513,7 @@ a { text-decoration: none; color: inherit; }
 /* Split */
 .split-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; }
 .split-visual { overflow: hidden; padding: 0; }
-.split-visual img { border-radius: var(--radius); }
+.split-visual img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
 .split-grid p { color: var(--text-muted); margin-bottom: 18px; }
 
 /* Contact */
