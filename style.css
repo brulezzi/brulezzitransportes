@@ -379,6 +379,34 @@ a { text-decoration: none; color: inherit; }
 .bento-cta:hover { color: var(--gold); }
 .bento-cta-gold { color: var(--gold-bright); }
 
+/* Testimonials */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.testimonial-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px;
+  transition: transform .2s ease, border-color .2s ease;
+}
+.testimonial-card:hover { transform: translateY(-4px); border-color: rgba(212,175,106,.35); }
+.testimonial-stars { color: var(--gold-bright); letter-spacing: 2px; margin-bottom: 12px; }
+.testimonial-card p { color: #d8d8dc; font-size: .98rem; margin: 0 0 18px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: .9rem; color: var(--text-muted); }
+.testimonial-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+  color: #1a1305;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
 /* Badges */
 .badge-grid {
   display: grid;
@@ -627,6 +655,7 @@ a { text-decoration: none; color: inherit; }
   .bento { grid-template-columns: repeat(2, 1fr); }
   .bento-card-lg { grid-column: span 2; }
   .badge-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-grid { grid-template-columns: 1fr; }
   .coverage-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; }
 }
