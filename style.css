@@ -574,6 +574,7 @@ a { text-decoration: none; color: inherit; }
 .contact-form select { appearance: none; cursor: pointer; }
 .contact-form select:invalid { color: var(--text-muted); }
 .contact-form textarea { min-height: 110px; resize: vertical; }
+.form-note { color: var(--text-muted); font-size: .82rem; text-align: center; margin-top: -8px; }
 
 /* Footer */
 .site-footer { background: #060607; padding: 60px 0 0; border-top: 1px solid var(--line); }
