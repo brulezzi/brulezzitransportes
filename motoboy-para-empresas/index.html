@@ -16,11 +16,40 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Motoboy corporativo e terceirização de frota",
-  "provider": { "@type": "LocalBusiness", "name": "Brulezzi Transportes" },
-  "areaServed": ["Campinas","Americana","Rio Claro","Jundiaí","São Paulo"],
-  "description": "Contrato mensal de motoboy para empresas, com rotas fixas ou sob demanda, terceirização de frota e faturamento centralizado."
+  "@graph": [
+    {
+      "@type": "Service",
+      "serviceType": "Motoboy corporativo e terceirização de frota",
+      "provider": { "@type": "LocalBusiness", "name": "Brulezzi Transportes" },
+      "areaServed": ["Campinas","Americana","Rio Claro","Jundiaí","São Paulo","Sumaré","Hortolândia","Paulínia","Valinhos","Vinhedo","Indaiatuba","Jaguariúna","Limeira","Itupeva","Louveira","Piracicaba","São Carlos","Santos","Cajamar","Monte Mor","Nova Odessa"],
+      "description": "Contrato mensal de motoboy para empresas, com rotas fixas ou sob demanda, terceirização de frota e faturamento centralizado."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Como funciona a contratação de uma empresa de motoboy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Você fala com a gente pelo WhatsApp ou formulário, contamos o volume médio de entregas e definimos junto se faz mais sentido rota fixa ou sob demanda. Não tem burocracia de licitação nem contrato longo pra assinar antes de começar." }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual o valor mínimo de volume pra fechar contrato mensal?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Não existe volume mínimo fixo — o que existe é um ponto a partir do qual o mensal fica mais barato que pagar corrida avulsa. Na conversa inicial a gente já mostra essa comparação com base no seu volume real." }
+        },
+        {
+          "@type": "Question",
+          "name": "Dá pra cancelar ou trocar de modalidade depois?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Se o volume da sua empresa mudar, rota fixa e sob demanda podem ser ajustadas — o contrato acompanha a operação, não o contrário." }
+        },
+        {
+          "@type": "Question",
+          "name": "Motoboy terceirizado emite nota fiscal pra empresa contratante?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim, emitimos NF-e (ou CT-e, conforme o tipo de frete) com faturamento mensal centralizado — uma nota só, não uma por corrida." }
+        }
+      ]
+    }
+  ]
 }
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CENYXB4MYP"></script>
@@ -59,36 +88,107 @@
     <h1>Motoboy Corporativo em Campinas: Terceirize sua Logística com Contrato Mensal</h1>
     <p class="article-meta">Brulezzi Transportes — Campinas e todo o estado de São Paulo</p>
 
+    <div class="stat-chip-row">
+      <span class="stat-chip"><strong>1 nota</strong> por mês, não por corrida</span>
+      <span class="stat-chip"><strong>Zero</strong> passivo trabalhista</span>
+      <span class="stat-chip"><strong>24h</strong> inclusive fora do comercial</span>
+    </div>
+
     <p>Se a sua empresa faz entregas todos os dias — ou várias vezes por semana — manter um motoboy próprio na folha custa mais caro do que parece: salário, encargos, manutenção de moto, combustível e o risco trabalhista de ter um funcionário na rua o dia todo. A Brulezzi Transportes assume essa operação inteira pra você, com contrato mensal e faturamento centralizado.</p>
 
     <h2>Para quem é o motoboy corporativo</h2>
     <ul>
-      <li><strong>Escritórios de advocacia e contabilidade</strong> — malotes, documentos e contratos com trâmite diário</li>
-      <li><strong>Clínicas e laboratórios</strong> — coleta e entrega de exames, materiais cirúrgicos e cargas médicas, com certificação ANVISA e MOPP</li>
-      <li><strong>E-commerce e varejo</strong> — entregas last mile no mesmo dia, rotas programadas</li>
+      <li><strong>Escritórios de advocacia e contabilidade</strong> — <a href="/malote-cartorio/">malotes, documentos e cartório</a> com trâmite diário</li>
+      <li><strong>Clínicas e laboratórios</strong> — <a href="/transporte-cargas-medicas/">coleta e entrega de exames, materiais cirúrgicos e cargas médicas</a>, com certificação ANVISA e MOPP</li>
+      <li><strong>E-commerce e varejo</strong> — <a href="/logistica-ecommerce/">entregas last mile no mesmo dia</a>, rotas programadas</li>
       <li><strong>Indústria e comércio</strong> — coletas e distribuição recorrente entre unidades ou fornecedores</li>
     </ul>
 
     <h2>Como funciona o contrato mensal</h2>
-    <p>Duas modalidades, dependendo do seu volume de demanda:</p>
-    <ul>
-      <li><strong>Rotas fixas</strong> — motoboy dedicado em horário e trajeto combinado, todos os dias úteis</li>
-      <li><strong>Sob demanda</strong> — pacote de corridas dentro do mês, acionado conforme a necessidade, sem hora fixa</li>
-    </ul>
-    <p>Em ambos os casos, você recebe <strong>uma nota fiscal por mês</strong>, não uma por corrida — o que simplifica muito o financeiro. E se sua demanda ainda não justifica um contrato, também atendemos corrida avulsa corporativa, com prioridade no atendimento.</p>
+    <div class="compare-grid compare-grid-2">
+      <div class="compare-card is-recommended">
+        <span class="compare-tag">Rota fixa</span>
+        <h4>Volume previsível todo dia</h4>
+        <p>Motoboy dedicado em horário e trajeto combinado, todos os dias úteis.</p>
+      </div>
+      <div class="compare-card">
+        <span class="compare-tag">Sob demanda</span>
+        <h4>Volume variável</h4>
+        <p>Pacote de corridas dentro do mês, acionado conforme a necessidade, sem hora fixa.</p>
+      </div>
+    </div>
+    <p>Em ambos os casos, você recebe <strong>uma nota fiscal por mês</strong>, não uma por corrida — o que simplifica muito o financeiro. E se sua demanda ainda não justifica um contrato, também atendemos corrida avulsa corporativa, com prioridade no atendimento. Não sabe se seu volume já compensa o mensal? A gente compara com você antes de fechar qualquer coisa.</p>
 
     <h2>Por que terceirizar em vez de ter frota própria</h2>
     <p>Motoboy próprio parece mais barato até você somar tudo: salário + 13º + férias + FGTS + manutenção da moto + combustível + o tempo que alguém da sua equipe gasta gerenciando isso. Terceirizando com a Brulezzi, você paga só pelo serviço prestado, sem passivo trabalhista, sem se preocupar com moto quebrada ou motoboy de folga — a operação continua rodando mesmo assim, porque trabalhamos com uma rede de profissionais parceiros, não uma pessoa só.</p>
 
+    <h2>Erros comuns ao contratar motoboy pra empresa</h2>
+    <div class="badge-grid badge-grid-2">
+      <div class="badge-item">
+        <div class="badge-icon">⏱️</div>
+        <strong>Não perguntar o que acontece se o prazo atrasar</strong>
+        <span>Aqui, se o horário combinado mudar, você é avisado antes — não descobre sozinho.</span>
+      </div>
+      <div class="badge-item">
+        <div class="badge-icon">📄</div>
+        <strong>Fechar sem confirmar a nota fiscal</strong>
+        <span>Sem NF-e (ou CT-e) certo desde o início, seu financeiro herda o problema depois.</span>
+      </div>
+      <div class="badge-item">
+        <div class="badge-icon">📍</div>
+        <strong>Não confirmar a cobertura real da cidade</strong>
+        <span>Cidade fora da lista declarada costuma virar "sob consulta" na hora H — pergunte antes de assinar.</span>
+      </div>
+      <div class="badge-item">
+        <div class="badge-icon">🔄</div>
+        <strong>Assinar sem poder ajustar o volume depois</strong>
+        <span>Se sua demanda mudar, rota fixa e sob demanda devem se ajustar junto — não travar num modelo só.</span>
+      </div>
+    </div>
+
     <h2>Diferenciais para empresa</h2>
     <ul>
-      <li>Atendimento 24 horas, todos os dias — inclusive fora do horário comercial</li>
-      <li>Motoboy, veículo utilitário ou caminhão, conforme o volume</li>
+      <li><a href="/motoboy-24h/">Motoboy</a>, <a href="/veiculo-utilitario/">veículo utilitário</a> ou caminhão, conforme o volume</li>
       <li>Conformidade ANVISA e MOPP para cargas médicas e materiais sensíveis</li>
-      <li>Emissão de NF-e (ou CT-e, conforme o tipo de frete) em todas as operações</li>
-      <li>Cobertura em Campinas, região metropolitana e todo o estado de São Paulo</li>
+      <li>Cobertura em 21 cidades — Campinas, região metropolitana e o estado de São Paulo</li>
       <li>Acompanhamento de cada entrega pela nossa equipe, com atualização direta pra você</li>
     </ul>
+
+    <div class="proof-strip">
+      <div class="proof-stars">★★★★★</div>
+      <blockquote>"Solicitamos o serviço de motoboy e tivemos uma experiência excelente! O atendimento foi ágil, a equipe prestativa, e a coleta/entrega aconteceu dentro do prazo combinado. Além disso, o preço é justo pelo serviço prestado. Tudo foi feito com muito cuidado e responsabilidade. Com certeza voltaremos a contratar e recomendamos para quem busca um serviço de confiança!"</blockquote>
+      <cite>— Ricardo, cliente Brulezzi Transportes</cite>
+      <div class="proof-logos">
+        <span>Empresas atendidas</span>
+        <img src="../assets/clientes/kazulo.png" alt="Kazulo">
+        <img src="../assets/clientes/bravo-montagens.png" alt="Bravo Montagens">
+        <img src="../assets/clientes/qualytec.png" alt="Qualytec">
+        <img src="../assets/clientes/techtools.png" alt="Techtools">
+        <img src="../assets/clientes/Ecoboxes.png" alt="Ecoboxes">
+      </div>
+    </div>
+
+    <div class="mini-cta">Quer entender o que pesa no valor antes de conversar com a gente? Veja a <a href="/blog/quanto-custa-motoboy-campinas/">tabela de preços por faixa</a>.</div>
+
+    <h2>Perguntas frequentes</h2>
+    <div class="faq-list">
+      <details>
+        <summary>Como funciona a contratação de uma empresa de motoboy?</summary>
+        <p>Você fala com a gente pelo WhatsApp ou formulário, contamos o volume médio de entregas e definimos junto se faz mais sentido rota fixa ou sob demanda. Não tem burocracia de licitação nem contrato longo pra assinar antes de começar.</p>
+      </details>
+      <details>
+        <summary>Qual o valor mínimo de volume pra fechar contrato mensal?</summary>
+        <p>Não existe volume mínimo fixo — o que existe é um ponto a partir do qual o mensal fica mais barato que pagar corrida avulsa. Na conversa inicial a gente já mostra essa comparação com base no seu volume real.</p>
+      </details>
+      <details>
+        <summary>Dá pra cancelar ou trocar de modalidade depois?</summary>
+        <p>Sim. Se o volume da sua empresa mudar, rota fixa e sob demanda podem ser ajustadas — o contrato acompanha a operação, não o contrário.</p>
+      </details>
+      <details>
+        <summary>Motoboy terceirizado emite nota fiscal pra empresa contratante?</summary>
+        <p>Sim, emitimos NF-e (ou CT-e, conforme o tipo de frete) com faturamento mensal centralizado — uma nota só, não uma por corrida.</p>
+      </details>
+    </div>
 
     <div class="article-cta">
       <p>Quer entender qual modalidade faz sentido pro volume da sua empresa?</p>
