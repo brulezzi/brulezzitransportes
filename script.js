@@ -86,4 +86,22 @@ document.addEventListener("DOMContentLoaded", function () {
     var texto = linhas.join("\n");
     window.open("https://wa.me/5519992445953?text=" + encodeURIComponent(texto), "_blank");
   });
+
+  // Rastreamento de cliques em WhatsApp e telefone (pra marcar como conversão no GA4 / Google Ads)
+  document.addEventListener("click", function (e) {
+    var waLink = e.target.closest('a[href*="wa.me"]');
+    var telLink = e.target.closest('a[href^="tel:"]');
+    if (waLink && typeof gtag === "function") {
+      gtag("event", "contato_whatsapp", {
+        link_url: waLink.href,
+        page_path: window.location.pathname
+      });
+    }
+    if (telLink && typeof gtag === "function") {
+      gtag("event", "contato_telefone", {
+        link_url: telLink.href,
+        page_path: window.location.pathname
+      });
+    }
+  });
 });
