@@ -10,6 +10,7 @@
   --radius: 16px;
   --max-width: 1180px;
   --font: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  --font-display: "Manrope", var(--font);
 }
 
 * { box-sizing: border-box; }
@@ -26,6 +27,11 @@ body {
 
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
+
+h1, h2, h3, h4, h5, h6, .eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
 
 .container {
   max-width: var(--max-width);
