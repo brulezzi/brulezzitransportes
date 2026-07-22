@@ -163,6 +163,16 @@ h1, h2, h3, h4, h5, h6, .eyebrow {
 }
 [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
 
+/* Stagger de entrada nos grids — reforça sensação de movimento na rolagem */
+.step-card:nth-child(2), .intent-card:nth-child(2), .bento-card:nth-child(2), .badge-item:nth-child(2), .testimonial-card:nth-child(2) { transition-delay: .08s; }
+.step-card:nth-child(3), .intent-card:nth-child(3), .bento-card:nth-child(3), .badge-item:nth-child(3), .testimonial-card:nth-child(3) { transition-delay: .16s; }
+.bento-card:nth-child(4), .badge-item:nth-child(4), .testimonial-card:nth-child(4) { transition-delay: .24s; }
+.bento-card:nth-child(5), .testimonial-card:nth-child(5) { transition-delay: .32s; }
+.bento-card:nth-child(6), .testimonial-card:nth-child(6) { transition-delay: .4s; }
+.bento-card:nth-child(7), .testimonial-card:nth-child(7) { transition-delay: .48s; }
+.testimonial-card:nth-child(8) { transition-delay: .56s; }
+.testimonial-card:nth-child(9) { transition-delay: .64s; }
+
 /* HERO */
 .hero {
   position: relative;
