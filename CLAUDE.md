@@ -30,15 +30,21 @@ Detalhe completo em `BRAND-SYSTEM.md` (pasta de documentação no OneDrive).
 
 ## Estrutura do site
 
+**`/logistica-ecommerce/` foi removida em 19/08/2026** (redirect pra `/motoboy-para-empresas/`) — o site não faz mais nenhuma menção a e-commerce/marketplace, decisão consciente pra focar 100% em B2B urgente (ver Cockpit, seção de 19/08).
+
 | Página | URL |
 |---|---|
 | Home | `/` |
 | Motoboy 24h | `/motoboy-24h/` |
 | Veículo Utilitário | `/veiculo-utilitario/` |
 | Cargas Médicas/Laboratoriais | `/transporte-cargas-medicas/` |
-| Logística E-commerce | `/logistica-ecommerce/` |
 | Malote e Cartório | `/malote-cartorio/` |
 | Motoboy para Empresas (B2B) | `/motoboy-para-empresas/` |
+| Despacho em Aeroportos | `/despacho-aeroportos/` |
+| Sobre | `/sobre/` |
+| Central de Perguntas Frequentes | `/perguntas-frequentes/` |
+| Páginas de cidade (8) | `/motoboy-sao-paulo/`, `/motoboy-guarulhos/`, `/motoboy-hortolandia/`, `/motoboy-paulinia/`, `/motoboy-rio-claro/`, `/motoboy-jundiai/`, `/motoboy-indaiatuba/` |
+| Centro de Conhecimento (hub + Glossário + Bastidores) | `/centro-de-conhecimento/` |
 | Blog (3 posts) | `/blog/` |
 
 ## Infraestrutura (resumo — detalhe completo na documentação externa)
@@ -61,9 +67,10 @@ Detalhe completo em `BRAND-SYSTEM.md` (pasta de documentação no OneDrive).
 ## Pendências importantes (ver Cockpit completo pra detalhe)
 
 - Perfil duplicado "Motoboy Campinas" (168 avaliações, mesmo endereço, telefone de terceiro) — não resolvido
-- Google Ads ainda não configurado
+- Google Ads ativo ("Motoboy Urgente - Campinas", reativada em 31/08/2026, R$35/dia) — checar se o gasto real bate com o orçamento configurado (achado em 11/09: gasto muito abaixo do esperado, ver Cockpit)
 - Conferir logo "Altecs" na seção de clientes (pode estar cortado)
+- Tráfego de cidade suspeita (Kabul/Ashburn/NY, ~19% dos usuários) sem filtro no GA4
 
 ---
 
-> Última atualização: 2026-07-17
+> Última atualização: 2026-09-11
