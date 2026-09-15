@@ -50,7 +50,7 @@ test('form cannot submit personal data without JavaScript', () => {
   assert.match(html, /<noscript>[\s\S]*?https:\/\/wa.me\/5519992445953/);
 });
 
-test('Analytics is opt-in, omits URL query data, and stops after refusal', () => {
+test('Analytics tracks by default (opt-out), omits URL query data, and stops after refusal', () => {
   const nodes = new Map(), scripts = [];
   function element() {
     return { children: [], listeners: {}, hidden: false, setAttribute() {},
@@ -68,16 +68,13 @@ test('Analytics is opt-in, omits URL query data, and stops after refusal', () =>
     window, document, location: { origin:'https://example.com', pathname:'/', hostname:'example.com', search:'?nome=private' },
     localStorage: { getItem: key => storage.get(key), setItem: (key,value) => storage.set(key,value) }
   });
-  assert.equal(scripts.length,0);
-  window.trackContact('contato_whatsapp','formulario');
-  assert.equal(window.dataLayer,undefined);
-  const buttons = nodes.get('privacyChoice').children.filter(child => child.type === 'button');
-  buttons[0].listeners.click();
+  // Tracks immediately, before any interaction with the notice.
   assert.equal(scripts.length,1);
   window.trackContact('contato_whatsapp','formulario');
   assert.ok(!JSON.stringify(window.dataLayer).includes('private'));
   assert.ok(!JSON.stringify(window.dataLayer).includes('link_url'));
-  buttons[1].listeners.click();
+  const buttons = nodes.get('privacyChoice').children.filter(child => child.type === 'button');
+  buttons[1].listeners.click(); // Recusar
   const count = window.dataLayer.length;
   window.trackContact('contato_whatsapp','formulario');
   assert.equal(window.dataLayer.length,count);
