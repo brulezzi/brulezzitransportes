@@ -66,9 +66,9 @@
     panel.className = "privacy-choice";
     panel.setAttribute("aria-label", "Preferências de privacidade");
     var text = document.createElement("p");
-    text.textContent = "Podemos usar o Google Analytics para entender as visitas e os cliques de contato? Você pode recusar e continuar usando o site.";
+    text.textContent = "Usamos o Google Analytics para entender as visitas e os cliques de contato. Você pode recusar a qualquer momento.";
     panel.appendChild(text);
-    [["Aceitar análise de visitas", "accepted"], ["Recusar", "rejected"]].forEach(function (item) {
+    [["Entendi", "accepted"], ["Recusar", "rejected"]].forEach(function (item) {
       var button = document.createElement("button");
       button.type = "button";
       button.className = "btn btn-ghost btn-sm";
@@ -89,6 +89,7 @@
     });
     var choice = readChoice();
     panel.hidden = choice === "accepted" || choice === "rejected";
-    if (choice === "accepted") enable();
+    // Track by default (opt-out model) — only stop if the visitor explicitly declines.
+    if (choice !== "rejected") enable();
   });
 })();
