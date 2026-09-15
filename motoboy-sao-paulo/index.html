@@ -10,8 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="../style.css">
 <meta property="og:title" content="Motoboy em São Paulo | Brulezzi Transportes">
 <meta property="og:description" content="Motoboy local em São Paulo, com a mesma empresa cobrindo Campinas e o interior.">
@@ -39,13 +38,13 @@
         },
         {
           "@type": "Question",
-          "name": "Qual o tempo de resposta em São Paulo?",
+          "name": "Qual o prazo de chegada à coleta em São Paulo?",
           "acceptedAnswer": { "@type": "Answer", "text": "Na região central, entre 15 e 25 minutos, o mesmo padrão de Campinas. Em zonas mais distantes do centro (acima de 25 km), o tempo médio fica entre 20 e 40 minutos, dependendo da distância." }
         },
         {
           "@type": "Question",
           "name": "Atendem todas as zonas de São Paulo, ou só a região central?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Atendemos todas as zonas da cidade. A região central tem a resposta mais rápida, mas zona sul, leste, oeste e norte também são cobertas." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Atendemos todas as zonas da cidade. A região central tem a chegada para coleta mais rápida, mas zona sul, leste, oeste e norte também são cobertas." }
         },
         {
           "@type": "Question",
@@ -77,13 +76,7 @@
   ]
 }
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CENYXB4MYP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-CENYXB4MYP");
-</script>
+<script defer src="/analytics.js"></script>
 </head>
 <body>
 
@@ -104,7 +97,7 @@
       <a href="/#contato">Contato</a>
     </nav>
     <a class="btn btn-gold btn-sm header-cta" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20de%20S%C3%A3o%20Paulo%20e%20gostaria%20de%20solicitar%20um%20motoboy%2Fentrega." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -121,14 +114,14 @@
       <span class="stat-chip"><strong>SP + Campinas</strong> um fornecedor só</span>
     </div>
 
-    <p>Diferente de rota vinda de fora, temos rede própria de motoboys atuando localmente dentro de São Paulo — coleta e entrega os dois pontos dentro da capital, não uma corrida vindo de Campinas. A região central tem a resposta mais rápida; nas zonas mais distantes (acima de 25 km do centro), o tempo médio fica entre 20 e 40 minutos, dependendo da distância. Atendemos todas as zonas da cidade — sul, leste, oeste, norte e centro.</p>
+    <p>Diferente de rota vinda de fora, temos rede própria de motoboys atuando localmente dentro de São Paulo — coleta e entrega os dois pontos dentro da capital, não uma corrida vindo de Campinas. A região central tem a chegada para coleta mais rápida; nas zonas mais distantes (acima de 25 km do centro), o tempo médio fica entre 20 e 40 minutos, dependendo da distância. Atendemos todas as zonas da cidade — sul, leste, oeste, norte e centro.</p>
 
     <h2>Cobertura por região</h2>
     <div class="compare-grid compare-grid-2">
       <div class="compare-card is-recommended">
         <span class="compare-tag">Região central</span>
         <h4>15–25 minutos</h4>
-        <p>Mesmo padrão de resposta que temos em Campinas.</p>
+        <p>Mesmo prazo de chegada para coleta que temos em Campinas.</p>
       </div>
       <div class="compare-card">
         <span class="compare-tag">Demais zonas</span>
@@ -162,12 +155,12 @@
         <p>Fazemos os dois. Temos rede própria de motoboys atuando localmente dentro de São Paulo — coleta e entrega os dois pontos dentro da capital — além da rota entre Campinas e São Paulo pra quem precisa conectar as duas regiões.</p>
       </details>
       <details>
-        <summary>Qual o tempo de resposta em São Paulo?</summary>
+        <summary>Qual o prazo de chegada à coleta em São Paulo?</summary>
         <p>Na região central, entre 15 e 25 minutos, o mesmo padrão de Campinas. Em zonas mais distantes do centro (acima de 25 km), o tempo médio fica entre 20 e 40 minutos, dependendo da distância.</p>
       </details>
       <details>
         <summary>Atendem todas as zonas de São Paulo, ou só a região central?</summary>
-        <p>Atendemos todas as zonas da cidade. A região central tem a resposta mais rápida, mas zona sul, leste, oeste e norte também são cobertas.</p>
+        <p>Atendemos todas as zonas da cidade. A região central tem a chegada para coleta mais rápida, mas zona sul, leste, oeste e norte também são cobertas.</p>
       </details>
       <details>
         <summary>Minha empresa tem operação em São Paulo e em Campinas — dá pra contratar um fornecedor só?</summary>
@@ -209,6 +202,7 @@
   <div class="container footer-bottom">
     <span>&copy; 2026 Brulezzi Transportes. Todos os direitos reservados.</span>
   </div>
+  <div class="container privacy-links"><a href="/privacidade/">Privacidade</a><button type="button" id="privacySettings">Preferências de privacidade</button></div>
 </footer>
 
 <div class="mobile-bar" id="mobileBar">

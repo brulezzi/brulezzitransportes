@@ -10,8 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="../style.css">
 <meta property="og:title" content="Central de Perguntas Frequentes | Brulezzi Transportes">
 <meta property="og:description" content="Todas as dúvidas sobre motoboy, utilitário, logística médica, documentos e contrato empresarial, num só lugar.">
@@ -32,14 +31,14 @@
     { "@type": "Question", "name": "Como eu sei que a entrega foi recebida pela pessoa certa?", "acceptedAnswer": { "@type": "Answer", "text": "Toda entrega é fechada com foto de quem recebeu, além de nome, documento e setor da pessoa responsável — não é só uma confirmação genérica de 'entregue'." } },
 
     { "@type": "Question", "name": "O motoboy atende de madrugada e feriado?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, atendimento 24 horas todos os dias, incluindo madrugada, fim de semana e feriado." } },
-    { "@type": "Question", "name": "Qual o tempo de resposta do motoboy?", "acceptedAnswer": { "@type": "Answer", "text": "Em Campinas, a coleta costuma acontecer em 15 a 25 minutos. Na região metropolitana e outras cidades de São Paulo, o tempo médio é de cerca de 30 minutos." } },
+    { "@type": "Question", "name": "Qual o prazo de chegada do motoboy à coleta?", "acceptedAnswer": { "@type": "Answer", "text": "O motoboy chega à coleta em 15 a 25 minutos em Campinas e na região central de São Paulo. Nas demais localidades indicadas, a previsão é de cerca de 30 minutos. Confirme o prazo para seu endereço no atendimento." } },
     { "@type": "Question", "name": "O motoboy 24h custa mais caro que no horário comercial?", "acceptedAnswer": { "@type": "Answer", "text": "Pode ter um adicional por urgência e horário, sim — é assim em qualquer operação que mantém equipe pronta pra sair de madrugada." } },
 
     { "@type": "Question", "name": "Que tipo de carga cabe no veículo utilitário?", "acceptedAnswer": { "@type": "Answer", "text": "Caixas, lotes de encomendas corporativas, materiais que não cabem no bagageiro de uma moto e cargas que precisam ficar protegidas da chuva." } },
-    { "@type": "Question", "name": "O utilitário atende empresa e pessoa física?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, atendemos os dois — desde uma coleta pontual até rotas programadas recorrentes para empresas." } },
+    { "@type": "Question", "name": "O utilitário atende empresas de qualquer porte?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Atendemos empresas de qualquer porte, desde uma coleta pontual até rotas programadas recorrentes." } },
     { "@type": "Question", "name": "O utilitário tem o mesmo rastreamento do motoboy?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, o mesmo acompanhamento em tempo real pela nossa equipe, do início ao fim da entrega." } },
 
-    { "@type": "Question", "name": "Vocês atendem clínicas e laboratórios?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, com certificação ANVISA e MOPP para transporte de exames, materiais cirúrgicos e cargas médicas entre clínicas, laboratórios e centros de diagnóstico." } },
+    { "@type": "Question", "name": "Vocês atendem clínicas e laboratórios?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, com avaliação prévia dos requisitos de cada carga para transporte de exames, materiais cirúrgicos e cargas médicas entre clínicas, laboratórios e centros de diagnóstico." } },
     { "@type": "Question", "name": "Vocês atendem farmácia?", "acceptedAnswer": { "@type": "Answer", "text": "Não. O foco é exclusivamente em clínicas, laboratórios e materiais cirúrgicos, não fazemos entrega de medicamentos de farmácia." } },
     { "@type": "Question", "name": "Como funciona o rastreamento de uma amostra?", "acceptedAnswer": { "@type": "Answer", "text": "O profissional parceiro envia a localização em tempo real durante a coleta e a entrega, e nossa equipe acompanha tudo e confirma assim que o destinatário recebe o material." } },
 
@@ -77,13 +76,7 @@
   ]
 }
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CENYXB4MYP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-CENYXB4MYP");
-</script>
+<script defer src="/analytics.js"></script>
 </head>
 <body>
 
@@ -105,7 +98,7 @@
       <a href="/#contato">Contato</a>
     </nav>
     <a class="btn btn-gold btn-sm header-cta" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pela%20central%20de%20perguntas%20e%20ainda%20tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -157,8 +150,8 @@
         <p>Sim, atendimento 24 horas todos os dias, incluindo madrugada, fim de semana e feriado.</p>
       </details>
       <details>
-        <summary>Qual o tempo de resposta do motoboy?</summary>
-        <p>Em Campinas, a coleta costuma acontecer em 15 a 25 minutos. Na região metropolitana e outras cidades de São Paulo, o tempo médio é de cerca de 30 minutos.</p>
+        <summary>Qual o prazo de chegada do motoboy à coleta?</summary>
+        <p>O motoboy chega à coleta em 15 a 25 minutos em Campinas e na região central de São Paulo. Nas demais localidades indicadas, a previsão é de cerca de 30 minutos. Confirme o prazo para seu endereço no atendimento.</p>
       </details>
       <details>
         <summary>O motoboy 24h custa mais caro que no horário comercial?</summary>
@@ -174,8 +167,8 @@
         <p>Caixas, lotes de encomendas corporativas, materiais que não cabem no bagageiro de uma moto e cargas que precisam ficar protegidas da chuva.</p>
       </details>
       <details>
-        <summary>O utilitário atende empresa e pessoa física?</summary>
-        <p>Sim, atendemos os dois — desde uma coleta pontual até rotas programadas recorrentes para empresas.</p>
+        <summary>O utilitário atende empresas de qualquer porte?</summary>
+        <p>Sim. Atendemos empresas de qualquer porte, desde uma coleta pontual até rotas programadas recorrentes.</p>
       </details>
       <details>
         <summary>O utilitário tem o mesmo rastreamento do motoboy?</summary>
@@ -188,7 +181,7 @@
     <div class="faq-list">
       <details>
         <summary>Vocês atendem clínicas e laboratórios?</summary>
-        <p>Sim, com certificação ANVISA e MOPP para transporte de exames, materiais cirúrgicos e cargas médicas entre clínicas, laboratórios e centros de diagnóstico.</p>
+        <p>Sim, com avaliação prévia dos requisitos de cada carga para transporte de exames, materiais cirúrgicos e cargas médicas entre clínicas, laboratórios e centros de diagnóstico.</p>
       </details>
       <details>
         <summary>Vocês atendem farmácia?</summary>
@@ -287,6 +280,7 @@
   <div class="container footer-bottom">
     <span>&copy; 2026 Brulezzi Transportes. Todos os direitos reservados.</span>
   </div>
+  <div class="container privacy-links"><a href="/privacidade/">Privacidade</a><button type="button" id="privacySettings">Preferências de privacidade</button></div>
 </footer>
 
 <div class="mobile-bar" id="mobileBar">

@@ -10,8 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="../../style.css">
 <meta property="og:title" content="Glossário de Logística | Brulezzi Transportes">
 <meta property="og:description" content="Motoboy, delivery, transportadora, courier e outros termos, explicados de forma direta.">
@@ -30,8 +29,8 @@
     { "@type": "DefinedTerm", "name": "Courier", "description": "Termo em inglês para empresa de entrega expressa ou correio privado. No Brasil é usado como sinônimo de entrega expressa, próximo do que motoboy e malote já fazem." },
     { "@type": "DefinedTerm", "name": "NF-e (Nota Fiscal Eletrônica)", "description": "Documento fiscal emitido para formalizar a prestação de um serviço ou a venda de um produto." },
     { "@type": "DefinedTerm", "name": "CT-e (Conhecimento de Transporte Eletrônico)", "description": "Documento fiscal específico para operações de transporte de carga, geralmente exigido em frete intermunicipal ou interestadual — diferente da NF-e." },
-    { "@type": "DefinedTerm", "name": "MOPP", "description": "Certificação de Movimentação Operacional de Produtos Perigosos, que qualifica o profissional a lidar com cargas que exigem cuidado especial." },
-    { "@type": "DefinedTerm", "name": "ANVISA RDC 430/2020", "description": "Norma regulatória sobre boas práticas de transporte de produtos sob vigilância sanitária, relevante para o transporte de exames e materiais laboratoriais." },
+    { "@type": "DefinedTerm", "name": "MOPP", "description": "Certificação de Movimentação de Produtos Perigosos, que qualifica o profissional a lidar com cargas que exigem cuidado especial." },
+    { "@type": "DefinedTerm", "name": "ANVISA RDC 504/2021", "description": "Norma sobre boas práticas para o transporte de material biológico humano." },
     { "@type": "DefinedTerm", "name": "Rota fixa", "description": "Modalidade de contrato mensal em que o motoboy ou veículo atende um trajeto e horário combinado, todos os dias úteis." },
     { "@type": "DefinedTerm", "name": "Sob demanda", "description": "Modalidade de contrato mensal em que as corridas são acionadas conforme a necessidade, dentro de um pacote combinado, sem horário fixo." },
     { "@type": "DefinedTerm", "name": "Same day delivery", "description": "Entrega feita no mesmo dia da coleta ou do pedido." },
@@ -66,13 +65,7 @@
   ]
 }
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CENYXB4MYP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-CENYXB4MYP");
-</script>
+<script defer src="/analytics.js"></script>
 </head>
 <body>
 
@@ -93,7 +86,7 @@
       <a href="/#contato">Contato</a>
     </nav>
     <a class="btn btn-gold btn-sm header-cta" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pelo%20gloss%C3%A1rio%20e%20gostaria%20de%20solicitar%20um%20motoboy%2Fentrega." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -118,8 +111,8 @@
     <ul>
       <li><strong>NF-e (Nota Fiscal Eletrônica)</strong> — documento fiscal emitido pra formalizar a prestação de um serviço ou a venda de um produto.</li>
       <li><strong>CT-e (Conhecimento de Transporte Eletrônico)</strong> — documento fiscal específico pra operações de transporte de carga, geralmente exigido em frete intermunicipal ou interestadual — diferente da NF-e.</li>
-      <li><strong>MOPP</strong> — certificação de Movimentação Operacional de Produtos Perigosos, que qualifica o profissional a lidar com cargas que exigem cuidado especial.</li>
-      <li><strong>ANVISA RDC 430/2020</strong> — norma regulatória sobre boas práticas de transporte de produtos sob vigilância sanitária, relevante pro <a href="/transporte-cargas-medicas/">transporte de exames e materiais laboratoriais</a>.</li>
+      <li><strong>MOPP</strong> — certificação de Movimentação de Produtos Perigosos, que qualifica o profissional a lidar com cargas que exigem cuidado especial.</li>
+      <li><strong>ANVISA RDC 504/2021</strong> — norma sobre boas práticas para transporte de material biológico humano, aplicável ao <a href="/transporte-cargas-medicas/">transporte de exames e materiais laboratoriais</a>.</li>
     </ul>
 
     <h2>Modalidades de contrato</h2>
@@ -165,6 +158,7 @@
   <div class="container footer-bottom">
     <span>&copy; 2026 Brulezzi Transportes. Todos os direitos reservados.</span>
   </div>
+  <div class="container privacy-links"><a href="/privacidade/">Privacidade</a><button type="button" id="privacySettings">Preferências de privacidade</button></div>
 </footer>
 
 <div class="mobile-bar" id="mobileBar">

@@ -10,8 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="../style.css">
 <meta property="og:title" content="Motoboy em Guarulhos | Brulezzi Transportes">
 <meta property="og:description" content="Motoboy local em Guarulhos, com a mesma empresa cobrindo Campinas e o interior.">
@@ -39,7 +38,7 @@
         },
         {
           "@type": "Question",
-          "name": "Qual o tempo de resposta em Guarulhos?",
+          "name": "Qual o prazo de chegada à coleta em Guarulhos?",
           "acceptedAnswer": { "@type": "Answer", "text": "Guarulhos segue o mesmo padrão das demais zonas da Grande São Paulo mais distantes do centro: tempo médio entre 20 e 40 minutos, dependendo do ponto exato da coleta." }
         },
         {
@@ -77,13 +76,7 @@
   ]
 }
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CENYXB4MYP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-CENYXB4MYP");
-</script>
+<script defer src="/analytics.js"></script>
 </head>
 <body>
 
@@ -104,7 +97,7 @@
       <a href="/#contato">Contato</a>
     </nav>
     <a class="btn btn-gold btn-sm header-cta" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20de%20Guarulhos%20e%20gostaria%20de%20solicitar%20um%20motoboy%2Fentrega." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -116,7 +109,7 @@
     <p class="article-meta">Brulezzi Transportes — Guarulhos e todo o interior do estado</p>
 
     <div class="stat-chip-row">
-      <span class="stat-chip"><strong>20–40 min</strong> tempo médio de resposta</span>
+      <span class="stat-chip"><strong>20–40 min</strong> tempo estimado para coleta</span>
       <span class="stat-chip"><strong>GRU</strong> maior aeroporto de cargas do país</span>
       <span class="stat-chip"><strong>SP + Campinas</strong> um fornecedor só</span>
     </div>
@@ -167,7 +160,7 @@
         <p>Atendemos a cidade inteira, não só a área do aeroporto. Temos rede própria de motoboys atuando localmente em Guarulhos, tanto pra empresas perto do GRU quanto pra qualquer outro ponto da cidade.</p>
       </details>
       <details>
-        <summary>Qual o tempo de resposta em Guarulhos?</summary>
+        <summary>Qual o prazo de chegada à coleta em Guarulhos?</summary>
         <p>Guarulhos segue o mesmo padrão das demais zonas da Grande São Paulo mais distantes do centro: tempo médio entre 20 e 40 minutos, dependendo do ponto exato da coleta.</p>
       </details>
       <details>
@@ -214,6 +207,7 @@
   <div class="container footer-bottom">
     <span>&copy; 2026 Brulezzi Transportes. Todos os direitos reservados.</span>
   </div>
+  <div class="container privacy-links"><a href="/privacidade/">Privacidade</a><button type="button" id="privacySettings">Preferências de privacidade</button></div>
 </footer>
 
 <div class="mobile-bar" id="mobileBar">

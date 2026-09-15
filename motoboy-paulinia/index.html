@@ -10,8 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="../style.css">
 <meta property="og:title" content="Motoboy em Paulínia | Brulezzi Transportes">
 <meta property="og:description" content="Entrega expressa e logística empresarial em Paulínia, com a mesma estrutura da Brulezzi Transportes.">
@@ -39,8 +38,8 @@
         },
         {
           "@type": "Question",
-          "name": "Qual o tempo de resposta em Paulínia?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Tempo médio de cerca de 30 minutos, o mesmo padrão da região metropolitana de Campinas." }
+          "name": "Qual o prazo de chegada à coleta em Paulínia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A chegada do motoboy à coleta leva cerca de 30 minutos, conforme o local e a disponibilidade. Confirmamos o prazo no atendimento." }
         },
         {
           "@type": "Question",
@@ -72,13 +71,7 @@
   ]
 }
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CENYXB4MYP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-CENYXB4MYP");
-</script>
+<script defer src="/analytics.js"></script>
 </head>
 <body>
 
@@ -99,7 +92,7 @@
       <a href="/#contato">Contato</a>
     </nav>
     <a class="btn btn-gold btn-sm header-cta" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20de%20Paul%C3%ADnia%20e%20gostaria%20de%20solicitar%20um%20motoboy%2Fentrega." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -112,7 +105,7 @@
 
     <div class="stat-chip-row">
       <span class="stat-chip"><strong>~25 km</strong> de Campinas</span>
-      <span class="stat-chip"><strong>~30 min</strong> tempo médio de resposta</span>
+      <span class="stat-chip"><strong>~30 min</strong> tempo estimado para coleta</span>
       <span class="stat-chip"><strong>Polo industrial</strong> forte presença química</span>
     </div>
 
@@ -157,8 +150,8 @@
         <p>Paulínia faz parte da nossa área de cobertura oficial — a mesma rede própria de profissionais parceiros que atende Campinas atende Paulínia.</p>
       </details>
       <details>
-        <summary>Qual o tempo de resposta em Paulínia?</summary>
-        <p>Tempo médio de cerca de 30 minutos, o mesmo padrão da região metropolitana de Campinas.</p>
+        <summary>Qual o prazo de chegada à coleta em Paulínia?</summary>
+        <p>A chegada do motoboy à coleta leva cerca de 30 minutos, conforme o local e a disponibilidade. Confirmamos o prazo no atendimento.</p>
       </details>
       <details>
         <summary>Atendem empresas do polo industrial de Paulínia?</summary>
@@ -200,6 +193,7 @@
   <div class="container footer-bottom">
     <span>&copy; 2026 Brulezzi Transportes. Todos os direitos reservados.</span>
   </div>
+  <div class="container privacy-links"><a href="/privacidade/">Privacidade</a><button type="button" id="privacySettings">Preferências de privacidade</button></div>
 </footer>
 
 <div class="mobile-bar" id="mobileBar">

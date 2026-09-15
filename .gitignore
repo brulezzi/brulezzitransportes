@@ -1,2 +1,14 @@
 .DS_Store
 Thumbs.db
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.claude/settings.local.json
+node_modules/
+test-results/
+.audit/
+deployment-version.txt

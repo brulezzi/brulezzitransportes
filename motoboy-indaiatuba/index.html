@@ -10,8 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
 <link rel="stylesheet" href="../style.css">
 <meta property="og:title" content="Motoboy em Indaiatuba | Brulezzi Transportes">
 <meta property="og:description" content="Entrega expressa e logística empresarial em Indaiatuba, com a mesma estrutura da Brulezzi Transportes.">
@@ -39,8 +38,8 @@
         },
         {
           "@type": "Question",
-          "name": "Qual o tempo de resposta em Indaiatuba?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Tempo médio de cerca de 30 minutos, o mesmo padrão da região metropolitana de Campinas." }
+          "name": "Qual o prazo de chegada à coleta em Indaiatuba?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A chegada do motoboy à coleta leva cerca de 30 minutos, conforme o local e a disponibilidade. Confirmamos o prazo no atendimento." }
         },
         {
           "@type": "Question",
@@ -49,8 +48,8 @@
         },
         {
           "@type": "Question",
-          "name": "Atendem pessoa física em Indaiatuba, ou só empresa?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Atendemos os dois, mas o foco do serviço é empresarial — documentos, encomendas e cargas de empresas, clínicas e escritórios." }
+          "name": "Atendem empresas de qualquer porte em Indaiatuba?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Atendemos documentos, encomendas e cargas de empresas de qualquer porte, clínicas e escritórios." }
         }
       ]
     }
@@ -77,13 +76,7 @@
   ]
 }
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CENYXB4MYP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag("js", new Date());
-  gtag("config", "G-CENYXB4MYP");
-</script>
+<script defer src="/analytics.js"></script>
 </head>
 <body>
 
@@ -104,7 +97,7 @@
       <a href="/#contato">Contato</a>
     </nav>
     <a class="btn btn-gold btn-sm header-cta" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20de%20Indaiatuba%20e%20gostaria%20de%20solicitar%20um%20motoboy%2Fentrega." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -117,7 +110,7 @@
 
     <div class="stat-chip-row">
       <span class="stat-chip"><strong>~20 km</strong> de Campinas</span>
-      <span class="stat-chip"><strong>~30 min</strong> tempo médio de resposta</span>
+      <span class="stat-chip"><strong>~30 min</strong> tempo estimado para coleta</span>
       <span class="stat-chip"><strong>Viracopos</strong> ao lado, polo logístico</span>
     </div>
 
@@ -165,16 +158,16 @@
         <p>Indaiatuba faz parte da nossa área de cobertura oficial desde o início — não é uma extensão improvisada. A mesma rede própria de profissionais parceiros que atende Campinas atende Indaiatuba.</p>
       </details>
       <details>
-        <summary>Qual o tempo de resposta em Indaiatuba?</summary>
-        <p>Tempo médio de cerca de 30 minutos, o mesmo padrão da região metropolitana de Campinas.</p>
+        <summary>Qual o prazo de chegada à coleta em Indaiatuba?</summary>
+        <p>A chegada do motoboy à coleta leva cerca de 30 minutos, conforme o local e a disponibilidade. Confirmamos o prazo no atendimento.</p>
       </details>
       <details>
         <summary>Atendem o distrito industrial e empresas perto de Viracopos?</summary>
         <p>Sim. É uma das razões pra existir uma página dedicada a Indaiatuba — a proximidade com o Aeroporto de Viracopos concentra empresas de logística, comércio exterior e indústria que usam bastante o serviço de motoboy e utilitário no dia a dia.</p>
       </details>
       <details>
-        <summary>Atendem pessoa física em Indaiatuba, ou só empresa?</summary>
-        <p>Atendemos os dois, mas o foco do serviço é empresarial — documentos, encomendas e cargas de empresas, clínicas e escritórios.</p>
+        <summary>Atendem empresas de qualquer porte em Indaiatuba?</summary>
+        <p>Sim. Atendemos documentos, encomendas e cargas de empresas de qualquer porte, clínicas e escritórios.</p>
       </details>
     </div>
 
@@ -212,6 +205,7 @@
   <div class="container footer-bottom">
     <span>&copy; 2026 Brulezzi Transportes. Todos os direitos reservados.</span>
   </div>
+  <div class="container privacy-links"><a href="/privacidade/">Privacidade</a><button type="button" id="privacySettings">Preferências de privacidade</button></div>
 </footer>
 
 <div class="mobile-bar" id="mobileBar">

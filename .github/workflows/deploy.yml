@@ -9,9 +9,37 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    concurrency:
+      group: brulezzi-production
+      cancel-in-progress: false
     steps:
-      - name: Trigger deploy webhook
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate website
         run: |
-          curl -f -s -X POST http://187.127.1.204:9000/hooks/deploy-motoboy-campinas \
-            -H "X-Deploy-Token: ${{ secrets.DEPLOY_TOKEN }}" \
+          node --check script.js
+          node --check analytics.js
+          node scripts/validate-site.cjs
+          node --test tests/contact.test.cjs
+      - name: Trigger deploy webhook
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          curl --proto '=https' -f -sS -X POST https://motoboycampinas24h.com/hooks/deploy-motoboy-campinas \
+            -H "X-Deploy-Token: $DEPLOY_TOKEN" \
             --max-time 30
+      - name: Verify published version
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          for attempt in {1..12}; do
+            actual=$(curl --proto '=https' -fsS --max-time 10 "https://motoboycampinas24h.com/deployment-version.txt?version=$EXPECTED_SHA") || actual=''
+            if [ "$actual" = "$EXPECTED_SHA" ]; then exit 0; fi
+            sleep 5
+          done
+          echo 'The website did not publish the expected version.' >&2
+          exit 1
