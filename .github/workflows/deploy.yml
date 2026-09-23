@@ -23,6 +23,7 @@ jobs:
         run: |
           node --check script.js
           node --check analytics.js
+          node --check modern.js
           node scripts/validate-site.cjs
           node --test tests/contact.test.cjs
       - name: Trigger deploy webhook

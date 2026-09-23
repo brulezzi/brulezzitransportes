@@ -80,3 +80,25 @@ test('Analytics tracks by default (opt-out), omits URL query data, and stops aft
   assert.equal(window.dataLayer.length,count);
   assert.equal(window['ga-disable-G-CENYXB4MYP'],true);
 });
+
+test('quote card selects a vehicle, fills the form and records only a non-personal GA4 event', () => {
+  const events = [];
+  const mk = (extra = {}) => Object.assign({ listeners: {}, addEventListener(name, fn) { this.listeners[name] = fn; },
+    classList: { toggle() {}, add() {}, contains: () => false }, setAttribute() {}, style: { setProperty() {} } }, extra);
+  const buttons = ['Motoboy', 'Utilitário', 'Caminhão'].map(vehicle => mk({ dataset: { vehicle } }));
+  const start = mk({ firstChild: { textContent: '' } });
+  const status = mk({ textContent: '' });
+  const select = { value: '', dispatchEvent() {} };
+  const nameInput = { focused: false, focus() { this.focused = true; } };
+  const form = mk({ querySelector: sel => sel.includes('servico') ? select : sel.includes('nome') ? nameInput : null, scrollIntoView() {} });
+  const document = { documentElement: mk(), body: mk(),
+    getElementById: id => ({ startQuote: start, quoteStatus: status, contactForm: form }[id] || null),
+    querySelectorAll: sel => sel === '[data-vehicle]' ? buttons : [] };
+  const window = { trackContact: (...args) => events.push(args) };
+  vm.runInNewContext(fs.readFileSync('modern.js', 'utf8'), { window, document, matchMedia: () => ({ matches: false }), Event: class {} });
+  buttons[2].listeners.click();
+  start.listeners.click();
+  assert.equal(select.value, 'Caminhão');
+  assert.equal(nameInput.focused, true);
+  assert.deepEqual(events, [['cotacao_iniciada', 'cartao_caminhao']]);
+});
