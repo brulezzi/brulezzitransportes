@@ -27,8 +27,16 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!nav.contains(event.target) && !toggle.contains(event.target)) setMenu(false);
     });
   }
-  function track(name, origin) {
-    if (typeof window.trackContact === "function") window.trackContact(name, origin);
+  function track(name, origin, place) {
+    if (typeof window.trackContact !== "function") return;
+    if (place) window.trackContact(name, origin, place);
+    else window.trackContact(name, origin);
+  }
+  // Where on the page a contact click happened (added to GA4 as local_contato; origem_contato stays "link").
+  var places = [[".site-header", "cabecalho"], [".whatsapp-float", "botao_flutuante"], [".mobile-bar", "barra_celular"], [".site-footer", "rodape"], [".contact-section", "secao_contato"], [".quick-quote", "cartao_cotacao"], [".article-cta", "chamada_final"], [".hero", "topo"]];
+  function placeOf(link) {
+    for (var i = 0; i < places.length; i++) if (link.closest(places[i][0])) return places[i][1];
+    return "conteudo";
   }
   var form = document.getElementById("contactForm");
   if (form) {
@@ -61,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function (event) {
     var link = event.target.closest("a");
     if (!link || link.id === "whatsappFallback") return;
-    if (link.href.startsWith("https://wa.me/")) track("contato_whatsapp", "link");
-    if (link.href.startsWith("tel:")) track("contato_telefone", "link");
+    if (link.href.startsWith("https://wa.me/")) track("contato_whatsapp", "link", placeOf(link));
+    if (link.href.startsWith("tel:")) track("contato_telefone", "link", placeOf(link));
   });
 });

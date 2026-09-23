@@ -102,3 +102,38 @@ test('quote card selects a vehicle, fills the form and records only a non-person
   assert.equal(nameInput.focused, true);
   assert.deepEqual(events, [['cotacao_iniciada', 'cartao_caminhao']]);
 });
+
+test('contact clicks keep event names and origem_contato "link" and add where on the page they happened', () => {
+  const clicks = {}, events = [];
+  const document = { getElementById: () => null, addEventListener: (name, fn) => { if (name === 'DOMContentLoaded') fn(); else clicks[name] = fn; } };
+  vm.runInNewContext(fs.readFileSync('script.js', 'utf8'), { document, window: { trackContact: (...args) => events.push(args) } });
+  const linkIn = (href, ...areas) => { const link = { id: '', href, closest: sel => areas.includes(sel) ? link : null }; return { closest: sel => sel === 'a' ? link : null }; };
+  clicks.click({ target: linkIn('https://wa.me/5519992445953?text=x', '.site-header') });
+  clicks.click({ target: linkIn('https://wa.me/5519992445953', '.whatsapp-float') });
+  clicks.click({ target: linkIn('tel:+5519992445953', '.mobile-bar') });
+  clicks.click({ target: linkIn('https://wa.me/5519992445953', '.site-footer') });
+  clicks.click({ target: linkIn('https://wa.me/5519992445953') });
+  clicks.click({ target: linkIn('https://example.com/other', '.site-header') });
+  assert.deepEqual(events, [
+    ['contato_whatsapp', 'link', 'cabecalho'],
+    ['contato_whatsapp', 'link', 'botao_flutuante'],
+    ['contato_telefone', 'link', 'barra_celular'],
+    ['contato_whatsapp', 'link', 'rodape'],
+    ['contato_whatsapp', 'link', 'conteudo']
+  ]);
+});
+
+test('analytics sends local_contato only when given and never form values', () => {
+  const nodes = new Map(), scripts = [];
+  function element() { return { children: [], listeners: {}, hidden: false, setAttribute() {}, appendChild(c) { this.children.push(c); if (c.id) nodes.set(c.id, c); }, addEventListener(n, f) { this.listeners[n] = f; }, querySelector() { return this.children.find(c => c.type === 'button'); }, focus() {} }; }
+  const document = { cookie: '', createElement: element, getElementById: id => nodes.get(id), body: element(), head: { appendChild: s => scripts.push(s) }, addEventListener(n, f) { if (n === 'DOMContentLoaded') f(); } };
+  const window = {};
+  vm.runInNewContext(fs.readFileSync('analytics.js', 'utf8'), { window, document, location: { origin: 'https://example.com', pathname: '/x/', hostname: 'example.com', search: '?nome=private' }, localStorage: { getItem: () => null, setItem() {} } });
+  window.trackContact('contato_whatsapp', 'link', 'cabecalho');
+  window.trackContact('contato_whatsapp', 'formulario');
+  const sent = window.dataLayer.map(a => Array.from(a)).filter(a => a[0] === 'event' && a[1] === 'contato_whatsapp').map(a => a[2]);
+  assert.equal(sent.length, 2);
+  assert.equal(sent[0].local_contato, 'cabecalho'); assert.equal(sent[0].origem_contato, 'link');
+  assert.equal('local_contato' in sent[1], false); assert.equal(sent[1].origem_contato, 'formulario');
+  assert.ok(!JSON.stringify(window.dataLayer).includes('private'));
+});

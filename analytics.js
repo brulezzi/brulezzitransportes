@@ -32,14 +32,16 @@
     script.src = "https://www.googletagmanager.com/gtag/js?id=G-CENYXB4MYP";
     document.head.appendChild(script);
   }
-  window.trackContact = function (name, origin) {
+  window.trackContact = function (name, origin, place) {
     if (!enabled || typeof window.gtag !== "function") return;
-    window.gtag("event", name, {
+    var params = {
       origem_contato: origin,
       page_path: location.pathname,
       page_location: location.origin + location.pathname,
       page_referrer: ""
-    });
+    };
+    if (place) params.local_contato = place;
+    window.gtag("event", name, params);
   };
   function choose(value) {
     try { localStorage.setItem(key, value); } catch (_) { /* Current visit only. */ }
