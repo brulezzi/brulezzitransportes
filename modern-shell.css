@@ -20,6 +20,14 @@ body{background:#08090b;color:#f6f5f2}
 /* Page content spacing under the floating header */
 .article{padding-top:150px}
 
+/* Centred page header (article body keeps left alignment for reading) */
+.article .back-link{display:block;text-align:center}
+.article .eyebrow,.article h1,.article .article-meta{display:block;text-align:center}
+.article .stat-chip-row{justify-content:center}
+.footer-inner{text-align:center;justify-items:center}
+.footer-inner>div{display:flex;flex-direction:column;align-items:center}
+.privacy-links{justify-content:center}
+
 /* FAQ, footer, floating WhatsApp */
 .faq-list details{border-color:#ffffff10;padding:22px 5px}
 .faq-list summary{font-size:1rem}

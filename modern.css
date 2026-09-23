@@ -96,3 +96,87 @@ body.motion-paused *,body.motion-paused *:before,body.motion-paused *:after{anim
 @media(min-width:981px){.coverage-experience{grid-template-columns:1fr;gap:22px}.coverage-experience .network-visual{max-width:none}.coverage-experience .network-portrait{display:none}.coverage-experience .network-wide{display:block;max-width:none;width:100%;margin:6px 0 -6px}.coverage-experience .coverage-details .coverage-grid{grid-template-columns:1fr 1fr}.coverage-experience .network-caption{padding:0 28px 24px}}
 .proof-bar .stat span{line-height:1.5}
 .contact-form #formStatus:empty{display:none}
+/* Without hero buttons the vehicle card is the call to action: keep it in the first phone screen. */
+@media(max-width:760px){.hero{padding-top:100px}.hero-grid{gap:18px}.kicker{margin-bottom:16px}.hero-copy h1{font-size:clamp(1.8rem,7.2vw,2.3rem);margin-bottom:12px}.hero-sub{font-size:.82rem;line-height:1.6;margin-bottom:0}.hero-stats{margin-top:16px;padding-top:12px}.quick-quote{padding:18px 16px}.quote-top{margin-bottom:12px}.vehicle-option{padding:12px 14px}.quote-bottom{margin-top:14px}}
+@media(min-width:761px) and (max-height:820px){.hero{padding-top:150px}}
+
+/* ===== Alignment & consistency standard =====
+   Every block is centred. Every card shares one radius, padding, gap, icon box and type scale. */
+:root{--card-radius:20px;--card-pad:30px;--card-gap:20px;--icon-box:58px}
+.intent-card,.bento-card,.badge-item,.coverage-time,.testimonial-card,.step-card{display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--card-pad);margin:0;border-radius:var(--card-radius);background:linear-gradient(145deg,#17191f,#0c0e12);border:1px solid #ffffff16;box-shadow:0 20px 60px #0003;transition:transform .3s,border-color .3s}
+.step-card+.step-card{border-left:1px solid #ffffff16}
+.intent-card:nth-child(2),.bento-card-dark{background:radial-gradient(ellipse at top,#d4af6a16,transparent 65%),#131419;border-color:#d4af6a55}
+.intent-card:hover,.bento-card:hover,.badge-item:hover,.coverage-time:hover,.testimonial-card:hover,.step-card:hover{transform:translateY(-4px);border-color:#d4af6a70}
+.intent-grid,.bento,.badge-grid,.steps-grid,.coverage-grid,.testimonial-grid{gap:var(--card-gap)}
+.intent-icon,.bento-icon,.badge-icon{width:var(--icon-box);height:var(--icon-box);display:grid;place-items:center;margin:0 auto 20px;border:1px solid #d4af6a22;border-radius:16px;background:linear-gradient(135deg,#d4af6a18,#d4af6a02);color:#dfbd7e}
+.intent-icon svg,.bento-icon svg,.badge-icon svg{width:32px;height:32px}
+.step-number{margin:0 auto 18px!important;width:44px;height:44px}
+.intent-card h3,.bento-card h3,.step-card h3{font-size:1.25rem;font-weight:600;line-height:1.3;margin:0 0 10px}
+.badge-item strong{display:block;font-size:1.05rem;font-weight:600;margin:0 0 8px}
+.intent-card p,.bento-card p,.step-card p,.badge-item span,.testimonial-card p{max-width:38ch;margin:0 auto 16px;font-size:.9rem;line-height:1.7;color:#a7abb6}
+.coverage-time span{max-width:38ch;margin:0 auto;font-size:.9rem;line-height:1.7;color:#a7abb6}
+.coverage-time strong{margin:0 0 10px}
+.tag-list{justify-content:center}
+.intent-card .btn,.bento-cta{margin-top:auto}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);columns:auto;align-items:stretch}
+.testimonial-card{break-inside:auto}
+.testimonial-card p{font-style:italic}
+.testimonial-stars{margin-bottom:14px}
+.testimonial-author{margin-top:auto;justify-content:center}
+@media(max-width:980px){.testimonial-grid{grid-template-columns:repeat(2,1fr)}.testimonial-card:last-child:nth-child(odd){grid-column:1/-1;width:calc(50% - 10px);justify-self:center}}
+@media(max-width:760px){.testimonial-grid{grid-template-columns:1fr}.testimonial-card:last-child:nth-child(odd){width:auto}:root{--card-pad:26px}}
+/* split blocks (about / utility van) */
+.split-grid{align-items:center}
+.split-grid>div{text-align:center}
+.split-grid .eyebrow,.contact-inner .eyebrow{display:table;margin:0 auto 18px;border:1px solid #d4af6a20;border-radius:50px;padding:7px 12px;font-size:.59rem;background:#d4af6a06;letter-spacing:.12em}
+.split-grid h2,.split-grid p{margin-inline:auto}
+.split-grid p{max-width:56ch}
+.trust-box{flex-direction:column;align-items:center;text-align:center;margin-inline:auto;max-width:520px}
+.check-list{align-items:center}
+.check-list li{justify-content:center;text-align:center}
+.split-grid .hero-secondary-link{display:block;margin:14px auto 0}
+/* contact */
+.contact-inner{align-items:center}
+.contact-inner>div:first-child{text-align:center}
+.contact-inner h2,.contact-inner p{margin-inline:auto}
+.contact-list{align-items:center}
+.quick-answers{align-items:center;margin-inline:auto}
+.quick-answers li{padding-left:0;text-align:center;max-width:460px}
+.quick-answers li::before{position:static;margin-right:8px}
+.contact-form legend{text-align:center}
+/* FAQ */
+.faq-list summary{display:block;position:relative;text-align:center;padding:0 46px}
+.faq-list summary::after{position:absolute;right:6px;top:50%;margin:0;transform:translateY(-50%)}
+.faq-list details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq-list details p{text-align:center;margin-inline:auto;max-width:70ch}
+/* coverage */
+.network-top{justify-content:center}.network-index{margin-left:14px}
+.network-caption{text-align:center}
+.cities-grid{justify-content:center}
+.cities-note{text-align:center}
+/* quote card */
+.quick-quote{text-align:center}
+.quote-top{flex-direction:column;justify-content:center;text-align:center;gap:8px}
+.quote-help{display:block}
+.vehicle-option{flex-direction:column;justify-content:center;text-align:center;gap:10px;padding:22px 16px}
+.vehicle-option small{max-width:none;margin-inline:auto}
+.quote-bottom{flex-direction:column;justify-content:center;text-align:center;gap:14px}
+.quote-bottom .btn{margin-inline:auto}
+@media(max-width:760px){.vehicle-option{flex-direction:row;gap:14px;padding:12px 14px}}
+/* footer */
+.footer-inner{text-align:center;justify-items:center}
+.footer-inner>div{display:flex;flex-direction:column;align-items:center}
+.privacy-links{justify-content:center}
+.section-split .split-grid{align-items:center}
+@media(min-width:1100px){.section-split .split-visual{position:static}}
+/* one content width for every block, evenly spaced stats and footer, balanced text wrapping */
+:is(.steps-grid,.intent-grid,.bento,.badge-grid,.testimonial-grid,.contact-inner,.split-grid,.cities-grid,.coverage-experience){width:100%;max-width:1160px;margin-left:auto;margin-right:auto}
+.proof-bar{display:flex;justify-content:center;gap:40px}.proof-bar .stat{flex:1;text-align:center}
+@media(min-width:881px){.footer-inner{grid-template-columns:repeat(3,1fr);max-width:1160px;margin-inline:auto}}
+h1,h2,.section-lead,.hero-sub,.faq-list summary{text-wrap:balance}
+/* consistency fixes found by the audit */
+.bento .bento-card,.bento .bento-card:nth-child(n){padding:var(--card-pad)}
+.vehicle-option{border-radius:16px}
+.network-top{text-align:center}
+@media(max-width:980px){.coverage-experience{grid-template-columns:1fr;gap:22px}.coverage-experience .coverage-details .coverage-grid{grid-template-columns:1fr 1fr}.coverage-experience .network-visual{justify-self:center}}
+@media(max-width:760px){.coverage-experience .coverage-details .coverage-grid{grid-template-columns:1fr}}
