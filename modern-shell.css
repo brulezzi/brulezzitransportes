@@ -54,3 +54,37 @@ body{background:#08090b;color:#f6f5f2}
   .article{padding-top:120px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* ===== Article standard: everything centred, same card look and icon box as the home ===== */
+h1,h2,h3,.section-lead{text-wrap:balance}
+.article h2,.article h3{text-align:center}
+.article p,.article ul,.article ol{max-width:68ch;margin-left:auto;margin-right:auto;text-align:center}
+.article ul,.article ol{list-style:none;padding:0}
+.article li{margin-bottom:12px}
+.article .compare-grid,.article .badge-grid{gap:20px}
+.compare-card,.article .badge-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px;border-radius:20px;background:linear-gradient(145deg,#17191f,#0c0e12);border:1px solid #ffffff16;box-shadow:0 20px 60px #0003}
+.compare-card.is-recommended{border-color:#d4af6a55;background:radial-gradient(ellipse at top,#d4af6a16,transparent 65%),#131419}
+.compare-card h4,.article .badge-item strong{display:block;font-size:1.15rem;font-weight:600;margin:12px 0 8px}
+.compare-card p,.article .badge-item span{max-width:38ch;margin:0 auto;font-size:.9rem;line-height:1.7;color:#a7abb6}
+.badge-icon{width:58px;height:58px;display:grid;place-items:center;margin:0 auto 6px;border:1px solid #d4af6a22;border-radius:16px;background:linear-gradient(135deg,#d4af6a18,#d4af6a02);color:#dfbd7e}
+.badge-icon svg{width:32px;height:32px}
+.proof-strip,.mini-cta,.article-cta,.table-note{text-align:center}
+.proof-strip blockquote{margin-left:auto;margin-right:auto;max-width:62ch}
+.proof-logos{justify-content:center}
+.faq-list summary{display:block;position:relative;text-align:center;padding:0 46px}
+.faq-list summary::after{position:absolute;right:6px;top:50%;margin:0;transform:translateY(-50%)}
+.faq-list details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq-list details p{text-align:center;margin-left:auto;margin-right:auto}
+@media(min-width:881px){.footer-inner{grid-template-columns:repeat(3,1fr);max-width:1160px;margin-left:auto;margin-right:auto}}
+.article,.stat-chip{text-align:center}
+/* blog and knowledge-hub cards */
+.blog-hero{text-align:center}
+.blog-hero .eyebrow{display:block}
+.blog-hero p{margin-left:auto;margin-right:auto}
+.post-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1160px;margin-left:auto;margin-right:auto}
+.post-card{flex:0 1 calc((100% - 40px) / 3);display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px;border-radius:20px;background:linear-gradient(145deg,#17191f,#0c0e12);border:1px solid #ffffff16;box-shadow:0 20px 60px #0003}
+.post-card h2{font-size:1.25rem;font-weight:600;line-height:1.3;margin:10px 0 12px;text-align:center}
+.post-card p{max-width:38ch;margin:0 auto 18px;font-size:.9rem;line-height:1.7;color:#a7abb6}
+.post-card a.read-more{margin-top:auto}
+@media(max-width:980px){.post-card{flex-basis:calc((100% - 20px) / 2)}}
+@media(max-width:760px){.post-card{flex-basis:100%}.blog-hero{padding-top:120px}}
