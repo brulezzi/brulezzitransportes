@@ -1,0 +1,48 @@
+/* Brulezzi modern shell: header, buttons, FAQ and footer shared by every inner page.
+   Visual only. The home page loads the full modern.css instead. */
+:root{--bg:#090c0d;--gold:#d4af6a}
+body{background:#08090b;color:#f6f5f2}
+
+/* Floating header */
+.site-header,.site-header.scrolled{position:absolute;top:14px;left:0;right:0;background:none;border:0;padding:0}
+.site-header.scrolled{position:fixed;top:12px}
+.site-header .header-inner{max-width:1160px;background:#121315cc;border:1px solid #ffffff1a;border-radius:18px;padding:12px 18px;gap:28px;backdrop-filter:blur(24px);box-shadow:0 8px 40px #0003}
+.logo img{width:44px;height:44px;border-radius:10px}
+.main-nav{font-size:.73rem;gap:21px}
+.header-cta{padding:10px 17px;min-height:38px;border-radius:9px;font-size:.7rem}
+
+/* Buttons */
+.btn{border-radius:10px;font-size:.87rem;font-weight:700;gap:18px;transition:transform .25s,box-shadow .25s,background .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn-gold{background:linear-gradient(135deg,#f1d798,#ceaa68);border:1px solid #f4d9a1;color:#201a0d;box-shadow:0 0 0 3px #d4af6a0c,0 5px 25px #d4af6a18}
+.btn-gold:hover{box-shadow:0 0 0 5px #d4af6a14,0 8px 40px #d4af6a35}
+
+/* Page content spacing under the floating header */
+.article{padding-top:150px}
+
+/* FAQ, footer, floating WhatsApp */
+.faq-list details{border-color:#ffffff10;padding:22px 5px}
+.faq-list summary{font-size:1rem}
+.faq-list p{color:#a4aab6}
+.site-footer{background:#07080a;border-top:1px solid #ffffff0e}
+.footer-logo{width:70px;height:70px}
+.whatsapp-float{box-shadow:0 4px 35px #d4af6a35}
+
+/* Fixes a bug that already existed: on phones and small tablets article text touched the screen edge. */
+@media(max-width:820px){.article{padding-left:22px;padding-right:22px}}
+@media(max-width:1200px){
+  .site-header .header-inner{margin-inline:24px}
+  .main-nav{top:91px;background:#111318}
+  .site-header.scrolled .main-nav{top:88px}
+  .header-cta{margin-left:auto}
+}
+@media(max-width:760px){
+  .site-header .header-inner{margin-inline:16px;padding:10px 13px;border-radius:14px;gap:12px}
+  .site-header{top:10px}
+  .site-header.scrolled{top:8px}
+  .main-nav{top:85px}
+  .site-header.scrolled .main-nav{top:78px}
+  .header-cta{font-size:.65rem;padding:10px}
+  .article{padding-top:120px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
