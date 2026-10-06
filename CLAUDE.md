@@ -28,6 +28,25 @@ Detalhe completo em `BRAND-SYSTEM.md` (pasta de documentação no OneDrive).
 - **`deploy-brulezzi`** — fluxo de editar → validar → commit → push, e troubleshooting se o deploy não refletir
 - **`nova-pagina-servico-brulezzi`** — como criar página nova de serviço seguindo o padrão do site
 
+## Como validar antes de publicar (comandos conferidos em 05/10/2026)
+
+```
+node --check script.js && node --check analytics.js && node --check modern.js
+node scripts/validate-site.cjs
+node --test tests/contact.test.cjs
+```
+
+Todos precisam passar. O GitHub roda os mesmos comandos antes de publicar.
+
+## Regras de segurança para o Claude
+
+- `git push` na `main` PUBLICA o site em produção. Nunca fazer commit nem push sem o usuário pedir explicitamente.
+- Nunca usar `git add -A`. Adicionar só os arquivos alterados, citando o nome de cada um.
+- Mostrar o que mudou (diff) e rodar as validações antes de propor commit.
+- Não alterar `.github/workflows/` nem `deploy.sh` sem pedir.
+- Repositório público: nunca escrever senha, token, IP ou dados de acesso em nenhum arquivo.
+- Mudança de texto comercial (preço, telefone, cobertura): confirmar com o usuário, não inventar.
+
 ## Estrutura do site
 
 **`/logistica-ecommerce/` foi removida em 19/08/2026** (redirect pra `/motoboy-para-empresas/`) — o site não faz mais nenhuma menção a e-commerce/marketplace, decisão consciente pra focar 100% em B2B urgente (ver Cockpit, seção de 19/08).
@@ -43,14 +62,14 @@ Detalhe completo em `BRAND-SYSTEM.md` (pasta de documentação no OneDrive).
 | Despacho em Aeroportos | `/despacho-aeroportos/` |
 | Sobre | `/sobre/` |
 | Central de Perguntas Frequentes | `/perguntas-frequentes/` |
-| Páginas de cidade (8) | `/motoboy-sao-paulo/`, `/motoboy-guarulhos/`, `/motoboy-hortolandia/`, `/motoboy-paulinia/`, `/motoboy-rio-claro/`, `/motoboy-jundiai/`, `/motoboy-indaiatuba/` |
+| Páginas de cidade (7) | `/motoboy-sao-paulo/`, `/motoboy-guarulhos/`, `/motoboy-hortolandia/`, `/motoboy-paulinia/`, `/motoboy-rio-claro/`, `/motoboy-jundiai/`, `/motoboy-indaiatuba/` |
 | Centro de Conhecimento (hub + Glossário + Bastidores) | `/centro-de-conhecimento/` |
 | Blog (3 posts) | `/blog/` |
 
 ## Infraestrutura (resumo — detalhe completo na documentação externa)
 
 - GitHub: `github.com/brulezzi/brulezzitransportes` (branch `main`, **repositório público** — nunca commitar token/senha aqui)
-- VPS: `187.127.1.204`, deploy via webhook na porta 9000
+- VPS e webhook de deploy: IP, porta e token ficam só na documentação privada do OneDrive (repositório é público)
 - Analytics: GA4 `G-CENYXB4MYP`, Search Console verificado e vinculado
 - Google Meu Negócio: perfil novo aprovado (perfil antigo de 2022 ficou suspenso, abandonado — não usar)
 
@@ -73,4 +92,4 @@ Detalhe completo em `BRAND-SYSTEM.md` (pasta de documentação no OneDrive).
 
 ---
 
-> Última atualização: 2026-09-11
+> Última atualização: 2026-10-05
