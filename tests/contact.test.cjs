@@ -15,7 +15,7 @@ function setup(valid = true) {
   const fallback = { hidden: true }, status = {};
   const document = {
     getElementById: id => ({ contactForm: form, whatsappFallback: fallback, formStatus: status }[id] || null),
-    addEventListener: (name, fn) => { if (name === 'DOMContentLoaded') fn(); }
+    addEventListener: (name, fn) => { if (name === 'DOMContentLoaded') fn(); else listeners[name]=fn; }
   };
   const window = { trackContact: (...args) => events.push(args), open: (...args) => opened.push(args) };
   vm.runInNewContext(fs.readFileSync('script.js', 'utf8'), { document, window });
@@ -34,7 +34,14 @@ test('validated quote opens encoded WhatsApp message and sends no form values to
   assert.ok(url.searchParams.get('text').includes('Empresa: Teste & empresa'));
   assert.deepEqual(env.events, [['contato_whatsapp', 'formulario']]);
   assert.equal(env.opened[0][2], 'noopener,noreferrer');
-  assert.equal(env.fallback.href, env.opened[0][0]);
+  assert.equal(env.fallback.href, "https://wa.me/5519992445953");
+  assert.ok(!env.fallback.href.includes("Teste"));
+  let retryPrevented = false;
+  env.listeners.click({target:{closest:()=>({id:"whatsappFallback"})},preventDefault(){retryPrevented=true;}});
+  assert.ok(retryPrevented);
+  assert.equal(env.opened.length, 2);
+  assert.equal(env.opened[1][0], env.opened[0][0]);
+  assert.equal(env.events.length, 1);
   assert.equal(env.fallback.hidden, false);
 });
 test('invalid quote neither opens WhatsApp nor records a contact', () => {
@@ -65,7 +72,7 @@ test('Analytics tracks by default (opt-out), omits URL query data, and stops aft
     addEventListener(name, fn) { if (name === 'DOMContentLoaded') fn(); } };
   const storage = new Map(), window = {};
   vm.runInNewContext(fs.readFileSync('analytics.js','utf8'), {
-    window, document, location: { origin:'https://example.com', pathname:'/', hostname:'example.com', search:'?nome=private' },
+    URL, URLSearchParams, window, document, location: { origin:'https://example.com', pathname:'/', hostname:'example.com', search:'?nome=private' },
     localStorage: { getItem: key => storage.get(key), setItem: (key,value) => storage.set(key,value) }
   });
   // Tracks immediately, before any interaction with the notice.
@@ -128,7 +135,7 @@ test('analytics sends local_contato only when given and never form values', () =
   function element() { return { children: [], listeners: {}, hidden: false, setAttribute() {}, appendChild(c) { this.children.push(c); if (c.id) nodes.set(c.id, c); }, addEventListener(n, f) { this.listeners[n] = f; }, querySelector() { return this.children.find(c => c.type === 'button'); }, focus() {} }; }
   const document = { cookie: '', createElement: element, getElementById: id => nodes.get(id), body: element(), head: { appendChild: s => scripts.push(s) }, addEventListener(n, f) { if (n === 'DOMContentLoaded') f(); } };
   const window = {};
-  vm.runInNewContext(fs.readFileSync('analytics.js', 'utf8'), { window, document, location: { origin: 'https://example.com', pathname: '/x/', hostname: 'example.com', search: '?nome=private' }, localStorage: { getItem: () => null, setItem() {} } });
+  vm.runInNewContext(fs.readFileSync('analytics.js', 'utf8'), { URL, URLSearchParams, window, document, location: { origin: 'https://example.com', pathname: '/x/', hostname: 'example.com', search: '?nome=private' }, localStorage: { getItem: () => null, setItem() {} } });
   window.trackContact('contato_whatsapp', 'link', 'cabecalho');
   window.trackContact('contato_whatsapp', 'formulario');
   const sent = window.dataLayer.map(a => Array.from(a)).filter(a => a[0] === 'event' && a[1] === 'contato_whatsapp').map(a => a[2]);
@@ -136,4 +143,25 @@ test('analytics sends local_contato only when given and never form values', () =
   assert.equal(sent[0].local_contato, 'cabecalho'); assert.equal(sent[0].origem_contato, 'link');
   assert.equal('local_contato' in sent[1], false); assert.equal(sent[1].origem_contato, 'formulario');
   assert.ok(!JSON.stringify(window.dataLayer).includes('private'));
+});
+
+test('analytics preserves approved ad identifiers but strips personal query and referrer details', () => {
+  const nodes = new Map();
+  function element() { return { children: [], setAttribute() {}, appendChild(c) { this.children.push(c); if(c.id) nodes.set(c.id,c); }, addEventListener() {}, querySelector() { return this.children[0]; } }; }
+  const document = { referrer:'https://www.google.com/search?q=private-person&email=private@example.com', cookie:'', createElement:element, getElementById:id=>nodes.get(id), body:element(), head:element(), addEventListener(n,fn) { if(n==='DOMContentLoaded') fn(); } };
+  const window = {};
+  vm.runInNewContext(fs.readFileSync('analytics.js','utf8'), {
+    URL, URLSearchParams, window, document,
+    location:{origin:'https://motoboycampinas24h.com',pathname:'/motoboy-santos/',hostname:'motoboycampinas24h.com',search:'?gclid=Abcdef12345_-&nome=private-person&email=private@example.com&arbitrary=secret&gbraid=invalid@email'},
+    localStorage:{getItem(){return null;}}
+  });
+  window.trackContact('contato_whatsapp','formulario');
+  const events = window.dataLayer.map(a=>Array.from(a)).filter(a=>a[0]==='event');
+  assert.equal(events.length,2);
+  for (const event of events) {
+    assert.equal(event[2].page_location,'https://motoboycampinas24h.com/motoboy-santos/?gclid=Abcdef12345_-');
+    assert.equal(event[2].page_referrer,'https://www.google.com/');
+  }
+  const sent=JSON.stringify(window.dataLayer);
+  for(const forbidden of ['private-person','private@example.com','arbitrary','secret','invalid@email','/search']) assert.ok(!sent.includes(forbidden));
 });

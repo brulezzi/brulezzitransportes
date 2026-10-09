@@ -61,11 +61,12 @@ document.addEventListener("DOMContentLoaded", function () {
     else window.trackContact(name, origin);
   }
   // Where on the page a contact click happened (added to GA4 as local_contato; origem_contato stays "link").
-  var places = [[".site-header", "cabecalho"], [".whatsapp-float", "botao_flutuante"], [".mobile-bar", "barra_celular"], [".site-footer", "rodape"], [".contact-section", "secao_contato"], [".quick-quote", "cartao_cotacao"], [".article-cta", "chamada_final"], [".hero", "topo"]];
+  var places = [[".site-header", "cabecalho"], [".whatsapp-float", "botao_flutuante"], [".mobile-bar", "barra_celular"], [".site-footer", "rodape"], [".contact-section", "secao_contato"], [".quick-quote", "cartao_cotacao"], [".article-cta", "chamada_final"], [".dispatch-hero", "topo"], [".city-hero", "topo"], [".hero", "topo"]];
   function placeOf(link) {
     for (var i = 0; i < places.length; i++) if (link.closest(places[i][0])) return places[i][1];
     return "conteudo";
   }
+  var preparedWhatsAppUrl = null;
   var form = document.getElementById("contactForm");
   if (form) {
     form.addEventListener("submit", function (event) {
@@ -85,7 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
       ].join("\n");
       var fallback = document.getElementById("whatsappFallback");
       var url = "https://wa.me/5519992445953?text=" + encodeURIComponent(labelMessage(message));
-      fallback.href = url;
+      // Keep personal quote details out of the DOM link URL and automatic click events.
+      preparedWhatsAppUrl = url;
+      fallback.href = "https://wa.me/5519992445953";
       fallback.hidden = false;
       document.getElementById("formStatus").textContent = "Sua cotação está pronta. Envie a mensagem no WhatsApp para iniciar o atendimento. Se ele não abriu, use o link abaixo.";
       track("contato_whatsapp", "formulario");
@@ -96,7 +99,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   document.addEventListener("click", function (event) {
     var link = event.target.closest("a");
-    if (!link || link.id === "whatsappFallback") return;
+    if (!link) return;
+    if (link.id === "whatsappFallback") {
+      if (preparedWhatsAppUrl) {
+        event.preventDefault();
+        window.open(preparedWhatsAppUrl, "_blank", "noopener,noreferrer");
+      }
+      return; // This retries the already recorded request, not a new contact.
+    }
     if (link.href.startsWith("https://wa.me/")) track("contato_whatsapp", "link", placeOf(link));
     if (link.href.startsWith("tel:")) track("contato_telefone", "link", placeOf(link));
   });

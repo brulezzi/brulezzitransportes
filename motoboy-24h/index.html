@@ -113,8 +113,10 @@
   ]
 }
 </script>
-<script defer src="/analytics.js?v=20261008-audit-final"></script>
-<link rel="stylesheet" href="/bundle-city.css?v=20261008-composicao2">
+<script defer src="/analytics.js?v=20261009-quiz-ga4"></script>
+<link rel="stylesheet" href="/bundle-city.css?v=20261009-quiz-ga4">
+<link rel="stylesheet" href="/quote-quiz.css?v=20261009-hero-final">
+<link rel="stylesheet" href="/city-quiz.css?v=20261009-hero-final">
 </head>
 <body class="city-landing">
 
@@ -144,7 +146,7 @@
 <main id="conteudo">
   <article class="article">
     <a class="back-link" href="/">← Voltar pro site</a>
-    <div class="city-hero"><span class="eyebrow">MOTOBOY 24H</span>
+    <div class="city-hero"><div class="city-hero-copy"><span class="eyebrow">MOTOBOY 24H</span>
     <h1>Motoboy para empresas em Campinas: coleta urgente 24h</h1>
     <p class="article-meta">Brulezzi Transportes — Campinas e todo o estado de São Paulo</p>
 
@@ -152,41 +154,54 @@
       <span class="stat-chip"><strong>15–30 min</strong> coleta em Campinas</span>
       <span class="stat-chip"><strong>24h</strong> todos os dias, sem exceção</span>
       <span class="stat-chip"><strong>Sem contrato</strong> pra uso avulso</span>
-    </div><a class="btn btn-gold" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20de%20motoboy%2024h%20e%20preciso%20de%20uma%20entrega%20urgente." target="_blank" rel="noopener">Chamar motoboy agora</a></div>
-
-    <p>Um contrato que precisa ser assinado antes do fim do expediente, uma peça que parou a operação, uma chave de acesso que só chega se alguém for buscar agora — a urgência da sua empresa não escolhe hora. O motoboy 24h da Brulezzi está disponível todos os dias, a qualquer hora, pra resolver isso sem central eletrônica e sem espera.</p>
-
-    <h2>Quando chamar o motoboy 24h</h2>
-    <ul>
-      <li>Contrato, documento ou chave que precisa chegar ainda hoje, antes do fechamento</li>
-      <li>Entrega de madrugada, fim de semana ou feriado, quando a operação não pode parar</li>
-      <li>Peça, insumo ou encomenda que não pode esperar o próximo turno</li>
-      <li>Urgência de escritório, clínica, indústria ou comércio</li>
-    </ul>
-
-    <section class="city-section"><h2>Como funciona</h2>
-    <p>Chama no WhatsApp, descreve o que precisa transportar e o endereço de coleta e entrega. Confirmamos valor e prazo na hora, e um profissional parceiro da nossa rede já sai pra coleta — com acompanhamento em tempo real pela nossa equipe até a confirmação de recebimento.</p></section>
-
-    <section class="city-section"><h2>Cobertura</h2>
-    <p>Em Campinas e Indaiatuba, a previsão de chegada para coleta é de 15 a 30 minutos. Em Santos, de 20 a 45 minutos. Confirmamos o prazo para o endereço, horário e disponibilidade; o tempo de entrega depende da rota.</p></section>
-
-    <div class="mini-cta">Volume maior do que uma moto carrega? Veja o <a href="/veiculo-utilitario/">veículo utilitário</a> — mesma agilidade, mais capacidade de carga.</div>
-
-    <div class="proof-strip">
-      <div class="proof-stars">★★★★★</div>
-      <blockquote>"Precisei dos serviços deles, foram super profissionais, entregam rápido e com todo cuidado. Recomendo!!!"</blockquote>
-      <cite>— Camila, cliente Brulezzi Transportes</cite>
-      <div class="proof-logos">
-        <span>Empresas atendidas</span>
-        <img src="../assets/clientes/kazulo.png" alt="Kazulo" width="222" height="74" decoding="async" loading="lazy">
-        <img src="../assets/clientes/Ecoboxes.png" alt="Ecoboxes" width="350" height="67" decoding="async" loading="lazy">
-        <img src="../assets/clientes/qualytec.png" alt="Qualytec" width="545" height="159" decoding="async" loading="lazy">
-        <img src="../assets/clientes/techtools.png" alt="Techtools" width="350" height="150" decoding="async" loading="lazy">
-        <img src="../assets/clientes/inbone.jpg" alt="Inbone" width="150" height="150" decoding="async" loading="lazy">
-      </div>
-    </div>
-
-    <h2>Perguntas frequentes</h2>
+    </div><a class="btn btn-gold" href="#contactForm" data-start-quiz>Preparar coleta em Campinas →</a></div><div class="hero-quote-panel"><div class="hero-quote-heading"><span>COTAÇÃO EM CAMPINAS</span><span>Valor e prazo antes de fechar</span></div><form class="contact-form glass" id="contactForm" method="post" action="/#contato">
+        <noscript><p>Para cotar, <a href="https://wa.me/5519992445953" rel="noopener">fale com nossa equipe pelo WhatsApp</a>. O formulário precisa de JavaScript.</p></noscript>
+        <fieldset disabled>
+        <legend>Dados para cotação empresarial</legend>
+        <label>Seu nome *
+          <input type="text" name="nome" required maxlength="100" autocomplete="name" placeholder="Nome completo">
+        </label>
+        <label>WhatsApp *
+          <input type="tel" name="whatsapp" required maxlength="25" autocomplete="tel" placeholder="(00) 00000-0000">
+        </label>
+        <label>Empresa *
+          <input type="text" name="empresa" required maxlength="150" autocomplete="organization" placeholder="Nome da empresa">
+        </label>
+        <label>Qual serviço você precisa? *
+          <select name="servico" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Motoboy">Motoboy</option>
+            <option value="Utilitário">Utilitário</option>
+            <option value="Caminhão">Caminhão</option>
+          </select>
+        </label>
+        <label>O que sua empresa precisa transportar? *
+          <input type="text" name="carga" required maxlength="200" placeholder="Ex.: documentos, peças ou caixas">
+        </label>
+        <label>Frequência das entregas *
+          <select name="frequencia" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option>Entrega pontual</option><option>Semanal</option><option>Diária</option><option>Sob demanda recorrente</option>
+          </select>
+        </label>
+        <label>Endereço de coleta *
+          <input type="text" name="coleta" required placeholder="Endereço de coleta em Campinas ou região">
+        </label>
+        <label>Endereço de entrega *
+          <input type="text" name="entrega" required placeholder="Endereço de entrega">
+        </label>
+        <button type="submit" class="btn btn-gold">Continuar cotação no WhatsApp</button>
+        </fieldset>
+        <p class="form-note">Os dados preenchidos serão encaminhados ao WhatsApp para preparar sua mensagem. Envie-a lá para iniciar o atendimento. Não inclua dados de pacientes. <a href="/privacidade/">Saiba como usamos os dados.</a></p>
+        <p id="formStatus" role="status" aria-live="polite"></p>
+        <a id="whatsappFallback" hidden rel="noopener noreferrer" target="_blank">Abrir minha cotação no WhatsApp</a>
+        <span class="form-note">Sem compromisso — você recebe o valor e decide depois, sem letra miúda.</span>
+      </form></div></div><div class="city-overview"><p>Documentos, peças e encomendas urgentes para empresas, escritórios, clínicas e indústrias. Coletas locais e rotas intermunicipais, com atendimento 24h.</p></div>
+<section class="city-services-compact"><h2>Serviços para empresas em Campinas</h2><div class="city-service-grid"><article class="city-service-card"><span class="city-card-number">01</span><h3>Documentos e malotes</h3><p>Contratos, chaves e documentos que precisam chegar no prazo da sua operação.</p></article><article class="city-service-card"><span class="city-card-number">02</span><h3>Peças e insumos</h3><p>Coleta urgente para reposição de peças e materiais, conforme peso e dimensões.</p></article><article class="city-service-card"><span class="city-card-number">03</span><h3>Encomendas empresariais</h3><p>Entregas avulsas ou recorrentes; avaliamos o veículo adequado para cada pedido.</p></article></div><p class="city-related">Mais capacidade? <a href="/veiculo-utilitario/">Veículo utilitário</a> · <a href="/malote-cartorio/">Malotes e cartórios</a> · <a href="/transporte-cargas-medicas/">Transporte médico, conforme requisitos</a></p></section>
+<section class="city-process-compact"><h2>Da cotação à entrega</h2><ol><li><strong>1. Prepare o pedido</strong><span>Responda o quiz com material, endereços e contato.</span></li><li><strong>2. Confirme no WhatsApp</strong><span>A equipe informa valor, previsão e condições antes de fechar.</span></li><li><strong>3. Acompanhe com a equipe</strong><span>Após o acionamento, receba atualizações pelo atendimento até a confirmação de recebimento.</span></li></ol></section>
+<section class="city-conditions-compact"><h2>Condições claras antes da coleta</h2><ul><li>Previsão em Campinas: 15 a 30 minutos para chegada à coleta, conforme endereço, horário e disponibilidade. A entrega depende da rota.</li><li>Informe material, quantidade, peso, dimensões e cuidados exigidos para confirmar o veículo.</li><li>Valor, pagamento e emissão fiscal são confirmados na contratação. Atendimento 24h por profissionais parceiros.</li></ul></section>
+<aside class="city-proof-compact"><blockquote>"Precisei dos serviços deles, foram super profissionais, entregam rápido e com todo cuidado. Recomendo!!!"</blockquote>
+      <cite>— Camila, cliente Brulezzi Transportes</cite></aside><h2>Perguntas frequentes</h2>
     <div class="faq-list">
       <details>
         <summary>O motoboy atende de madrugada e feriado?</summary>
@@ -205,12 +220,7 @@
         <p>Não. Chame no WhatsApp, combine o valor e o prazo, e pronto. Se a urgência é rotina na sua empresa, vale conhecer o <a href="/motoboy-para-empresas/">plano mensal</a>, com atendimento prioritário.</p>
       </details>
     </div>
-
-    <div class="article-cta">
-      <p>Precisa de um motoboy agora?</p>
-      <a class="btn btn-gold" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20de%20motoboy%2024h%20e%20preciso%20de%20uma%20entrega%20urgente." target="_blank" rel="noopener">Chamar motoboy agora</a>
-    </div>
-  <section class="operation-panel"><h2>O que confirmar antes da coleta</h2><p>Uma cotação clara começa com o material e a rota. Você recebe valor e previsão antes de decidir.</p><ul><li>Tipo de material, quantidade, peso e dimensões para confirmar o veículo.</li><li>Endereços, horário necessário e regras de acesso dos locais.</li><li>Condições de pagamento e emissão fiscal na contratação.</li><li>Acompanhamento pelo atendimento até a confirmação de recebimento.</li></ul><div class="operation-links"><a href="/#contato">Preparar minha cotação →</a><a href="/blog/quanto-custa-motoboy-campinas/">Entender os fatores de preço</a></div></section></article>
+<div class="city-final-cta"><p>Material e endereços em mãos?</p><a class="btn btn-gold" href="#contactForm" data-start-quiz>Preparar minha cotação →</a><a href="/blog/quanto-custa-motoboy-campinas/">Entenda os fatores de preço</a></div></article>
 </main>
 
 <footer class="site-footer">
@@ -251,6 +261,7 @@
 
 <a class="whatsapp-float" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20de%20motoboy%2024h%20e%20preciso%20de%20uma%20entrega%20urgente." target="_blank" rel="noopener" aria-label="Falar com Atendente 24h">💬</a>
 
-<script src="../script.js?v=20261008-audit-final"></script>
+<script src="../script.js?v=20261009-quiz-ga4"></script>
+<script src="/quote-quiz.js?v=20261009-hero-final" defer></script>
 </body>
 </html>

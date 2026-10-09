@@ -18,4 +18,4 @@
 .city-hero{animation:city-enter .6s ease-out both}
 @keyframes city-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media(max-width:640px){.city-landing .article{padding:105px 16px 45px}.city-hero{padding:28px 20px;border-radius:22px}.city-hero .stat-chip-row{grid-template-columns:1fr}.city-hero .stat-chip{flex-direction:row;align-items:center;gap:14px;padding:13px 16px}.city-section{padding:22px}.city-hero .btn{display:flex;width:100%;justify-content:center}}
-@media(prefers-reduced-motion:reduce){.city-landing *{animation:none!important;transition:none!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){.city-landing *:not(.skip-link){animation:none!important;transition:none!important;transform:none!important}}

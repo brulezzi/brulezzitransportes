@@ -7,6 +7,20 @@
   function readChoice() {
     try { return localStorage.getItem(key); } catch (_) { return null; }
   }
+  // Preserve only recognized attribution identifiers; discard personal or arbitrary query values.
+  function safeLocation() {
+    var url = new URL(location.origin + location.pathname);
+    var query = new URLSearchParams(location.search || "");
+    ["gclid", "gbraid", "wbraid"].forEach(function (key) {
+      var value = query.get(key);
+      if (value && /^[A-Za-z0-9_-]{10,512}$/.test(value)) url.searchParams.set(key, value);
+    });
+    return url.toString();
+  }
+  function safeReferrer() {
+    try { return document.referrer ? new URL(document.referrer).origin + "/" : ""; }
+    catch (_) { return ""; }
+  }
   function enable() {
     // Local reviews must not pollute the production acquisition reports.
     if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
@@ -32,15 +46,15 @@
     }
     window.gtag("config", "G-CENYXB4MYP", {
       send_page_view: false,
-      page_location: location.origin + location.pathname,
-      page_referrer: "",
+      page_location: safeLocation(),
+      page_referrer: safeReferrer(),
       allow_google_signals: false,
       allow_ad_personalization_signals: false
     });
-    // Exclude query strings, fragments, form values and referrers from events.
+    // Only allowlisted ad identifiers and the referrer origin enter analytics.
     window.gtag("event", "page_view", {
-      page_location: location.origin + location.pathname,
-      page_referrer: ""
+      page_location: safeLocation(),
+      page_referrer: safeReferrer()
     });
     var script = document.createElement("script");
     script.async = true;
@@ -52,8 +66,8 @@
     var params = {
       origem_contato: origin,
       page_path: location.pathname,
-      page_location: location.origin + location.pathname,
-      page_referrer: ""
+      page_location: safeLocation(),
+      page_referrer: safeReferrer()
     };
     if (place) params.local_contato = place;
     window.gtag("event", name, params);
