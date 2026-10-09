@@ -8,6 +8,8 @@
     try { return localStorage.getItem(key); } catch (_) { return null; }
   }
   function enable() {
+    // Local reviews must not pollute the production acquisition reports.
+    if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
     enabled = true;
     window["ga-disable-G-CENYXB4MYP"] = false;
     if (loaded) return;
@@ -15,6 +17,19 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag("js", new Date());
+    var campaign = typeof window.brulezziCampaign === "object" ? window.brulezziCampaign : null;
+    if (!campaign && typeof URLSearchParams !== "undefined") {
+      var query = new URLSearchParams(location.search);
+      var allowed = ["brz_campinas", "brz_indaiatuba", "brz_santos"];
+      if (query.get("utm_source") === "google" && query.get("utm_medium") === "cpc" && allowed.includes(query.get("utm_campaign"))) {
+        campaign = { name: query.get("utm_campaign") };
+      }
+    }
+    if (campaign) {
+      window.gtag("set", "campaign_source", "google");
+      window.gtag("set", "campaign_medium", "cpc");
+      window.gtag("set", "campaign_name", campaign.name);
+    }
     window.gtag("config", "G-CENYXB4MYP", {
       send_page_view: false,
       page_location: location.origin + location.pathname,

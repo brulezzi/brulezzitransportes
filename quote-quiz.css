@@ -1,0 +1,17 @@
+.quote-quiz{position:relative;padding:34px;background:linear-gradient(145deg,#202731,#10161d);border:1px solid #d4af6a45;min-height:460px}
+.quote-quiz fieldset{display:block!important;border:0;padding:0;margin:0;min-width:0}
+.quote-quiz legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.quote-progress{height:5px;border-radius:8px;background:#ffffff16;overflow:hidden;margin-bottom:24px}
+.quote-progress:before{content:'';display:block;width:var(--progress);height:100%;background:#e8c88e;transition:width .25s}
+.quote-step-status{color:#d4af6a!important;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem!important;margin-bottom:10px!important}
+.quote-quiz h3{font-size:1.75rem;line-height:1.2;letter-spacing:-.035em;margin-bottom:28px;color:#fff}
+.quote-quiz label{display:block;margin:18px 0;color:#cdd2da}
+.quote-quiz input,.quote-quiz select{width:100%;min-height:54px;margin-top:9px;background:#090e15;border-color:#ffffff25;border-radius:12px}
+.quote-quiz [hidden]{display:none!important}
+.quote-quiz button[type=submit]{width:100%;margin-top:22px;justify-content:center}
+.quiz-back{background:none;border:0;color:#c9ced6;font:inherit;font-size:.85rem;padding:12px 0;cursor:pointer}
+.quiz-back:hover{color:#f2cf8e}
+.quote-review{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;padding:20px;border-radius:16px;background:#ffffff05;margin:20px 0}
+.quote-review dt{color:#aeb6c2;font-size:.8rem}.quote-review dd{margin:0;color:#fff;font-size:.9rem;overflow-wrap:anywhere}
+.quote-quiz .form-note{font-size:.75rem;line-height:1.6;color:#aeb6c2;margin-top:18px}
+@media(max-width:640px){.quote-quiz{padding:24px 20px;min-height:400px}.quote-quiz h3{font-size:1.5rem}.quote-review{padding:16px;grid-template-columns:1fr}.quote-review dd{margin-bottom:10px}}

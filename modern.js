@@ -53,6 +53,7 @@
     if (typeof window.trackContact === "function") {
       window.trackContact("cotacao_iniciada", "cartao_" + selected.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase());
     }
+    if (window.brulezziQuote) { window.brulezziQuote.start(); return; }
     form.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     var name = form.querySelector('input[name="nome"]');
     if (name) name.focus({ preventScroll: true });

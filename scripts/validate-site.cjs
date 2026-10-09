@@ -5,7 +5,7 @@ const root = path.resolve(__dirname, '..');
 const files = [];
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name.startsWith('.') || entry.name === 'node_modules') continue;
+    if (entry.name.startsWith('.') || ['node_modules', 'auditoria-competitiva'].includes(entry.name)) continue;
     const p = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(p);
     else if (p.endsWith('.html')) files.push(p);

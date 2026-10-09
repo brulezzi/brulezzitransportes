@@ -1,0 +1,21 @@
+.city-landing{background:radial-gradient(ellipse at 80% 0,#d4af6a16,transparent 50%),#08090b}
+.city-landing .article{max-width:1120px;padding:130px 28px 70px}
+.city-hero{position:relative;isolation:isolate;padding:48px;border:1px solid #ffffff20;border-radius:30px;overflow:hidden;margin:20px 0 48px;background:#141618;box-shadow:0 30px 90px #0004}
+.city-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#101214fa 20%,#101214bb 65%,#10121470),url('/assets/brulezzi-fachada-v4.webp') center/cover}
+.city-hero h1{max-width:760px;font-size:clamp(2.1rem,5vw,3.9rem);line-height:1.08;letter-spacing:-.045em}
+.city-hero .article-meta{max-width:650px;font-size:1.1rem;color:#e1e1dd;margin-bottom:28px}
+.city-hero .stat-chip-row{display:grid;grid-template-columns:repeat(3,1fr);max-width:740px;gap:12px}
+.city-hero .stat-chip{display:flex;flex-direction:column;padding:18px 20px;border-radius:16px;background:#111519b8;border:1px solid #d4af6a45;backdrop-filter:blur(12px)}
+.city-hero .stat-chip strong{font-size:1.55rem;color:#f2cf8e}
+.city-hero .btn{margin-top:24px}
+.city-section{padding:30px;margin:24px 0;border:1px solid #ffffff16;border-radius:22px;background:linear-gradient(135deg,#1b1e21,#101214);transition:border-color .2s,transform .2s}
+.city-section:hover{border-color:#d4af6a66;transform:translateY(-3px)}
+.city-section h2{margin-top:0}
+.city-landing .compare-card{border-radius:20px;transition:transform .2s,border-color .2s}
+.city-landing .compare-card:hover{transform:translateY(-4px);border-color:#d4af6a}
+.city-landing .btn{transition:transform .2s,box-shadow .2s}
+.city-landing .btn:hover{transform:translateY(-2px);box-shadow:0 10px 35px #d4af6a30}
+.city-hero{animation:city-enter .6s ease-out both}
+@keyframes city-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(max-width:640px){.city-landing .article{padding:105px 16px 45px}.city-hero{padding:28px 20px;border-radius:22px}.city-hero .stat-chip-row{grid-template-columns:1fr}.city-hero .stat-chip{flex-direction:row;align-items:center;gap:14px;padding:13px 16px}.city-section{padding:22px}.city-hero .btn{display:flex;width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.city-landing *{animation:none!important;transition:none!important;transform:none!important}}

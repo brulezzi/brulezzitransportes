@@ -1,4 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Only approved campaign labels are included; never forward arbitrary query data.
+  var campaignLabels = {
+    brz_campinas: "BRZ-CAMPINAS",
+    brz_indaiatuba: "BRZ-INDAIATUBA",
+    brz_santos: "BRZ-SANTOS"
+  };
+  var params = window.location ? new URLSearchParams(window.location.search) : { get: function () { return null; } };
+  var campaignLabel = params.get("utm_source") === "google" && params.get("utm_medium") === "cpc"
+    ? campaignLabels[params.get("utm_campaign")] : null;
+  function labelMessage(message) {
+    return campaignLabel ? message + "\nReferência: " + campaignLabel : message;
+  }
+  if (campaignLabel) window.brulezziCampaign = { name: params.get("utm_campaign") };
+  if (campaignLabel) {
+    // Preserve only the approved campaign on same-site navigation, without identifiers.
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var target = new URL(link.href, window.location.href);
+      if (target.origin !== window.location.origin || target.pathname === window.location.pathname) return;
+      target.searchParams.set('utm_source','google');target.searchParams.set('utm_medium','cpc');
+      target.searchParams.set('utm_campaign',params.get('utm_campaign'));link.href=target.toString();
+    });
+    document.querySelectorAll('a[href^="https://wa.me/5519992445953"]').forEach(function (link) {
+      var contactUrl = new URL(link.href);
+      if (contactUrl.pathname !== "/5519992445953") return;
+      contactUrl.searchParams.set("text", labelMessage(contactUrl.searchParams.get("text") || "Olá, gostaria de cotar um transporte para minha empresa."));
+      link.href = contactUrl.toString();
+    });
+  }
   var header = document.getElementById("siteHeader");
   var toggle = document.getElementById("navToggle");
   var nav = document.getElementById("mainNav");
@@ -56,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Entrega: " + fields.entrega.value.trim()
       ].join("\n");
       var fallback = document.getElementById("whatsappFallback");
-      var url = "https://wa.me/5519992445953?text=" + encodeURIComponent(message);
+      var url = "https://wa.me/5519992445953?text=" + encodeURIComponent(labelMessage(message));
       fallback.href = url;
       fallback.hidden = false;
       document.getElementById("formStatus").textContent = "Sua cotação está pronta. Envie a mensagem no WhatsApp para iniciar o atendimento. Se ele não abriu, use o link abaixo.";

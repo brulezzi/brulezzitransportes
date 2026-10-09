@@ -24,8 +24,10 @@ jobs:
           node --check script.js
           node --check analytics.js
           node --check modern.js
+          node --check quote-quiz.js
           node scripts/validate-site.cjs
-          node --test tests/contact.test.cjs
+          node scripts/check-seo.cjs
+          node --test tests/contact.test.cjs tests/campaign-reference.test.cjs
       - name: Trigger deploy webhook
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
