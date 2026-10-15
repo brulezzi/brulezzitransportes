@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!form) return;
   var fieldset = form.querySelector('fieldset');
   var steps = [
-    {title:'Qual veículo sua empresa precisa?', names:['servico']},
+    {title:'Qual veículo você precisa?', names:['servico']},
     {title:'O que vamos transportar?', names:['carga','frequencia']},
     {title:'Onde coletar e entregar?', names:['coleta','entrega']},
     {title:'Com quem vamos falar?', names:['nome','whatsapp','empresa']},

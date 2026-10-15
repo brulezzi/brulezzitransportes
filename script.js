@@ -3,13 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
   var campaignLabels = {
     brz_campinas: "BRZ-CAMPINAS",
     brz_indaiatuba: "BRZ-INDAIATUBA",
-    brz_santos: "BRZ-SANTOS"
+    brz_santos: "BRZ-SANTOS",
+    brz_valinhos: "BRZ-VALINHOS", brz_vinhedo: "BRZ-VINHEDO",
+    brz_hortolandia: "BRZ-HORTOLANDIA", brz_sumare: "BRZ-SUMARE", brz_paulinia: "BRZ-PAULINIA"
   };
   var params = window.location ? new URLSearchParams(window.location.search) : { get: function () { return null; } };
   var campaignLabel = params.get("utm_source") === "google" && params.get("utm_medium") === "cpc"
     ? campaignLabels[params.get("utm_campaign")] : null;
   function labelMessage(message) {
-    return campaignLabel ? message + "\nReferência: " + campaignLabel : message;
+    var page = window.location && window.location.pathname ? "\nPágina: " + window.location.pathname : "";
+    return message + page + (campaignLabel ? "\nReferência: " + campaignLabel + (params.get("utm_content") === "regional_empresas" ? " / regional_empresas" : "") : "");
   }
   if (campaignLabel) window.brulezziCampaign = { name: params.get("utm_campaign") };
   if (campaignLabel) {
@@ -18,12 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
       var target = new URL(link.href, window.location.href);
       if (target.origin !== window.location.origin || target.pathname === window.location.pathname) return;
       target.searchParams.set('utm_source','google');target.searchParams.set('utm_medium','cpc');
-      target.searchParams.set('utm_campaign',params.get('utm_campaign'));link.href=target.toString();
+      target.searchParams.set('utm_campaign',params.get('utm_campaign'));
+      if(params.get('utm_content')==='regional_empresas')target.searchParams.set('utm_content','regional_empresas');
+      link.href=target.toString();
     });
     document.querySelectorAll('a[href^="https://wa.me/5519992445953"]').forEach(function (link) {
       var contactUrl = new URL(link.href);
       if (contactUrl.pathname !== "/5519992445953") return;
-      contactUrl.searchParams.set("text", labelMessage(contactUrl.searchParams.get("text") || "Olá, gostaria de cotar um transporte para minha empresa."));
+      contactUrl.searchParams.set("text", labelMessage(contactUrl.searchParams.get("text") || "Olá, gostaria de cotar um transporte."));
       link.href = contactUrl.toString();
     });
   }
@@ -74,10 +79,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!form.reportValidity()) return;
       var fields = form.elements;
       var message = [
-        "Olá, vim pelo site e gostaria de cotar um transporte para minha empresa.", "",
+        "Olá, vim pelo site e gostaria de cotar um transporte.", "",
         "Nome: " + fields.nome.value.trim(),
         "WhatsApp: " + fields.whatsapp.value.trim(),
-        "Empresa: " + fields.empresa.value.trim(),
+        "Empresa: " + (fields.empresa.value.trim() || "Pessoa física / não informada"),
         "Serviço: " + fields.servico.value,
         "Carga: " + fields.carga.value.trim(),
         "Frequência: " + fields.frequencia.value,

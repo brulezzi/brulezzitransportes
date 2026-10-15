@@ -31,10 +31,10 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag("js", new Date());
-    var campaign = typeof window.brulezziCampaign === "object" ? window.brulezziCampaign : null;
+    var campaign = null;
     if (!campaign && typeof URLSearchParams !== "undefined") {
       var query = new URLSearchParams(location.search);
-      var allowed = ["brz_campinas", "brz_indaiatuba", "brz_santos"];
+      var allowed = ["brz_campinas","brz_indaiatuba","brz_santos","brz_valinhos","brz_vinhedo","brz_hortolandia","brz_sumare","brz_paulinia"];
       if (query.get("utm_source") === "google" && query.get("utm_medium") === "cpc" && allowed.includes(query.get("utm_campaign"))) {
         campaign = { name: query.get("utm_campaign") };
       }
@@ -43,6 +43,7 @@
       window.gtag("set", "campaign_source", "google");
       window.gtag("set", "campaign_medium", "cpc");
       window.gtag("set", "campaign_name", campaign.name);
+      if (new URLSearchParams(location.search).get("utm_content") === "regional_empresas") window.gtag("set", "campaign_content", "regional_empresas");
     }
     window.gtag("config", "G-CENYXB4MYP", {
       send_page_view: false,
