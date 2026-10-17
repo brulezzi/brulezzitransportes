@@ -93,3 +93,6 @@ Todos precisam passar. O GitHub roda os mesmos comandos antes de publicar.
 ---
 
 > Última atualização: 2026-10-05
+
+## VPS: consultar PORTAS-VPS antes de mexer
+Antes de criar qualquer porta, rota, proxy_pass ou serviço na VPS, consulte o arquivo PORTAS-VPS.md (guardado fora deste repositorio, na pasta _Global do workspace local) e siga o processo dele. Depois de criar, atualize o arquivo imediatamente. A VPS é compartilhada por todos os projetos.
