@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var params = window.location ? new URLSearchParams(window.location.search) : { get: function () { return null; } };
   var campaignLabel = params.get("utm_source") === "google" && params.get("utm_medium") === "cpc"
     ? campaignLabels[params.get("utm_campaign")] : null;
-  function labelMessage(message) {
-    var page = window.location && window.location.pathname ? "\nPágina: " + window.location.pathname : "";
+  function labelMessage(message, includePage) {
+    var page = includePage !== false && window.location && window.location.pathname ? "\n\n*ORIGEM DO PEDIDO*\nPágina: " + window.location.pathname : "";
     return message + page + (campaignLabel ? "\nReferência: " + campaignLabel + (params.get("utm_content") === "regional_empresas" ? " / regional_empresas" : "") : "");
   }
   if (campaignLabel) window.brulezziCampaign = { name: params.get("utm_campaign") };
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('a[href^="https://wa.me/5519992445953"]').forEach(function (link) {
       var contactUrl = new URL(link.href);
       if (contactUrl.pathname !== "/5519992445953") return;
-      contactUrl.searchParams.set("text", labelMessage(contactUrl.searchParams.get("text") || "Olá, gostaria de cotar um transporte."));
+      contactUrl.searchParams.set("text", labelMessage(contactUrl.searchParams.get("text") || "Olá, gostaria de cotar um transporte.", false));
       link.href = contactUrl.toString();
     });
   }
@@ -60,9 +60,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!nav.contains(event.target) && !toggle.contains(event.target)) setMenu(false);
     });
   }
-  function track(name, origin, place) {
+  function track(name, origin, place, buttonId) {
     if (typeof window.trackContact !== "function") return;
-    if (place) window.trackContact(name, origin, place);
+    if (buttonId) window.trackContact(name, origin, place, buttonId);
+    else if (place) window.trackContact(name, origin, place);
     else window.trackContact(name, origin);
   }
   // Where on the page a contact click happened (added to GA4 as local_contato; origem_contato stays "link").
@@ -78,21 +79,28 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
       if (!form.reportValidity()) return;
       var fields = form.elements;
-      var message = [
-        "Olá, vim pelo site e gostaria de cotar um transporte.", "",
-        "Nome: " + (fields.nome.value.trim() || "Não informado"),
-        "WhatsApp: " + (fields.whatsapp.value.trim() || "Continuar nesta conversa"),
-        "Empresa: " + (fields.empresa.value.trim() || "Não informada"),
+      var lines = [
+        "Olá! Gostaria de uma cotação para esta entrega.", "",
+        "*PEDIDO*",
         "Serviço: " + fields.servico.value,
-        "Carga: " + fields.carga.value.trim(),
-        "Frequência: " + fields.frequencia.value,
-        "Coleta: " + fields.coleta.value.trim(),
-        "Entrega: " + fields.entrega.value.trim()
-      ].join("\n");
+        "Material: " + fields.carga.value.trim(),
+        "Frequência: " + fields.frequencia.value, "",
+        "*COLETA*",
+        "Endereço: " + fields.coleta.value.trim(), "",
+        "*ENTREGA*",
+        "Endereço: " + fields.entrega.value.trim(), "",
+        "*HORÁRIO DESEJADO*",
+        fields.horario.value.trim()
+      ];
+      var contact = [];
+      if (fields.nome.value.trim()) contact.push("Nome: " + fields.nome.value.trim());
+      if (fields.whatsapp.value.trim()) contact.push("WhatsApp: " + fields.whatsapp.value.trim());
+      if (fields.empresa.value.trim()) contact.push("Empresa: " + fields.empresa.value.trim());
+      var message = lines.concat(contact.length ? ["", "*CONTATO*"].concat(contact) : []).join("\n");
       var fallback = document.getElementById("whatsappFallback");
       var url = "https://wa.me/5519992445953?text=" + encodeURIComponent(labelMessage(message));
       if (url === preparedWhatsAppUrl) {
-        document.getElementById("formStatus").textContent = "Sua cotação já está pronta. Use o link abaixo para abrir a mensagem no WhatsApp e iniciar o atendimento.";
+        document.getElementById("formStatus").textContent = "Sua solicitação já está pronta. Use o link abaixo para abrir a mensagem no WhatsApp e iniciar o atendimento.";
         fallback.hidden = false;
         return;
       }
@@ -100,8 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
       preparedWhatsAppUrl = url;
       fallback.href = "https://wa.me/5519992445953";
       fallback.hidden = false;
-      document.getElementById("formStatus").textContent = "Sua cotação está pronta. Envie a mensagem no WhatsApp para iniciar o atendimento. Se ele não abriu, use o link abaixo.";
-      track("contato_whatsapp", "formulario");
+      document.getElementById("formStatus").textContent = "Sua solicitação está pronta. Envie a mensagem no WhatsApp para receber a cotação da equipe. Se ele não abriu, use o link abaixo.";
+      track("contato_whatsapp", "formulario", "formulario_cotacao", "cotacao_enviar");
       window.open(url, "_blank", "noopener,noreferrer");
     });
     // Enable fields only after installing the submit handler.
@@ -117,7 +125,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       return; // This retries the already recorded request, not a new contact.
     }
-    if (link.href.startsWith("https://wa.me/")) track("contato_whatsapp", "link", placeOf(link));
-    if (link.href.startsWith("tel:")) track("contato_telefone", "link", placeOf(link));
+    var buttonId = link.getAttribute ? link.getAttribute("data-track-id") : null;
+    if (link.href.startsWith("https://wa.me/")) track("contato_whatsapp", "link", placeOf(link), buttonId);
+    if (link.href.startsWith("tel:")) track("contato_telefone", "link", placeOf(link), buttonId);
   });
 });

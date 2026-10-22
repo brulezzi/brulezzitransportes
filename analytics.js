@@ -62,7 +62,7 @@
     script.src = "https://www.googletagmanager.com/gtag/js?id=G-CENYXB4MYP";
     document.head.appendChild(script);
   }
-  window.trackContact = function (name, origin, place) {
+  window.trackContact = function (name, origin, place, buttonId) {
     if (!enabled || typeof window.gtag !== "function") return;
     var params = {
       origem_contato: origin,
@@ -71,6 +71,8 @@
       page_referrer: safeReferrer()
     };
     if (place) params.local_contato = place;
+    // Stable editorial IDs only; never derive analytics values from form input or URLs.
+    if (typeof buttonId === "string" && /^[a-z][a-z0-9_]{0,63}$/.test(buttonId)) params.botao_id = buttonId;
     window.gtag("event", name, params);
   };
   function choose(value) {

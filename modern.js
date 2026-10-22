@@ -18,6 +18,36 @@
     toggle.setAttribute("aria-pressed", String(paused));
   });
 
+  // Keep one navigable set of cities; the seamless visual copy is inert.
+  var ticker = document.querySelector(".city-ticker");
+  var ribbonToggle = document.querySelector(".ribbon-toggle");
+  if (ticker && ribbonToggle) {
+    var track = ticker.querySelector(".city-track");
+    var group = ticker.querySelector(".city-group");
+    var copy = group.cloneNode(true);
+    copy.setAttribute("aria-hidden", "true");
+    copy.setAttribute("inert", "");
+    copy.querySelectorAll("a").forEach(function (link) { link.setAttribute("tabindex", "-1"); });
+    track.appendChild(copy);
+    ticker.classList.add("is-animated");
+    var motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
+    function updateRibbonMotion() {
+      ribbonToggle.hidden = motionPreference.matches;
+    }
+    updateRibbonMotion();
+    motionPreference.addEventListener("change", updateRibbonMotion);
+    ribbonToggle.addEventListener("click", function () {
+      var paused = ticker.classList.toggle("is-paused");
+      ribbonToggle.setAttribute("aria-pressed", String(paused));
+      ribbonToggle.textContent = paused ? "Retomar faixa" : "Pausar faixa";
+    });
+    // Focused links must stay visible and still while navigating by keyboard.
+    ticker.addEventListener("focusin", function () { ticker.classList.add("is-focused"); });
+    ticker.addEventListener("focusout", function (event) {
+      if (!ticker.contains(event.relatedTarget)) ticker.classList.remove("is-focused");
+    });
+  }
+
   if (matchMedia("(hover:hover) and (prefers-reduced-motion:no-preference)").matches) {
     document.querySelectorAll(".intent-card,.bento-card").forEach(function (card) {
       card.addEventListener("pointermove", function (event) {

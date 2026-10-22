@@ -6,7 +6,7 @@ const vm = require('node:vm');
 function setup(valid = true) {
   const events = [], listeners = {}, opened = [];
   const fields = {};
-  for (const name of ['nome','whatsapp','empresa','servico','carga','frequencia','coleta','entrega']) {
+  for (const name of ['nome','whatsapp','empresa','servico','carga','frequencia','coleta','entrega','horario']) {
     fields[name] = { value: 'Teste & ' + name };
   }
   const fieldset = { disabled: true };
@@ -32,7 +32,7 @@ test('validated quote opens encoded WhatsApp message and sends no form values to
   assert.equal(url.origin, 'https://wa.me');
   assert.equal(url.pathname, '/5519992445953');
   assert.ok(url.searchParams.get('text').includes('Empresa: Teste & empresa'));
-  assert.deepEqual(env.events, [['contato_whatsapp', 'formulario']]);
+  assert.deepEqual(env.events, [['contato_whatsapp', 'formulario', 'formulario_cotacao', 'cotacao_enviar']]);
   assert.equal(env.opened[0][2], 'noopener,noreferrer');
   assert.equal(env.fallback.href, "https://wa.me/5519992445953");
   assert.ok(!env.fallback.href.includes("Teste"));
@@ -57,8 +57,9 @@ test('optional contact details do not block a business quote or label it as a pe
   env.listeners.submit({ preventDefault() {} });
   const message = new URL(env.opened[0][0]).searchParams.get('text');
   assert.ok(!message.includes('Pessoa física'));
-  assert.ok(message.includes('Empresa: Não informada'));
-  assert.deepEqual(env.events, [['contato_whatsapp', 'formulario']]);
+  assert.ok(!message.includes('*CONTATO*'));
+  assert.ok(!message.includes('Não informado'));
+  assert.deepEqual(env.events, [['contato_whatsapp', 'formulario', 'formulario_cotacao', 'cotacao_enviar']]);
 });
 
 test('repeated submission prepares one contact and exposes retry without opening another popup', () => {
@@ -69,6 +70,17 @@ test('repeated submission prepares one contact and exposes retry without opening
   assert.equal(env.events.length, 1);
   assert.equal(env.fallback.hidden, false);
   assert.match(env.status.textContent, /já está pronta/);
+});
+
+test('WhatsApp quote has distinct readable blocks and the requested time', () => {
+  const env = setup();
+  env.fields.horario.value = 'Hoje, até 16h';
+  env.listeners.submit({ preventDefault() {} });
+  const message = new URL(env.opened[0][0]).searchParams.get('text');
+  assert.match(message, /\n\n\*COLETA\*\nEndereço: Teste & coleta\n\n\*ENTREGA\*\nEndereço: Teste & entrega/);
+  assert.match(message, /\n\n\*HORÁRIO DESEJADO\*\nHoje, até 16h/);
+  assert.match(message, /\n\n\*CONTATO\*\nNome: Teste & nome/);
+  assert.ok(!message.includes('undefined'));
 });
 test('form cannot submit personal data without JavaScript', () => {
   const html = fs.readFileSync('index.html','utf8');
@@ -119,6 +131,7 @@ test('quote card selects a vehicle, fills the form and records only a non-person
   const nameInput = { focused: false, focus() { this.focused = true; } };
   const form = mk({ querySelector: sel => sel.includes('servico') ? select : sel.includes('nome') ? nameInput : null, scrollIntoView() {} });
   const document = { documentElement: mk(), body: mk(),
+    querySelector: () => null,
     getElementById: id => ({ startQuote: start, quoteStatus: status, contactForm: form }[id] || null),
     querySelectorAll: sel => sel === '[data-vehicle]' ? buttons : [] };
   const window = { trackContact: (...args) => events.push(args) };

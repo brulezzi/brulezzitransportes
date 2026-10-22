@@ -148,12 +148,9 @@
   ]
 }
 </script>
-<script defer src="/analytics.js?v=20261015-alinhamento"></script>
-<link rel="stylesheet" href="/bundle-home.css?v=20261008-clientes">
-<link rel="stylesheet" href="/home-hero.css?v=20261009-final">
-<link rel="stylesheet" href="/landing-conversion.css?v=20261021-review">
+<script defer src="/analytics.js?v=20261022-ga4"></script>
 <link rel="preload" href="/assets/fonts/manrope-latin-v20.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/site-refinements.css?v=20261021-audit">
+<link rel="stylesheet" href="/design-2026.css?v=20261022-modern">
 </head>
 <body class="redesign-home">
 
@@ -174,7 +171,7 @@
       <a href="/centro-de-conhecimento/">Conhecimento</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a class="btn btn-gold btn-sm header-cta" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20motoboy%2Fentrega." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    <a class="btn btn-gold btn-sm header-cta" href="#servicos">Ver serviços</a>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -188,53 +185,11 @@
  <div class="dispatch-copy"><span class="dispatch-kicker">BRULEZZI TRANSPORTES · EMPRESAS · 24h</span>
  <h1>Sua operação não pode parar.<br><span>A entrega também não.</span></h1>
  <p>Motoboy urgente para sua empresa em Campinas, Indaiatuba e no corredor Rio Claro–Americana–Campinas–Jundiaí–São Paulo–Santos. Entrega avulsa, sem contrato mensal. Valor, previsão e disponibilidade confirmados antes de fechar.</p>
- <div class="dispatch-actions"><a class="btn btn-gold" href="#contactForm" data-start-quiz>Resolver minha entrega <span aria-hidden="true">→</span></a><a class="dispatch-secondary" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20preciso%20cotar%20uma%20entrega%20avulsa%20para%20minha%20empresa.%20Coleta%3A%20.%20Destino%3A%20.%20Material%20e%20hor%C3%A1rio%3A%20." target="_blank" rel="noopener">Cotar direto no WhatsApp →</a></div>
- <div class="dispatch-proof"><span><strong>24h</strong> todos os dias</span><span><strong>Previsão de coleta</strong> Campinas e Indaiatuba: 15–30 min; Santos: 20–45 min. Confirme disponibilidade.</span></div><small>Coleta e entrega conforme endereço, horário e disponibilidade. Valor, previsão e condições confirmados antes de contratar.</small></div>
- <div class="hero-quote-panel"><div class="hero-quote-heading"><span>COTAÇÃO PARA EMPRESAS</span><span>Valor e prazo antes de fechar</span></div><form class="contact-form glass" id="contactForm" method="post" action="/#contato" data-reveal>
-        <noscript><p>Para cotar, <a href="https://wa.me/5519992445953" rel="noopener">fale com nossa equipe pelo WhatsApp</a>. O formulário precisa de JavaScript.</p></noscript>
-        <fieldset disabled>
-        <legend>Dados para cotação</legend><p class="quote-help">Informe a entrega em 3 etapas. Nome, WhatsApp e empresa são opcionais; o atendimento continua no WhatsApp.</p>
-        <label>Seu nome (opcional)
-          <input type="text" name="nome" maxlength="100" autocomplete="name" placeholder="Nome completo">
-        </label>
-        <label>WhatsApp (opcional)
-          <input type="tel" name="whatsapp" maxlength="25" autocomplete="tel" placeholder="(00) 00000-0000">
-        </label>
-        <label>Empresa (opcional)
-          <input type="text" name="empresa" maxlength="150" autocomplete="organization" placeholder="Nome da empresa">
-        </label>
-        <label>Qual serviço você precisa? *
-          <select name="servico" required>
-            <option value="" disabled selected>Selecione uma opção</option>
-            <option value="Motoboy">Motoboy</option>
-            <option value="Utilitário">Utilitário</option>
-            <option value="Caminhão">Caminhão</option>
-          </select>
-        </label>
-        <label>O que precisa transportar? *
-          <input type="text" name="carga" required maxlength="200" placeholder="Ex.: documentos, peças ou caixas">
-        </label>
-        <label>Frequência das entregas *
-          <select name="frequencia" required>
-            <option value="" disabled selected>Selecione uma opção</option>
-            <option>Entrega pontual</option><option>Semanal</option><option>Diária</option><option>Sob demanda recorrente</option>
-          </select>
-        </label>
-        <label>Endereço de coleta *
-          <input type="text" name="coleta" required placeholder="Endereço de coleta">
-        </label>
-        <label>Endereço de entrega *
-          <input type="text" name="entrega" required placeholder="Endereço de entrega">
-        </label>
-        <button type="submit" class="btn btn-gold">Continuar cotação no WhatsApp</button>
-        </fieldset>
-        <p class="form-note">Atendimento 24h, todos os dias. O WhatsApp pode usar automação para organizar seu pedido. Coleta, valor e previsão dependem do endereço, horário e disponibilidade e são confirmados antes de contratar.</p><p class="form-note">Atendemos empresas e pessoas físicas, conforme viabilidade do pedido.</p><p class="form-note">Os dados preenchidos serão encaminhados ao WhatsApp para preparar sua mensagem. Envie-a lá para iniciar o atendimento. Não inclua dados de pacientes. <a href="/privacidade/">Saiba como usamos os dados.</a></p>
-        <p id="formStatus" role="status" aria-live="polite"></p>
-        <a id="whatsappFallback" hidden rel="noopener noreferrer" target="_blank">Abrir minha cotação no WhatsApp</a>
-        <span class="form-note">Sem compromisso — você recebe o valor e decide depois, sem letra miúda.</span>
-      </form></div>
+ <div class="dispatch-actions"><a class="btn btn-gold" href="#servicos">Conhecer os serviços →</a><a class="dispatch-secondary" href="#como-funciona">Entender como funciona ↓</a></div>
+ <div class="dispatch-proof"><span><strong>24h</strong> todos os dias</span><span><strong>Previsão de coleta</strong> 15–25 min na RMC, em Jundiaí e no centro de São Paulo; 20–40 min nas demais localidades. Após confirmação dos dados e aceite do serviço.</span></div><small>Coleta e entrega conforme endereço, horário e disponibilidade. Valor, previsão e condições confirmados antes de contratar.</small></div>
+ <aside class="route-guide" aria-label="Como encontrar o transporte adequado"><span class="eyebrow">DO QUE VOCÊ PRECISA?</span><h2>O transporte certo começa com um pedido claro.</h2><ol><li><span>01</span><div><strong>Encontre o serviço</strong><p>Motoboy, utilitário ou caminhão, conforme o material que precisa transportar.</p></div></li><li><span>02</span><div><strong>Confira a rota e as condições</strong><p>Veja a cobertura e o que confirmar antes de combinar a coleta.</p></div></li><li><span>03</span><div><strong>Prepare sua solicitação</strong><p>Informe material, endereços e horário. O atendimento recebe tudo organizado.</p></div></li></ol><a href="#servicos">Conhecer as opções de transporte ↓</a></aside>
  </div></section>
- <div class="dispatch-cities"><div class="container"><span>COLETAS PARA EMPRESAS</span><a href="/motoboy-24h/">Campinas ↗</a><a href="/motoboy-indaiatuba/">Indaiatuba ↗</a><a href="/motoboy-santos/">Santos ↗</a><a href="/motoboy-valinhos/">Valinhos ↗</a><a href="/motoboy-vinhedo/">Vinhedo ↗</a><a href="/motoboy-hortolandia/">Hortolândia ↗</a><a href="/motoboy-sumare/">Sumaré ↗</a><a href="/motoboy-paulinia/">Paulínia ↗</a><a href="#cobertura">São Paulo e interior ↗</a></div></div>
+ <div class="dispatch-cities"><div class="container cities-ribbon"><span class="ribbon-label">COLETAS PARA EMPRESAS</span><nav class="city-ticker" aria-label="Cidades atendidas"><div class="city-track"><div class="city-group"><a href="/motoboy-24h/">Campinas ↗</a><a href="/motoboy-indaiatuba/">Indaiatuba ↗</a><a href="/motoboy-santos/">Santos ↗</a><a href="/motoboy-valinhos/">Valinhos ↗</a><a href="/motoboy-vinhedo/">Vinhedo ↗</a><a href="/motoboy-hortolandia/">Hortolândia ↗</a><a href="/motoboy-sumare/">Sumaré ↗</a><a href="/motoboy-paulinia/">Paulínia ↗</a><a href="#cobertura">São Paulo e interior ↗</a></div></div></nav><button class="ribbon-toggle" type="button" hidden aria-pressed="false">Pausar faixa</button></div></div>
 <div class="operation-visual container"><img src="/assets/brulezzi-fachada-v4.webp" alt="Imagem ilustrativa da identidade Brulezzi em uma operação de motoboy" width="1100" height="1375" loading="lazy" decoding="async"><div><span>BRULEZZI TRANSPORTES · DESDE 2018</span><strong>Um contato.<br>Da coleta à confirmação.</strong><p>Motoboy, utilitário e caminhão para a sua operação.</p></div></div>
   <!-- CLIENTES -->
   <section class="section section-clients" id="clientes">
@@ -260,14 +215,14 @@
       </div>
       <div class="proof-bar">
         <div class="stat"><strong data-count="8" data-suffix=" anos">8 anos</strong><span>de operação, desde 2018</span></div>
-        <div class="stat"><strong>15+</strong><span>empresas atendidas, algumas acima</span></div>
+        <div class="stat"><strong>50+</strong><span>empresas atendidas, algumas acima</span></div>
         <div class="stat"><strong>22</strong><span>localidades na cobertura informada</span></div>
       </div>
     </div>
   </section>
 
   <!-- COMO FUNCIONA -->
-  <section class="section section-steps process-showcase">
+  <section id="como-funciona" class="section section-steps process-showcase">
     <div class="container">
       <span class="eyebrow">COMO FUNCIONA</span>
       <h2>Do pedido à entrega, em 3 passos</h2>
@@ -297,7 +252,7 @@
   <section id="servicos" class="section service-showcase">
     <div class="container">
       <span class="eyebrow">O QUE FAZEMOS</span>
-      <h2>O serviço certo pro tamanho da sua entrega</h2>
+      <h2 class="services-title">O serviço certo pro tamanho da sua entrega</h2>
       <p class="section-lead">Motoboy, utilitário ou caminhão para a entrega avulsa da sua empresa. Informe material, peso e dimensões para avaliarmos o veículo e a rota.</p>
 
       <div class="bento">
@@ -306,43 +261,47 @@
           <h3>Motoboy para Empresas</h3>
           <p>Documentos, chaves e encomendas urgentes da sua operação, conforme horário e disponibilidade.</p>
           <ul class="tag-list"><li>Acompanhamento pela equipe</li><li>Previsão confirmada</li></ul>
-          <a class="bento-cta" href="/motoboy-24h/">Cotar um motoboy →</a>
+          <a class="bento-cta" href="/motoboy-24h/">Conhecer o motoboy empresarial →</a>
         </article>
 
         <article class="bento-card bento-card-dark" data-reveal>
           <div class="bento-icon"><svg viewBox="0 0 46 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 38V5h22v33M30 18h8v20M3 38h40M14 12h3m6 0h2M14 19h3m6 0h2M14 26h3m6 0h2M18 38v-7h6v7"/></svg></div>
           <h3>Logística Corporativa</h3>
           <p>Contrato mensal com rotas fixas ou sob demanda. Conte com uma operação de entregas terceirizada, com relatório de entregas e suporte gerencial dedicado.</p>
-          <a class="bento-cta bento-cta-gold" href="/motoboy-para-empresas/">Ver plano empresarial →</a>
+          <a class="bento-cta bento-cta-gold" href="/motoboy-para-empresas/">Conhecer o plano empresarial →</a>
         </article>
 
         <article class="bento-card" data-reveal>
           <div class="bento-icon"><svg viewBox="0 0 46 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 25V9h24l10 10v6M4 25h5m12 0h9m8 0h4V18L32 7H4v2M28 9v10h12"/><circle cx="15" cy="25" r="5"/><circle cx="35" cy="25" r="5"/></svg></div>
-          <h3>Veículo Utilitário</h3>
-          <p>Volumes maiores que uma moto não carrega — mesma agilidade, mais capacidade.</p>
-          <a class="bento-cta" href="/veiculo-utilitario/">Quero um utilitário →</a>
+          <h3>Veículos utilitários</h3>
+          <p>Van e furgão para caixas, lotes de encomendas e materiais que não cabem na moto. Veículo e disponibilidade confirmados conforme a carga e a rota.</p>
+          <a class="bento-cta" href="/veiculo-utilitario/">Conhecer os utilitários →</a>
         </article>
 
         <article class="bento-card" data-reveal>
           <div class="bento-icon"><svg viewBox="0 0 46 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7h26v29H9zM17 7V3h10v4M22 14v14M15 21h14"/></svg></div>
           <h3>Cargas Médicas e Laboratoriais</h3>
           <p>Documentos e materiais comuns para clínicas e laboratórios. Cargas com requisitos especiais exigem avaliação específica.</p>
-          <a class="bento-cta" href="/transporte-cargas-medicas/">Quero transporte médico →</a>
+          <a class="bento-cta" href="/transporte-cargas-medicas/">Conhecer o transporte médico →</a>
         </article>
 
         <article class="bento-card" data-reveal>
           <div class="bento-icon"><svg viewBox="0 0 46 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3h18l8 8v27H10zM28 3v10h8M16 20h14M16 26h14M16 32h8"/></svg></div>
           <h3>Malote e Cartório</h3>
           <p>Malotes Campinas–São Paulo, documentos e cartórios. Entregas dedicadas e rotas recorrentes com horários combinados.</p>
-          <a class="bento-cta" href="/malote-cartorio/">Quero um malote →</a>
+          <a class="bento-cta" href="/malote-cartorio/">Conhecer o serviço de malotes →</a>
         </article>
 
         <article class="bento-card" data-reveal>
           <div class="bento-icon"><svg viewBox="0 0 46 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21l14-4 1-12 4-3 3 15 14 5v4l-14-2-1 9 5 4v3l-9-3-9 3v-3l5-4-1-9-12 1z"/></svg></div>
           <h3>Despacho em Aeroportos</h3>
           <p>Documentos de desembaraço, amostras e carga urgente perto de Viracopos, Congonhas e Guarulhos.</p>
-          <a class="bento-cta" href="/despacho-aeroportos/">Quero despacho em aeroporto →</a>
+          <a class="bento-cta" href="/despacho-aeroportos/">Conhecer o despacho em aeroportos →</a>
         </article>
+      </div>
+      <div class="utility-feature" aria-labelledby="utility-feature-title">
+        <div><span class="eyebrow">MAIS ESPAÇO PARA A SUA ENTREGA</span><h3 id="utility-feature-title">Quando a moto não comporta, o utilitário entra em operação.</h3><p>Para empresas que precisam transportar mais volumes em uma coleta. Informe material, quantidade, peso e dimensões para confirmar o veículo adequado.</p><a class="btn btn-ghost" href="/veiculo-utilitario/">Conhecer o transporte por utilitário →</a></div>
+        <ul class="utility-cases"><li><strong>Caixas e lotes de encomendas</strong><span>Volumes que precisam de mais espaço e proteção durante o transporte.</span></li><li><strong>Transferências entre unidades</strong><span>Mercadorias e materiais da empresa, conforme as características da carga.</span></li><li><strong>Coletas programadas</strong><span>Demandas recorrentes para empresas, com horários e condições combinados.</span></li></ul>
       </div>
     </div>
   </section>
@@ -386,18 +345,27 @@
       <h2>Onde sua encomenda precisa ir?</h2>
       <p class="section-lead">Atendemos as cidades entre Rio Claro, Americana, Campinas, Jundiaí, São Paulo e Santos, incluindo Indaiatuba e região. Informe coleta, destino e horário para confirmar a viabilidade da rota.</p>
 
-<details class="coverage-map"><summary>Ver mapa ilustrativo da cobertura</summary><div class="coverage-experience"><div class="hero-visual network-visual"><div class="network-top"><span class="pulse-dot"></span> Atendimento 24h <span class="network-index">SP / 24h</span></div><svg class="network expanded-network network-portrait" viewBox="0 0 420 590" role="img" aria-label="Cobertura ilustrativa em 22 localidades, incluindo Campinas, São Paulo, Santos, Jundiaí e cidades do interior. Consulte as demais cidades abaixo."><defs><pattern id="expandedDots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#d4af6a" opacity=".13"/></pattern></defs><rect width="420" height="590" fill="url(#expandedDots)"/><path class="route" d="M75 55 Q160.5 80 210 55"/><path class="route-flow" style="animation-delay:-0s" d="M75 55 Q160.5 80 210 55"/><path class="route" d="M210 55 Q295.5 80 345 55"/><path class="route-flow" style="animation-delay:-0.8s" d="M210 55 Q295.5 80 345 55"/><path class="route" d="M75 55 Q93 120 75 135"/><path class="route-flow" style="animation-delay:-1.6s" d="M75 55 Q93 120 75 135"/><path class="route" d="M75 135 Q160.5 160 210 135"/><path class="route-flow" style="animation-delay:-2.4000000000000004s" d="M75 135 Q160.5 160 210 135"/><path class="route" d="M210 135 Q295.5 160 345 135"/><path class="route-flow" style="animation-delay:-3.2s" d="M210 135 Q295.5 160 345 135"/><path class="route" d="M75 135 Q93 200 75 215"/><path class="route-flow" style="animation-delay:-4s" d="M75 135 Q93 200 75 215"/><path class="route" d="M75 215 Q160.5 240 210 215"/><path class="route-flow" style="animation-delay:-4.800000000000001s" d="M75 215 Q160.5 240 210 215"/><path class="route" d="M210 215 Q295.5 240 345 215"/><path class="route-flow" style="animation-delay:-5.6000000000000005s" d="M210 215 Q295.5 240 345 215"/><path class="route" d="M75 215 Q93 280 75 295"/><path class="route-flow" style="animation-delay:-6.4s" d="M75 215 Q93 280 75 295"/><path class="route" d="M75 295 Q160.5 320 210 295"/><path class="route-flow" style="animation-delay:-7.2s" d="M75 295 Q160.5 320 210 295"/><path class="route" d="M210 295 Q295.5 320 345 295"/><path class="route-flow" style="animation-delay:-8s" d="M210 295 Q295.5 320 345 295"/><path class="route" d="M75 295 Q93 360 75 375"/><path class="route-flow" style="animation-delay:-8.8s" d="M75 295 Q93 360 75 375"/><path class="route" d="M75 375 Q160.5 400 210 375"/><path class="route-flow" style="animation-delay:-9.600000000000001s" d="M75 375 Q160.5 400 210 375"/><path class="route" d="M210 375 Q295.5 400 345 375"/><path class="route-flow" style="animation-delay:-10.4s" d="M210 375 Q295.5 400 345 375"/><path class="route" d="M75 375 Q93 440 75 455"/><path class="route-flow" style="animation-delay:-11.200000000000001s" d="M75 375 Q93 440 75 455"/><path class="route" d="M75 455 Q160.5 480 210 455"/><path class="route-flow" style="animation-delay:-12s" d="M75 455 Q160.5 480 210 455"/><path class="route" d="M210 455 Q295.5 480 345 455"/><path class="route-flow" style="animation-delay:-12.8s" d="M210 455 Q295.5 480 345 455"/><path class="route" d="M75 455 Q93 520 75 535"/><path class="route-flow" style="animation-delay:-13.600000000000001s" d="M75 455 Q93 520 75 535"/><path class="route" d="M75 535 Q160.5 560 210 535"/><path class="route-flow" style="animation-delay:-14.4s" d="M75 535 Q160.5 560 210 535"/><path class="route" d="M210 535 Q295.5 560 345 535"/><path class="route-flow" style="animation-delay:-15.200000000000001s" d="M210 535 Q295.5 560 345 535"/><g class="city-node"><circle class="node-ring" style="animation-delay:-0s" cx="75" cy="55" r="12"/><circle cx="75" cy="55" r="4" fill="#edc987"/><text x="75" y="34" text-anchor="middle">São Carlos</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-0.25s" cx="210" cy="55" r="12"/><circle cx="210" cy="55" r="4" fill="#edc987"/><text x="210" y="34" text-anchor="middle">Rio Claro</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-0.5s" cx="345" cy="55" r="12"/><circle cx="345" cy="55" r="4" fill="#edc987"/><text x="345" y="34" text-anchor="middle">Piracicaba</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-0.75s" cx="75" cy="135" r="12"/><circle cx="75" cy="135" r="4" fill="#edc987"/><text x="75" y="114" text-anchor="middle">Limeira</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-1s" cx="210" cy="135" r="12"/><circle cx="210" cy="135" r="4" fill="#edc987"/><text x="210" y="114" text-anchor="middle">Americana</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-1.25s" cx="345" cy="135" r="12"/><circle cx="345" cy="135" r="4" fill="#edc987"/><text x="345" y="114" text-anchor="middle">Nova Odessa</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-1.5s" cx="75" cy="215" r="12"/><circle cx="75" cy="215" r="4" fill="#edc987"/><text x="75" y="194" text-anchor="middle">Sumaré</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-1.75s" cx="210" cy="215" r="12"/><circle cx="210" cy="215" r="4" fill="#edc987"/><text x="210" y="194" text-anchor="middle">Campinas</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-2s" cx="345" cy="215" r="12"/><circle cx="345" cy="215" r="4" fill="#edc987"/><text x="345" y="194" text-anchor="middle">Paulínia</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-2.25s" cx="75" cy="295" r="12"/><circle cx="75" cy="295" r="4" fill="#edc987"/><text x="75" y="274" text-anchor="middle">Hortolândia</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-2.5s" cx="210" cy="295" r="12"/><circle cx="210" cy="295" r="4" fill="#edc987"/><text x="210" y="274" text-anchor="middle">Valinhos</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-2.75s" cx="345" cy="295" r="12"/><circle cx="345" cy="295" r="4" fill="#edc987"/><text x="345" y="274" text-anchor="middle">Jaguariúna</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-3s" cx="75" cy="375" r="12"/><circle cx="75" cy="375" r="4" fill="#edc987"/><text x="75" y="354" text-anchor="middle">Indaiatuba</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-3.25s" cx="210" cy="375" r="12"/><circle cx="210" cy="375" r="4" fill="#edc987"/><text x="210" y="354" text-anchor="middle">Vinhedo</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-3.5s" cx="345" cy="375" r="12"/><circle cx="345" cy="375" r="4" fill="#edc987"/><text x="345" y="354" text-anchor="middle">Jundiaí</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-3.75s" cx="75" cy="455" r="12"/><circle cx="75" cy="455" r="4" fill="#edc987"/><text x="75" y="434" text-anchor="middle">Cajamar</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-4s" cx="210" cy="455" r="12"/><circle cx="210" cy="455" r="4" fill="#edc987"/><text x="210" y="434" text-anchor="middle">São Paulo</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-4.25s" cx="345" cy="455" r="12"/><circle cx="345" cy="455" r="4" fill="#edc987"/><text x="345" y="434" text-anchor="middle">Guarulhos</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-4.5s" cx="75" cy="535" r="12"/><circle cx="75" cy="535" r="4" fill="#edc987"/><text x="75" y="514" text-anchor="middle">Itupeva</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-4.75s" cx="210" cy="535" r="12"/><circle cx="210" cy="535" r="4" fill="#edc987"/><text x="210" y="514" text-anchor="middle">Louveira</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-5s" cx="345" cy="535" r="12"/><circle cx="345" cy="535" r="4" fill="#edc987"/><text x="345" y="514" text-anchor="middle">Santos</text></g></svg><svg class="network expanded-network network-wide" viewBox="0 0 810 290" role="img" aria-label="Cobertura ilustrativa em 22 localidades, incluindo Campinas, São Paulo, Santos, Jundiaí e cidades do interior. Consulte as demais cidades abaixo."><defs><pattern id="wideDots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#d4af6a" opacity=".13"/></pattern></defs><rect width="810" height="290" fill="url(#wideDots)"/><path class="route" d="M68 78 Q126 102 184 78"/><path class="route-flow" style="animation-delay:-0.0s" d="M68 78 Q126 102 184 78"/><path class="route" d="M184 78 Q242 102 300 78"/><path class="route-flow" style="animation-delay:-0.7s" d="M184 78 Q242 102 300 78"/><path class="route" d="M300 78 Q358 102 416 78"/><path class="route-flow" style="animation-delay:-1.4s" d="M300 78 Q358 102 416 78"/><path class="route" d="M416 78 Q474 102 532 78"/><path class="route-flow" style="animation-delay:-2.1s" d="M416 78 Q474 102 532 78"/><path class="route" d="M532 78 Q590 102 648 78"/><path class="route-flow" style="animation-delay:-2.8s" d="M532 78 Q590 102 648 78"/><path class="route" d="M648 78 Q706 102 764 78"/><path class="route-flow" style="animation-delay:-3.5s" d="M648 78 Q706 102 764 78"/><path class="route" d="M68 166 Q126 190 184 166"/><path class="route-flow" style="animation-delay:-4.2s" d="M68 166 Q126 190 184 166"/><path class="route" d="M184 166 Q242 190 300 166"/><path class="route-flow" style="animation-delay:-4.9s" d="M184 166 Q242 190 300 166"/><path class="route" d="M300 166 Q358 190 416 166"/><path class="route-flow" style="animation-delay:-5.6s" d="M300 166 Q358 190 416 166"/><path class="route" d="M416 166 Q474 190 532 166"/><path class="route-flow" style="animation-delay:-6.3s" d="M416 166 Q474 190 532 166"/><path class="route" d="M532 166 Q590 190 648 166"/><path class="route-flow" style="animation-delay:-7.0s" d="M532 166 Q590 190 648 166"/><path class="route" d="M648 166 Q706 190 764 166"/><path class="route-flow" style="animation-delay:-7.7s" d="M648 166 Q706 190 764 166"/><path class="route" d="M68 254 Q126 278 184 254"/><path class="route-flow" style="animation-delay:-8.4s" d="M68 254 Q126 278 184 254"/><path class="route" d="M184 254 Q242 278 300 254"/><path class="route-flow" style="animation-delay:-9.1s" d="M184 254 Q242 278 300 254"/><path class="route" d="M300 254 Q358 278 416 254"/><path class="route-flow" style="animation-delay:-9.8s" d="M300 254 Q358 278 416 254"/><path class="route" d="M416 254 Q474 278 532 254"/><path class="route-flow" style="animation-delay:-10.5s" d="M416 254 Q474 278 532 254"/><path class="route" d="M532 254 Q590 278 648 254"/><path class="route-flow" style="animation-delay:-11.2s" d="M532 254 Q590 278 648 254"/><path class="route" d="M648 254 Q706 278 764 254"/><path class="route-flow" style="animation-delay:-11.9s" d="M648 254 Q706 278 764 254"/><path class="route" d="M68 78 Q46 122 68 166"/><path class="route-flow" style="animation-delay:-12.6s" d="M68 78 Q46 122 68 166"/><path class="route" d="M68 166 Q46 210 68 254"/><path class="route-flow" style="animation-delay:-13.3s" d="M68 166 Q46 210 68 254"/><path class="route" d="M764 78 Q786 122 764 166"/><path class="route-flow" style="animation-delay:-14.0s" d="M764 78 Q786 122 764 166"/><path class="route" d="M764 166 Q786 210 764 254"/><path class="route-flow" style="animation-delay:-14.7s" d="M764 166 Q786 210 764 254"/><g class="city-node"><circle class="node-ring" style="animation-delay:-0.00s" cx="68" cy="78" r="11"/><circle cx="68" cy="78" r="4" fill="#edc987"/><text x="68" y="58" text-anchor="middle">São Carlos</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-0.25s" cx="184" cy="78" r="11"/><circle cx="184" cy="78" r="4" fill="#edc987"/><text x="184" y="58" text-anchor="middle">Rio Claro</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-0.50s" cx="300" cy="78" r="11"/><circle cx="300" cy="78" r="4" fill="#edc987"/><text x="300" y="58" text-anchor="middle">Piracicaba</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-0.75s" cx="416" cy="78" r="11"/><circle cx="416" cy="78" r="4" fill="#edc987"/><text x="416" y="58" text-anchor="middle">Limeira</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-1.00s" cx="532" cy="78" r="11"/><circle cx="532" cy="78" r="4" fill="#edc987"/><text x="532" y="58" text-anchor="middle">Americana</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-1.25s" cx="648" cy="78" r="11"/><circle cx="648" cy="78" r="4" fill="#edc987"/><text x="648" y="58" text-anchor="middle">Nova Odessa</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-1.50s" cx="764" cy="78" r="11"/><circle cx="764" cy="78" r="4" fill="#edc987"/><text x="764" y="58" text-anchor="middle">Sumaré</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-1.75s" cx="68" cy="166" r="11"/><circle cx="68" cy="166" r="4" fill="#edc987"/><text x="68" y="146" text-anchor="middle">Campinas</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-2.00s" cx="184" cy="166" r="11"/><circle cx="184" cy="166" r="4" fill="#edc987"/><text x="184" y="146" text-anchor="middle">Paulínia</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-2.25s" cx="300" cy="166" r="11"/><circle cx="300" cy="166" r="4" fill="#edc987"/><text x="300" y="146" text-anchor="middle">Hortolândia</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-2.50s" cx="416" cy="166" r="11"/><circle cx="416" cy="166" r="4" fill="#edc987"/><text x="416" y="146" text-anchor="middle">Valinhos</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-2.75s" cx="532" cy="166" r="11"/><circle cx="532" cy="166" r="4" fill="#edc987"/><text x="532" y="146" text-anchor="middle">Jaguariúna</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-3.00s" cx="648" cy="166" r="11"/><circle cx="648" cy="166" r="4" fill="#edc987"/><text x="648" y="146" text-anchor="middle">Indaiatuba</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-3.25s" cx="764" cy="166" r="11"/><circle cx="764" cy="166" r="4" fill="#edc987"/><text x="764" y="146" text-anchor="middle">Vinhedo</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-3.50s" cx="68" cy="254" r="11"/><circle cx="68" cy="254" r="4" fill="#edc987"/><text x="68" y="234" text-anchor="middle">Jundiaí</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-3.75s" cx="184" cy="254" r="11"/><circle cx="184" cy="254" r="4" fill="#edc987"/><text x="184" y="234" text-anchor="middle">Cajamar</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-4.00s" cx="300" cy="254" r="11"/><circle cx="300" cy="254" r="4" fill="#edc987"/><text x="300" y="234" text-anchor="middle">São Paulo</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-4.25s" cx="416" cy="254" r="11"/><circle cx="416" cy="254" r="4" fill="#edc987"/><text x="416" y="234" text-anchor="middle">Guarulhos</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-4.50s" cx="532" cy="254" r="11"/><circle cx="532" cy="254" r="4" fill="#edc987"/><text x="532" y="234" text-anchor="middle">Itupeva</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-4.75s" cx="648" cy="254" r="11"/><circle cx="648" cy="254" r="4" fill="#edc987"/><text x="648" y="234" text-anchor="middle">Louveira</text></g><g class="city-node"><circle class="node-ring" style="animation-delay:-5.00s" cx="764" cy="254" r="11"/><circle cx="764" cy="254" r="4" fill="#edc987"/><text x="764" y="234" text-anchor="middle">Santos</text></g></svg><div class="network-caption"><span>ESTRUTURA PARA SUA OPERAÇÃO</span><strong>Da entrega urgente<br>à sua rotina de negócios.</strong><p>Motoboy <b>／</b> Utilitário <b>／</b> Caminhão</p><small>Cobertura ilustrativa · Consulte a previsão para seu endereço</small></div></div><div class="coverage-details">      </details><div class="coverage-grid">
+<div class="coverage-map corridor-map" aria-labelledby="corridor-title">
+  <div class="corridor-heading"><div><span class="eyebrow">INTERIOR · CAPITAL · LITORAL</span><h3 id="corridor-title">Um corredor que conecta a sua operação.</h3></div><span class="corridor-key"><i aria-hidden="true"></i> Cobertura de atendimento</span></div>
+  <ol class="corridor-stations">
+    <li><span class="station-dot" aria-hidden="true"></span><span class="station-region">INTERIOR</span><a href="/motoboy-rio-claro/">Rio Claro ↗</a><span class="station-note">São Carlos e Piracicaba na cobertura</span></li>
+    <li><span class="station-dot" aria-hidden="true"></span><span class="station-region">INTERIOR</span><strong>Americana</strong><span class="station-note">Limeira e Nova Odessa na cobertura</span></li>
+    <li class="station-hub"><span class="station-dot" aria-hidden="true"></span><span class="station-region">REGIÃO METROPOLITANA</span><a href="/motoboy-24h/">Campinas ↗</a><span class="station-note"><a href="/motoboy-indaiatuba/">Indaiatuba ↗</a> e cidades da RMC</span></li>
+    <li><span class="station-dot" aria-hidden="true"></span><span class="station-region">EIXO JUNDIAÍ</span><a href="/motoboy-jundiai/">Jundiaí ↗</a><span class="station-note">Itupeva, Louveira e Cajamar na cobertura</span></li>
+    <li><span class="station-dot" aria-hidden="true"></span><span class="station-region">CAPITAL</span><a href="/motoboy-sao-paulo/">São Paulo ↗</a><span class="station-note"><a href="/motoboy-guarulhos/">Guarulhos ↗</a> também atendida</span></li>
+    <li><span class="station-dot" aria-hidden="true"></span><span class="station-region">LITORAL</span><a href="/motoboy-santos/">Santos ↗</a><span class="station-note">Informe os endereços para avaliar a rota</span></li>
+  </ol>
+  <p class="corridor-caption">Diagrama ilustrativo, sem escala. As conexões representam a área de atendimento, não um trajeto ou uma sequência obrigatória de paradas.</p>
+</div><div class="coverage-grid">
         <div class="coverage-time glass" data-reveal>
-          <strong>Sob consulta</strong>
-          <span>Previsão de coleta em Campinas e Indaiatuba — conforme endereço e disponibilidade</span>
+          <strong>15–25 min</strong><span>Região Metropolitana de Campinas, Jundiaí e região central de São Paulo, após a confirmação dos dados e o aceite para realizar o serviço.</span>
         </div>
         <div class="coverage-time glass" data-reveal>
-          <strong>Sob consulta</strong>
-          <span>Demais cidades — consulte a previsão. Santos: confirme a previsão para seu endereço e horário.</span>
+          <strong>20–40 min</strong><span>Demais localidades, após a confirmação dos dados e o aceite para realizar o serviço.</span>
         </div>
       </div>
 
-</div></div>      <p class="form-note">Os prazos indicam a chegada do motoboy à coleta, não a entrega no destino. Confirmamos a previsão para o endereço e o horário solicitados no atendimento.</p>
+      <p class="coverage-note">Os prazos indicam a chegada do motoboy à coleta, não a entrega no destino. Confirmamos a previsão para o endereço e o horário solicitados no atendimento.</p>
       <div class="cities-grid" data-reveal>
         <a href="/motoboy-24h/">Campinas</a><span>Americana</span><a href="/motoboy-rio-claro/">Rio Claro</a><a href="/motoboy-jundiai/">Jundiaí</a>
         <a href="/motoboy-sao-paulo/">São Paulo</a><a href="/motoboy-guarulhos/">Guarulhos</a><a href="/motoboy-sumare/">Sumaré</a><a href="/motoboy-hortolandia/">Hortolândia</a><a href="/motoboy-paulinia/">Paulínia</a>
@@ -413,28 +381,72 @@
   <section class="section section-dark compact-trust"><div class="container"><span class="eyebrow">BRULEZZI TRANSPORTES</span><h2>Fale com quem acompanha a sua entrega</h2><p>Desde 2018. CNPJ 40.767.846/0001-76. Cotações, entregas dedicadas e contratos recorrentes.</p><p><a href="/sobre/">Conheça a empresa →</a> · <a href="https://g.page/r/CQULWsrKXCCKEBM/review" target="_blank" rel="noopener">Avalie a Brulezzi no Google →</a></p></div></section>
 
   <!-- CONTATO -->
-  <section id="contato" class="section section-dark contact-section">
+  <div class="container"><section id="cotacao" class="quote-destination"><div class="quote-intro"><span class="eyebrow">PEDIDO ORGANIZADO</span><h2>Já encontrou o serviço?<br>Vamos preparar sua cotação.</h2><p>Informe o que vai transportar, a coleta, o destino e o horário desejado. Confira o resumo antes de abrir o WhatsApp.</p><p>Valor, previsão e disponibilidade são confirmados no atendimento antes de contratar.</p></div><div class="hero-quote-panel"><div class="hero-quote-heading"><span>COTAÇÃO PARA EMPRESAS</span><span>Valor e prazo antes de fechar</span></div><form class="contact-form glass" id="contactForm" method="post" action="/#contato" data-reveal>
+        <noscript><p>Para cotar, <a data-track-id="alternativo_whatsapp" href="https://wa.me/5519992445953?text=Ol%C3%A1%21+Vim+pelo+site+da+Brulezzi.+Origem%3A+contato+alternativo+%28%2F%29." rel="noopener">fale com nossa equipe pelo WhatsApp</a>. O formulário precisa de JavaScript.</p></noscript>
+        <fieldset disabled>
+        <legend>Dados para cotação</legend><p class="quote-help">Informe a entrega em 3 etapas. Nome, WhatsApp e empresa são opcionais; o atendimento continua no WhatsApp.</p>
+        <label>Seu nome (opcional)
+          <input type="text" name="nome" maxlength="100" autocomplete="name" placeholder="Nome completo">
+        </label>
+        <label>WhatsApp (opcional)
+          <input type="tel" name="whatsapp" maxlength="25" autocomplete="tel" placeholder="(00) 00000-0000">
+        </label>
+        <label>Empresa (opcional)
+          <input type="text" name="empresa" maxlength="150" autocomplete="organization" placeholder="Nome da empresa">
+        </label>
+        <label>Qual serviço você precisa? *
+          <select name="servico" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Motoboy">Motoboy</option>
+            <option value="Utilitário">Utilitário</option>
+            <option value="Caminhão">Caminhão</option>
+          </select>
+        </label>
+        <label>O que precisa transportar? *
+          <input type="text" name="carga" required maxlength="200" placeholder="Ex.: documentos, peças ou caixas">
+        </label>
+        <label>Frequência das entregas *
+          <select name="frequencia" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option>Entrega pontual</option><option>Semanal</option><option>Diária</option><option>Sob demanda recorrente</option>
+          </select>
+        </label>
+        <label>Endereço de coleta *
+          <input type="text" name="coleta" required placeholder="Endereço de coleta">
+        </label>
+        <label>Endereço de entrega *
+          <input type="text" name="entrega" required placeholder="Endereço de entrega">
+        </label>
+<label>Qual o horário desejado? *<input type="text" name="horario" required maxlength="100" placeholder="Ex.: hoje, até 16h ou amanhã pela manhã"></label>
+        <button type="submit" class="btn btn-gold">Iniciar minha solicitação</button>
+        </fieldset>
+
+        <details class="quote-conditions"><summary>Condições de atendimento e privacidade</summary><p class="form-note">Atendimento 24h, todos os dias. O WhatsApp pode usar automação para organizar seu pedido. Coleta, valor e previsão dependem do endereço, horário e disponibilidade e são confirmados antes de contratar.</p><p class="form-note">Atendemos empresas e pessoas físicas, conforme viabilidade do pedido.</p><p class="form-note">Os dados preenchidos serão encaminhados ao WhatsApp para preparar sua mensagem. Envie-a lá para iniciar o atendimento. Não inclua dados de pacientes. <a href="/privacidade/">Saiba como usamos os dados.</a></p><span class="form-note">Sem compromisso — você recebe o valor e decide depois, sem letra miúda.</span></details><p class="form-note collection-terms">A previsão de chegada à coleta é de 15 a 25 minutos na Região Metropolitana de Campinas, em Jundiaí e na região central de São Paulo; nas demais localidades, de 20 a 40 minutos. A contagem começa após a confirmação dos dados e o aceite para realizar o serviço. Esse prazo é de chegada à coleta; o prazo de entrega no destino depende da rota.</p><p id="formStatus" role="status" aria-live="polite"></p>
+        <a id="whatsappFallback" hidden rel="noopener noreferrer" target="_blank">Abrir solicitação no WhatsApp</a>
+
+      </form></div></section></div><section id="contato" class="section section-dark contact-section">
     <div class="container contact-inner">
       <div data-reveal>
         <span class="eyebrow">FALE CONOSCO</span>
         <h2>Conte o que precisa transportar.</h2>
         <p>Atendimento 24h, todos os dias. O WhatsApp pode usar automação para organizar seu pedido. Coleta, valor e previsão dependem do endereço, horário e disponibilidade e são confirmados antes de contratar.</p>
-        <ul class="contact-list">
-          <li><a href="tel:+5519992445953">📞 (19) 99244-5953</a></li>
+
+        <a data-track-id="contato_whatsapp" class="btn btn-gold btn-lg" href="https://wa.me/5519992445953?text=Ol%C3%A1%21+Vim+pelo+site+da+Brulezzi.+Origem%3A+Solicitar+cota%C3%A7%C3%A3o+pelo+WhatsApp+%28%2F%29." target="_blank" rel="noopener">Solicitar cotação pelo WhatsApp</a>
+
+
+      </div>
+
+      <div class="contact-summary"><h3>Já tem os endereços?</h3><p>Prepare a solicitação ou fale com nossa equipe no WhatsApp para confirmar as condições da coleta.</p>        <ul class="contact-list">
+          <li><a data-track-id="contato_telefone" href="tel:+5519992445953">📞 (19) 99244-5953</a></li>
           <li><a href="mailto:brulezzitransportes00@gmail.com">✉️ brulezzitransportes00@gmail.com</a></li>
           <li>🕐 Atendimento 24h, todos os dias</li>
-        </ul>
-        <a class="btn btn-gold btn-lg" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20motoboy%2Fentrega." target="_blank" rel="noopener">Pedir cotação no WhatsApp</a>
-
+        </ul><a data-track-id="solicitar_cotacao" class="btn btn-gold" href="#contactForm" data-start-quiz>Solicitar uma cotação →</a></div>
         <ul class="quick-answers">
           <li><strong>Precisa de contrato?</strong> Não, dá pra chamar avulso — contrato mensal é só pra quem tem demanda recorrente.</li>
           <li><strong>Qual o prazo?</strong> A previsão de coleta e entrega depende dos endereços, horário e disponibilidade. Confirme no atendimento.</li>
           <li><strong>Quanto custa?</strong> Varia por distância, urgência e tipo de item — veja o <a href="/blog/quanto-custa-motoboy-campinas/">guia dos fatores de preço</a>.</li>
           <li><strong>Não achou sua cidade?</strong> Chama mesmo assim — atendemos sob consulta fora da área principal.</li>
         </ul>
-      </div>
-
-      <div class="contact-summary"><h3>Já tem os endereços?</h3><p>Prepare a solicitação ou fale com nossa equipe no WhatsApp para confirmar as condições da coleta.</p><a class="btn btn-gold" href="#contactForm" data-start-quiz>Preparar minha cotação →</a></div>
     </div>
   </section>
 
@@ -503,8 +515,8 @@
     </div>
     <div>
       <h3>Contato Rápido</h3>
-      <a href="tel:+5519992445953">(19) 99244-5953</a>
-      <a href="https://wa.me/5519992445953" target="_blank" rel="noopener">WhatsApp Direto</a>
+      <a data-track-id="rodape_telefone" href="tel:+5519992445953">(19) 99244-5953</a>
+      <a data-track-id="rodape_whatsapp" href="https://wa.me/5519992445953?text=Ol%C3%A1%21+Vim+pelo+site+da+Brulezzi.+Origem%3A+WhatsApp+do+rodap%C3%A9+%28%2F%29." target="_blank" rel="noopener">Fale com a equipe pelo WhatsApp</a>
       <a href="mailto:brulezzitransportes00@gmail.com">brulezzitransportes00@gmail.com</a>
     </div>
   </div>
@@ -514,13 +526,10 @@
   <div class="container privacy-links"><a href="/privacidade/">Privacidade</a><button type="button" id="privacySettings">Preferências de privacidade</button><button type="button" id="motionToggle" aria-pressed="false">Pausar movimentos</button></div>
 </footer>
 
-<div class="mobile-bar" id="mobileBar">
-  <a href="tel:+5519992445953" class="mobile-bar-btn">📞 Ligar</a>
-  <a href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20motoboy%2Fentrega." target="_blank" rel="noopener" class="mobile-bar-btn mobile-bar-btn-gold">💬 WhatsApp</a>
-</div>
 
-<a class="whatsapp-float" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20motoboy%2Fentrega." target="_blank" rel="noopener" aria-label="Falar com Atendente 24h">💬</a>
 
-<script src="script.js?v=20261022-cotacao"></script>
-<script src="quote-quiz.js?v=20261022-cotacao" defer></script><script src="modern.js?v=20261008-audit-final" defer></script></body>
+
+
+<script src="script.js?v=20261022-ga4"></script>
+<script src="quote-quiz.js?v=20261022-ga4" defer></script><script src="modern.js?v=20261022-faixa" defer></script></body>
 </html>
