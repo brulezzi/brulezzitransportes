@@ -3,17 +3,15 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!form) return;
   var fieldset = form.querySelector('fieldset');
   var steps = [
-    {title:'Qual veículo você precisa?', names:['servico']},
-    {title:'O que vamos transportar?', names:['carga','frequencia']},
+    {title:'O que vamos transportar?', names:['servico','carga','frequencia']},
     {title:'Onde coletar e entregar?', names:['coleta','entrega']},
-    {title:'Com quem vamos falar?', names:['nome','whatsapp','empresa']},
-    {title:'Confira sua solicitação', names:[]}
+    {title:'Confira e continue no WhatsApp', names:['nome','whatsapp','empresa']}
   ];
   var labels = {};
   steps.forEach(function(step){step.names.forEach(function(name){labels[name]=form.elements[name].closest('label');});});
   var progress = document.createElement('div'); progress.className='quote-progress';
   var status = document.createElement('p');status.className='quote-step-status';status.setAttribute('aria-live','polite');
-  var title = document.createElement('h3'); title.tabIndex=-1;
+  var title = document.createElement('h2'); title.className='quote-step-title'; title.tabIndex=-1;
   var review = document.createElement('dl');review.className='quote-review';review.hidden=true;
   fieldset.insertBefore(progress,fieldset.firstChild);fieldset.insertBefore(status,progress.nextSibling);fieldset.insertBefore(title,status.nextSibling);
   var submit = fieldset.querySelector('button[type="submit"]');

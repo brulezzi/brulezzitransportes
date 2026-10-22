@@ -80,9 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var fields = form.elements;
       var message = [
         "Olá, vim pelo site e gostaria de cotar um transporte.", "",
-        "Nome: " + fields.nome.value.trim(),
-        "WhatsApp: " + fields.whatsapp.value.trim(),
-        "Empresa: " + (fields.empresa.value.trim() || "Pessoa física / não informada"),
+        "Nome: " + (fields.nome.value.trim() || "Não informado"),
+        "WhatsApp: " + (fields.whatsapp.value.trim() || "Continuar nesta conversa"),
+        "Empresa: " + (fields.empresa.value.trim() || "Não informada"),
         "Serviço: " + fields.servico.value,
         "Carga: " + fields.carga.value.trim(),
         "Frequência: " + fields.frequencia.value,
@@ -91,6 +91,11 @@ document.addEventListener("DOMContentLoaded", function () {
       ].join("\n");
       var fallback = document.getElementById("whatsappFallback");
       var url = "https://wa.me/5519992445953?text=" + encodeURIComponent(labelMessage(message));
+      if (url === preparedWhatsAppUrl) {
+        document.getElementById("formStatus").textContent = "Sua cotação já está pronta. Use o link abaixo para abrir a mensagem no WhatsApp e iniciar o atendimento.";
+        fallback.hidden = false;
+        return;
+      }
       // Keep personal quote details out of the DOM link URL and automatic click events.
       preparedWhatsAppUrl = url;
       fallback.href = "https://wa.me/5519992445953";

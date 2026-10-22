@@ -1,0 +1,32 @@
+/* Site-wide refinements; retain existing brand tokens and compiled layouts. */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600 800;
+  font-display: swap;
+  src: url("/assets/fonts/manrope-latin-v20.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Preserve the original logo's proportions rather than stretching it square. */
+.logo img, .redesign-home .logo img, .footer-logo { height: auto; }
+.redesign-home .service-showcase > .container > .eyebrow { color: var(--gold-bright); }
+.redesign-home .service-showcase > .container > .section-lead { color: var(--body, var(--text-muted)); }
+.table-wrap:focus-visible { outline: 3px solid var(--gold-bright); outline-offset: 4px; }
+.city-hero-copy .collection-estimate { margin-block: 12px 0; color: var(--body, var(--text-muted)); font-size: .85rem; line-height: 1.6; }
+.collection-estimate strong { color: var(--gold-bright); }
+.quote-quiz .quote-step-title { font-size: 1.75rem; line-height: 1.2; letter-spacing: -.035em; margin: 0 0 28px; color: var(--text); }
+.redesign-home .hero-quote-panel .quote-step-title { font-size: 1.65rem; line-height: 1.25; letter-spacing: -.025em; }
+.city-hero .quote-quiz .quote-step-title { font-size: 1.55rem; }
+.hero-quote-panel .quote-help { color: var(--body, var(--text-muted)); font-size: .85rem; line-height: 1.6; margin: 0 0 18px; }
+.business-quote-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px 24px; margin-block: 24px; }
+.business-quote-actions > a { display: inline-flex; align-items: center; min-height: 44px; }
+.business-quote-actions > a:last-child { color: var(--gold-bright); text-decoration: underline; text-underline-offset: 4px; }
+.article .compare-card h3 { display: block; font-size: 1.15rem; font-weight: 600; margin: 12px 0 8px; }
+@media (max-width: 640px) {
+  .redesign-home .hero-quote-panel .quote-step-title { font-size: 1.45rem; }
+}
+/* On phones, prioritize the quote instead of downloading a decorative 284 kB photo. */
+@media (max-width: 900px) {
+  .city-hero::before { background: linear-gradient(135deg, var(--panel), var(--bg)); }
+  .redesign-home .dispatch-hero::before { background: linear-gradient(90deg, var(--panel), var(--bg)); }
+}

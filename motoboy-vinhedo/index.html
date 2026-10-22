@@ -7,10 +7,6 @@
 <meta name="description" content="Documentos, peças e malotes em Vinhedo. Entregas dedicadas e contratos recorrentes. Atendimento 24h; valor e previsão confirmados antes de contratar.">
 <link rel="canonical" href="https://motoboycampinas24h.com/motoboy-vinhedo/">
 <link rel="icon" href="../assets/logo.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap">
 <meta property="og:title" content="Motoboy para empresas em Vinhedo | Brulezzi Transportes">
 <meta property="og:description" content="Documentos, peças e malotes em Vinhedo. Entregas dedicadas e contratos recorrentes. Atendimento 24h; valor e previsão confirmados antes de contratar.">
 <meta property="og:image" content="https://motoboycampinas24h.com/assets/frota.jpg">
@@ -98,6 +94,9 @@
 <link rel="stylesheet" href="/bundle-city.css?v=20261015-alinhamento">
 <link rel="stylesheet" href="/quote-quiz.css?v=20261015-alinhamento">
 <link rel="stylesheet" href="/city-quiz.css?v=20261015-alinhamento">
+<link rel="preload" href="/assets/fonts/manrope-latin-v20.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site-refinements.css?v=20261021-audit">
+<link rel="preload" href="/assets/brulezzi-fachada-v4.webp" as="image" type="image/webp" fetchpriority="high" media="(min-width: 901px)">
 </head>
 <body class="city-landing">
 
@@ -127,12 +126,12 @@
   <article class="article"><a class="back-link" href="/">← Voltar pro site</a><div class="city-hero"><div class="city-hero-copy"><span class="eyebrow">VINHEDO · EMPRESAS</span><h1>Motoboy para empresas em Vinhedo</h1><p class="article-meta">Documentos, peças e malotes em Vinhedo, com entregas dedicadas e rotas para Campinas e São Paulo.</p><div class="stat-chip-row"><span class="stat-chip"><strong>24h</strong> todos os dias</span><span class="stat-chip"><strong>Sob consulta</strong> coleta e entrega</span><span class="stat-chip"><strong>Avulso ou recorrente</strong> conforme sua demanda</span></div><a class="btn btn-gold" href="#contactForm" data-start-quiz>Preparar coleta em Vinhedo →</a></div><div class="hero-quote-panel"><div class="hero-quote-heading"><span>COTAÇÃO EM VINHEDO</span><span>Valor e prazo antes de fechar</span></div><form class="contact-form glass" id="contactForm" method="post" action="/#contato">
         <noscript><p>Para cotar, <a href="https://wa.me/5519992445953" rel="noopener">fale com nossa equipe pelo WhatsApp</a>. O formulário precisa de JavaScript.</p></noscript>
         <fieldset disabled>
-        <legend>Dados para cotação</legend>
-        <label>Seu nome *
-          <input type="text" name="nome" required maxlength="100" autocomplete="name" placeholder="Nome completo">
+        <legend>Dados para cotação</legend><p class="quote-help">Informe a entrega em 3 etapas. Nome, WhatsApp e empresa são opcionais; o atendimento continua no WhatsApp.</p>
+        <label>Seu nome (opcional)
+          <input type="text" name="nome" maxlength="100" autocomplete="name" placeholder="Nome completo">
         </label>
-        <label>WhatsApp *
-          <input type="tel" name="whatsapp" required maxlength="25" autocomplete="tel" placeholder="(00) 00000-0000">
+        <label>WhatsApp (opcional)
+          <input type="tel" name="whatsapp" maxlength="25" autocomplete="tel" placeholder="(00) 00000-0000">
         </label>
         <label>Empresa (opcional)
           <input type="text" name="empresa" maxlength="150" autocomplete="organization" placeholder="Nome da empresa">
@@ -210,7 +209,7 @@
 
 <a class="whatsapp-float" href="https://wa.me/5519992445953?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20de%20Vinhedo%20e%20gostaria%20de%20cotar%20um%20transporte.%20Coleta%3A%20.%20Destino%3A%20.%20Material%20e%20hor%C3%A1rio%3A%20." target="_blank" rel="noopener" aria-label="Falar com Atendente 24h">💬</a>
 
-<script src="../script.js?v=20261015-alinhamento"></script>
-<script src="/quote-quiz.js?v=20261015-alinhamento" defer></script>
+<script src="../script.js?v=20261022-cotacao"></script>
+<script src="/quote-quiz.js?v=20261022-cotacao" defer></script>
 </body>
 </html>

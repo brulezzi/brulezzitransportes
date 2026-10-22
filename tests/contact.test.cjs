@@ -19,7 +19,7 @@ function setup(valid = true) {
   };
   const window = { trackContact: (...args) => events.push(args), open: (...args) => opened.push(args) };
   vm.runInNewContext(fs.readFileSync('script.js', 'utf8'), { document, window });
-  return { events, listeners, opened, fieldset, fallback, status };
+  return { events, listeners, opened, fieldset, fallback, status, fields };
 }
 test('validated quote opens encoded WhatsApp message and sends no form values to tracking', () => {
   const env = setup();
@@ -49,6 +49,26 @@ test('invalid quote neither opens WhatsApp nor records a contact', () => {
   env.listeners.submit({ preventDefault() {} });
   assert.equal(env.opened.length, 0);
   assert.equal(env.events.length, 0);
+});
+
+test('optional contact details do not block a business quote or label it as a personal order', () => {
+  const env = setup();
+  for (const name of ['nome', 'whatsapp', 'empresa']) env.fields[name].value = '';
+  env.listeners.submit({ preventDefault() {} });
+  const message = new URL(env.opened[0][0]).searchParams.get('text');
+  assert.ok(!message.includes('Pessoa física'));
+  assert.ok(message.includes('Empresa: Não informada'));
+  assert.deepEqual(env.events, [['contato_whatsapp', 'formulario']]);
+});
+
+test('repeated submission prepares one contact and exposes retry without opening another popup', () => {
+  const env = setup();
+  env.listeners.submit({ preventDefault() {} });
+  env.listeners.submit({ preventDefault() {} });
+  assert.equal(env.opened.length, 1);
+  assert.equal(env.events.length, 1);
+  assert.equal(env.fallback.hidden, false);
+  assert.match(env.status.textContent, /já está pronta/);
 });
 test('form cannot submit personal data without JavaScript', () => {
   const html = fs.readFileSync('index.html','utf8');

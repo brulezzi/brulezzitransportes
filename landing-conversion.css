@@ -1,0 +1,52 @@
+/* Shared conversion layer. Existing brand variables remain the source of truth. */
+:root {
+  --scrollbar-thumb: var(--text-muted);
+  --scrollbar-track: var(--bg);
+  --scrollbar-hover: var(--gold);
+  --scrollbar-active: var(--gold-bright);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-width: auto;
+  scrollbar-gutter: stable;
+}
+* { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border: 3px solid var(--scrollbar-track); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
+::-webkit-scrollbar-thumb:active { background: var(--scrollbar-active); }
+a, button, select, summary { cursor: pointer; }
+:is(a, button, input, select, summary):focus-visible {
+  outline: 3px solid var(--gold-bright);
+  outline-offset: 4px;
+}
+:is(button, input, select):disabled { cursor: not-allowed; }
+.quote-direct { margin: 16px 0 0; font-size: .9rem; }
+.quote-direct a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--gold-bright);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.quote-direct a:hover { color: var(--text); }
+.quote-direct a:active, .dispatch-secondary:active { opacity: .8; }
+.contact-form #formStatus { min-height: 1.6em; }
+.contact-form :is(input, select), .contact-form .btn, .quiz-back, .nav-toggle { min-height: 44px; }
+.city-hero-copy h1 { text-wrap: balance; }
+.city-hero-copy .stat-chip { min-width: 0; overflow-wrap: anywhere; }
+.dispatch-secondary { display: inline-flex; align-items: center; min-height: 44px; }
+@media (max-width: 440px) {
+  .city-hero-copy .stat-chip-row { grid-template-columns: 1fr; }
+  .city-hero-copy .stat-chip { flex-direction: row; align-items: baseline; gap: 8px; }
+  .city-hero-copy .stat-chip strong { white-space: nowrap; }
+  .quote-direct a { padding-block: 6px; }
+}
+@media (forced-colors: active) {
+  :root, * { scrollbar-color: auto; }
+  :is(a, button, input, select, summary):focus-visible { outline-color: Highlight; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
