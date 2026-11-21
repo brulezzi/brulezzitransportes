@@ -14,7 +14,7 @@ O deploy é automático (push no GitHub → webhook → VPS atualiza sozinha), m
 ```
 git push (branch main)
   → GitHub Actions dispara webhook
-  → VPS 187.127.1.204:9000/hooks/deploy-motoboy-campinas recebe
+  → https://motoboycampinas24h.com/hooks/deploy-motoboy-campinas (o Nginx da VPS repassa ao serviço interno) recebe
   → roda /var/www/motoboy-campinas-24h/deploy.sh na VPS
   → deploy.sh faz git fetch + git reset --hard origin/main
   → nginx serve os arquivos atualizados na porta interna 8094
@@ -65,7 +65,7 @@ cat /var/log/motoboy-campinas-deploy.log
 - Se o `git log` já mostra o commit mais recente → o deploy funcionou, é só cache local do navegador.
 - Se o commit está desatualizado → o webhook não disparou ou falhou. Teste manualmente (o token está documentado em `PROJETO-SITE-BRULEZZI.md`, seção 4.1, na pasta de documentação `C:\Users\Acer\OneDrive\Desktop\brulezzi transportes\`):
   ```bash
-  curl -f -s -X POST http://187.127.1.204:9000/hooks/deploy-motoboy-campinas \
+  curl -f -s -X POST https://motoboycampinas24h.com/hooks/deploy-motoboy-campinas \
     -H "X-Deploy-Token: <token — ver documentação>" \
     --max-time 30 -w "\nHTTP_STATUS:%{http_code}\n"
   ```
@@ -79,4 +79,4 @@ cat /var/log/motoboy-campinas-deploy.log
 
 ## Não confunda com os outros projetos na mesma VPS
 
-A mesma VPS (187.127.1.204) hospeda outros sites (debby-hub, crm-debby) com seus próprios hooks no `/etc/webhook/hooks.json`. **Nunca edite ou remova os hooks `deploy-debby-hub` ou `deploy-crm`** ao mexer no hook da Brulezzi — sempre confira o arquivo inteiro antes de reescrevê-lo, e mantenha os três hooks juntos no mesmo JSON.
+A mesma VPS (o IP fica no hPanel da Hostinger ou no gerenciador de senhas, nunca neste arquivo) hospeda outros sites (debby-hub, crm-debby) com seus próprios hooks no `/etc/webhook/hooks.json`. **Nunca edite ou remova os hooks `deploy-debby-hub` ou `deploy-crm`** ao mexer no hook da Brulezzi — sempre confira o arquivo inteiro antes de reescrevê-lo, e mantenha os três hooks juntos no mesmo JSON.
