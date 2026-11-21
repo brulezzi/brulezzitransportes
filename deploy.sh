@@ -6,6 +6,6 @@ git cat-file -e origin/main:index.html
 git reset --hard origin/main
 test -s index.html
 test -s script.js
-test -s style.css
+test -s site.css
 git rev-parse HEAD > deployment-version.txt
 echo "Deploy concluido em $(date -Is): $(git rev-parse HEAD)" >> /var/log/motoboy-campinas-deploy.log

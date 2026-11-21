@@ -23,7 +23,7 @@ jobs:
         run: |
           node --check script.js
           node --check analytics.js
-          node --check modern.js
+          node --check site.js
           node --check quote-quiz.js
           node scripts/validate-site.cjs
           node scripts/check-seo.cjs

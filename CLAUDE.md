@@ -31,7 +31,7 @@ Detalhe completo em `BRAND-SYSTEM.md` (pasta de documentação no OneDrive).
 ## Como validar antes de publicar (comandos conferidos em 05/10/2026)
 
 ```
-node --check script.js && node --check analytics.js && node --check modern.js
+node --check script.js && node --check analytics.js && node --check site.js
 node scripts/validate-site.cjs
 node --test tests/contact.test.cjs
 ```
