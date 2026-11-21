@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var params = window.location ? new URLSearchParams(window.location.search) : { get: function () { return null; } };
   var campaignLabel = params.get("utm_source") === "google" && params.get("utm_medium") === "cpc"
     ? campaignLabels[params.get("utm_campaign")] : null;
-  function labelMessage(message, includePage) {
-    var page = includePage !== false && window.location && window.location.pathname ? "\n\n*ORIGEM DO PEDIDO*\nPágina: " + window.location.pathname : "";
+  function labelMessage(message, skipPage) {
+    var page = !skipPage && window.location && window.location.pathname ? "\nPágina: " + window.location.pathname : "";
     return message + page + (campaignLabel ? "\nReferência: " + campaignLabel + (params.get("utm_content") === "regional_empresas" ? " / regional_empresas" : "") : "");
   }
   if (campaignLabel) window.brulezziCampaign = { name: params.get("utm_campaign") };
@@ -28,9 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('a[href^="https://wa.me/5519992445953"]').forEach(function (link) {
       var contactUrl = new URL(link.href);
       if (contactUrl.pathname !== "/5519992445953") return;
-      contactUrl.searchParams.set("text", labelMessage(contactUrl.searchParams.get("text") || "Olá, gostaria de cotar um transporte.", false));
+      contactUrl.searchParams.set("text", labelMessage(contactUrl.searchParams.get("text") || "Olá, gostaria de cotar um transporte."));
       link.href = contactUrl.toString();
     });
+  }
+  // The fixed quote bar stays hidden on the opening screen, so visitors read before they ask.
+  var bar = document.getElementById("mobileBar");
+  if (bar) {
+    var toggleBar = function () { bar.classList.toggle("is-visible", window.scrollY > Math.max(window.innerHeight * 0.9, 480)); };
+    window.addEventListener("scroll", toggleBar, { passive: true });
+    toggleBar();
   }
   var header = document.getElementById("siteHeader");
   var toggle = document.getElementById("navToggle");
@@ -72,6 +79,13 @@ document.addEventListener("DOMContentLoaded", function () {
     for (var i = 0; i < places.length; i++) if (link.closest(places[i][0])) return places[i][1];
     return "conteudo";
   }
+  // Reference the visitor can quote later; random, carries no personal data.
+  function newQuoteRef() {
+    var d = new Date(), alphabet = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ", code = "";
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    for (var i = 0; i < 4; i++) code += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    return "BRZ-" + String(d.getFullYear()).slice(2) + pad(d.getMonth() + 1) + pad(d.getDate()) + "-" + code;
+  }
   var preparedWhatsAppUrl = null;
   var form = document.getElementById("contactForm");
   if (form) {
@@ -79,37 +93,44 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
       if (!form.reportValidity()) return;
       var fields = form.elements;
-      var lines = [
-        "Olá! Gostaria de uma cotação para esta entrega.", "",
-        "*PEDIDO*",
-        "Serviço: " + fields.servico.value,
-        "Material: " + fields.carga.value.trim(),
-        "Frequência: " + fields.frequencia.value, "",
-        "*COLETA*",
-        "Endereço: " + fields.coleta.value.trim(), "",
-        "*ENTREGA*",
-        "Endereço: " + fields.entrega.value.trim(), "",
-        "*HORÁRIO DESEJADO*",
-        fields.horario.value.trim()
-      ];
-      var contact = [];
-      if (fields.nome.value.trim()) contact.push("Nome: " + fields.nome.value.trim());
-      if (fields.whatsapp.value.trim()) contact.push("WhatsApp: " + fields.whatsapp.value.trim());
-      if (fields.empresa.value.trim()) contact.push("Empresa: " + fields.empresa.value.trim());
-      var message = lines.concat(contact.length ? ["", "*CONTATO*"].concat(contact) : []).join("\n");
-      var fallback = document.getElementById("whatsappFallback");
-      var url = "https://wa.me/5519992445953?text=" + encodeURIComponent(labelMessage(message));
-      if (url === preparedWhatsAppUrl) {
-        document.getElementById("formStatus").textContent = "Sua solicitação já está pronta. Use o link abaixo para abrir a mensagem no WhatsApp e iniciar o atendimento.";
-        fallback.hidden = false;
-        return;
+      var ref = newQuoteRef();
+      function val(name) { return fields[name] ? fields[name].value.trim() : ""; }
+      // Endereco em duas linhas: rua, numero e bairro; depois cidade, UF e CEP.
+      function address(prefix) {
+        var street = val(prefix + "_logradouro") + ", " + val(prefix + "_numero") + (val(prefix + "_complemento") ? " (" + val(prefix + "_complemento") + ")" : "");
+        return street + " - " + val(prefix + "_bairro") + "\n" + val(prefix + "_cidade") + "/" + val(prefix + "_uf").toUpperCase() + " · CEP " + val(prefix + "_cep");
       }
+      function line(label, value) { return label + ": " + value; }
+      var origin = window.location && window.location.pathname ? window.location.pathname : "/";
+      var isMoto = val("servico") === "Motoboy";
+      var special = val("especial") && val("especial") !== "Carga comum";
+      var cargo = [line("Serviço", val("servico")), line("Carga", val("carga")), line("Peso aproximado", val("peso") + " kg")];
+      if (val("dimensoes")) cargo.push(line("Volumes e dimensões", val("dimensoes")));
+      cargo.push(line("Tipo de carga", val("especial")));
+      var when = [line("Urgência", val("urgencia")), line("Data e horário", val("horario")), line("Frequência", val("frequencia")), line("Retorno ao ponto de coleta", val("retorno"))];
+      if (!isMoto) when.push(line("Ajudante", val("ajudante")));
+      var blocks = [
+        "Olá! Vim pelo site e gostaria de cotar um transporte.",
+        "*PEDIDO*\nquote_ref: " + ref + "\nPágina de origem: " + origin,
+        "*EMPRESA*\n" + [line("Empresa", val("empresa")), line("Contato", val("nome")), line("WhatsApp", val("whatsapp"))].join("\n"),
+        "*CARGA*\n" + cargo.join("\n"),
+        "*COLETA*\n" + address("coleta"),
+        "*ENTREGA*\n" + address("entrega") + (val("paradas") ? "\nOutras paradas: " + val("paradas") : ""),
+        "*QUANDO*\n" + when.join("\n")
+      ];
+      if (window.brulezziQuote && window.brulezziQuote.estimateText) blocks.push("*ESTIMATIVA DO SITE*\n" + window.brulezziQuote.estimateText);
+      if (special) blocks.push("*ATENÇÃO*\nCarga especial. Encaminhar à operação antes de falar de valor ou prazo.");
+      var message = blocks.join("\n\n");
+      var fallback = document.getElementById("whatsappFallback");
+      var url = "https://wa.me/5519992445953?text=" + encodeURIComponent(labelMessage(message, true));
       // Keep personal quote details out of the DOM link URL and automatic click events.
       preparedWhatsAppUrl = url;
       fallback.href = "https://wa.me/5519992445953";
       fallback.hidden = false;
-      document.getElementById("formStatus").textContent = "Sua solicitação está pronta. Envie a mensagem no WhatsApp para receber a cotação da equipe. Se ele não abriu, use o link abaixo.";
+      document.getElementById("formStatus").textContent = "Sua cotação está pronta. Envie a mensagem no WhatsApp para iniciar o atendimento. Se ele não abriu, use o link abaixo.";
       track("contato_whatsapp", "formulario", "formulario_cotacao", "cotacao_enviar");
+      // Quote completed in the quiz (no form values, no quote_ref): the conversion to optimise on.
+      track("cotacao_enviada", "formulario", "formulario_cotacao", "cotacao_enviar");
       window.open(url, "_blank", "noopener,noreferrer");
     });
     // Enable fields only after installing the submit handler.

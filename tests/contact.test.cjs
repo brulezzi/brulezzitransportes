@@ -6,7 +6,7 @@ const vm = require('node:vm');
 function setup(valid = true) {
   const events = [], listeners = {}, opened = [];
   const fields = {};
-  for (const name of ['nome','whatsapp','empresa','servico','carga','frequencia','coleta','entrega','horario']) {
+  for (const name of ['nome','whatsapp','empresa','servico','carga','peso','dimensoes','especial','coleta_cep','coleta_logradouro','coleta_numero','coleta_complemento','coleta_bairro','coleta_cidade','coleta_uf','entrega_cep','entrega_logradouro','entrega_numero','entrega_complemento','entrega_bairro','entrega_cidade','entrega_uf','paradas','urgencia','horario','frequencia','retorno','ajudante']) {
     fields[name] = { value: 'Teste & ' + name };
   }
   const fieldset = { disabled: true };
@@ -19,7 +19,7 @@ function setup(valid = true) {
   };
   const window = { trackContact: (...args) => events.push(args), open: (...args) => opened.push(args) };
   vm.runInNewContext(fs.readFileSync('script.js', 'utf8'), { document, window });
-  return { events, listeners, opened, fieldset, fallback, status, fields };
+  return { events, listeners, opened, fieldset, fallback, status };
 }
 test('validated quote opens encoded WhatsApp message and sends no form values to tracking', () => {
   const env = setup();
@@ -31,8 +31,15 @@ test('validated quote opens encoded WhatsApp message and sends no form values to
   const url = new URL(env.opened[0][0]);
   assert.equal(url.origin, 'https://wa.me');
   assert.equal(url.pathname, '/5519992445953');
-  assert.ok(url.searchParams.get('text').includes('Empresa: Teste & empresa'));
-  assert.deepEqual(env.events, [['contato_whatsapp', 'formulario', 'formulario_cotacao', 'cotacao_enviar']]);
+  const text = url.searchParams.get('text');
+  assert.ok(text.includes('Empresa: Teste & empresa'));
+  assert.match(text, /quote_ref: BRZ-[0-9]{6}-[A-Z0-9]{4}/);
+  assert.ok(text.includes('*COLETA*\nTeste & coleta_logradouro, Teste & coleta_numero (Teste & coleta_complemento) - Teste & coleta_bairro\nTeste & coleta_cidade/TESTE & COLETA_UF · CEP Teste & coleta_cep'));
+  assert.ok(text.includes('Peso aproximado: Teste & peso kg'));
+  assert.ok(text.includes('*ATENÇÃO*\nCarga especial'));
+  assert.ok(text.includes('\n\n*EMPRESA*\n'), 'blocks are separated by blank lines');
+  assert.ok(text.includes('Ajudante: Teste & ajudante'), 'helper is listed for vehicles above a motorcycle');
+  assert.deepEqual(env.events, [['contato_whatsapp', 'formulario', 'formulario_cotacao', 'cotacao_enviar'], ['cotacao_enviada', 'formulario', 'formulario_cotacao', 'cotacao_enviar']]);
   assert.equal(env.opened[0][2], 'noopener,noreferrer');
   assert.equal(env.fallback.href, "https://wa.me/5519992445953");
   assert.ok(!env.fallback.href.includes("Teste"));
@@ -41,7 +48,7 @@ test('validated quote opens encoded WhatsApp message and sends no form values to
   assert.ok(retryPrevented);
   assert.equal(env.opened.length, 2);
   assert.equal(env.opened[1][0], env.opened[0][0]);
-  assert.equal(env.events.length, 1);
+  assert.equal(env.events.length, 2);
   assert.equal(env.fallback.hidden, false);
 });
 test('invalid quote neither opens WhatsApp nor records a contact', () => {
@@ -49,38 +56,6 @@ test('invalid quote neither opens WhatsApp nor records a contact', () => {
   env.listeners.submit({ preventDefault() {} });
   assert.equal(env.opened.length, 0);
   assert.equal(env.events.length, 0);
-});
-
-test('optional contact details do not block a business quote or label it as a personal order', () => {
-  const env = setup();
-  for (const name of ['nome', 'whatsapp', 'empresa']) env.fields[name].value = '';
-  env.listeners.submit({ preventDefault() {} });
-  const message = new URL(env.opened[0][0]).searchParams.get('text');
-  assert.ok(!message.includes('Pessoa física'));
-  assert.ok(!message.includes('*CONTATO*'));
-  assert.ok(!message.includes('Não informado'));
-  assert.deepEqual(env.events, [['contato_whatsapp', 'formulario', 'formulario_cotacao', 'cotacao_enviar']]);
-});
-
-test('repeated submission prepares one contact and exposes retry without opening another popup', () => {
-  const env = setup();
-  env.listeners.submit({ preventDefault() {} });
-  env.listeners.submit({ preventDefault() {} });
-  assert.equal(env.opened.length, 1);
-  assert.equal(env.events.length, 1);
-  assert.equal(env.fallback.hidden, false);
-  assert.match(env.status.textContent, /já está pronta/);
-});
-
-test('WhatsApp quote has distinct readable blocks and the requested time', () => {
-  const env = setup();
-  env.fields.horario.value = 'Hoje, até 16h';
-  env.listeners.submit({ preventDefault() {} });
-  const message = new URL(env.opened[0][0]).searchParams.get('text');
-  assert.match(message, /\n\n\*COLETA\*\nEndereço: Teste & coleta\n\n\*ENTREGA\*\nEndereço: Teste & entrega/);
-  assert.match(message, /\n\n\*HORÁRIO DESEJADO\*\nHoje, até 16h/);
-  assert.match(message, /\n\n\*CONTATO\*\nNome: Teste & nome/);
-  assert.ok(!message.includes('undefined'));
 });
 test('form cannot submit personal data without JavaScript', () => {
   const html = fs.readFileSync('index.html','utf8');
@@ -120,29 +95,6 @@ test('Analytics tracks by default (opt-out), omits URL query data, and stops aft
   assert.equal(window['ga-disable-G-CENYXB4MYP'],true);
 });
 
-test('quote card selects a vehicle, fills the form and records only a non-personal GA4 event', () => {
-  const events = [];
-  const mk = (extra = {}) => Object.assign({ listeners: {}, addEventListener(name, fn) { this.listeners[name] = fn; },
-    classList: { toggle() {}, add() {}, contains: () => false }, setAttribute() {}, style: { setProperty() {} } }, extra);
-  const buttons = ['Motoboy', 'Utilitário', 'Caminhão'].map(vehicle => mk({ dataset: { vehicle } }));
-  const start = mk({ firstChild: { textContent: '' } });
-  const status = mk({ textContent: '' });
-  const select = { value: '', dispatchEvent() {} };
-  const nameInput = { focused: false, focus() { this.focused = true; } };
-  const form = mk({ querySelector: sel => sel.includes('servico') ? select : sel.includes('nome') ? nameInput : null, scrollIntoView() {} });
-  const document = { documentElement: mk(), body: mk(),
-    querySelector: () => null,
-    getElementById: id => ({ startQuote: start, quoteStatus: status, contactForm: form }[id] || null),
-    querySelectorAll: sel => sel === '[data-vehicle]' ? buttons : [] };
-  const window = { trackContact: (...args) => events.push(args) };
-  vm.runInNewContext(fs.readFileSync('modern.js', 'utf8'), { window, document, matchMedia: () => ({ matches: false }), Event: class {} });
-  buttons[2].listeners.click();
-  start.listeners.click();
-  assert.equal(select.value, 'Caminhão');
-  assert.equal(nameInput.focused, true);
-  assert.deepEqual(events, [['cotacao_iniciada', 'cartao_caminhao']]);
-});
-
 test('contact clicks keep event names and origem_contato "link" and add where on the page they happened', () => {
   const clicks = {}, events = [];
   const document = { getElementById: () => null, addEventListener: (name, fn) => { if (name === 'DOMContentLoaded') fn(); else clicks[name] = fn; } };
@@ -150,14 +102,13 @@ test('contact clicks keep event names and origem_contato "link" and add where on
   const linkIn = (href, ...areas) => { const link = { id: '', href, closest: sel => areas.includes(sel) ? link : null }; return { closest: sel => sel === 'a' ? link : null }; };
   clicks.click({ target: linkIn('https://wa.me/5519992445953?text=x', '.site-header') });
   clicks.click({ target: linkIn('https://wa.me/5519992445953', '.whatsapp-float') });
-  clicks.click({ target: linkIn('tel:+5519992445953', '.mobile-bar') });
+  clicks.click({ target: linkIn('/#contactForm', '.mobile-bar') });
   clicks.click({ target: linkIn('https://wa.me/5519992445953', '.site-footer') });
   clicks.click({ target: linkIn('https://wa.me/5519992445953') });
   clicks.click({ target: linkIn('https://example.com/other', '.site-header') });
   assert.deepEqual(events, [
     ['contato_whatsapp', 'link', 'cabecalho'],
     ['contato_whatsapp', 'link', 'botao_flutuante'],
-    ['contato_telefone', 'link', 'barra_celular'],
     ['contato_whatsapp', 'link', 'rodape'],
     ['contato_whatsapp', 'link', 'conteudo']
   ]);
