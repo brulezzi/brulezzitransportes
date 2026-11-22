@@ -275,3 +275,21 @@ body.motion-paused *,body.motion-paused *:before,body.motion-paused *:after{anim
 .page-photo{margin:0;border-radius:1.6rem;overflow:hidden;border:1px solid color-mix(in oklab,var(--primary) 30%,transparent);box-shadow:var(--shadow-card),0 0 80px -30px color-mix(in oklab,var(--primary) 35%,transparent);aspect-ratio:3/2;background:var(--card)}
 .page-photo img{width:100%;height:100%;object-fit:cover}
 @media(max-width:960px){.page-photo{aspect-ratio:16/10}}
+
+/* secoes claras: quebram o fundo escuro da home (papel quente e branco, ouro mais escuro para dar contraste) */
+.section-paper2{background:#fff;color:var(--paper-fg);border-block:1px solid var(--paper-border)}
+.section-paper h2,.section-paper2 h2,.section-paper h3,.section-paper2 h3{color:var(--paper-fg)}
+.section-paper2 .eyebrow{color:oklch(.5 .13 70)}
+.section-paper2 .section-lead,.section-paper2 .muted{color:var(--paper-muted)}
+:is(.section-paper,.section-paper2) :is(.how-n,.case-n){color:oklch(.58 .14 70)}
+:is(.section-paper,.section-paper2) :is(.how-list,.cases,.checks,.faq-list){border-color:var(--paper-border)}
+:is(.section-paper,.section-paper2) :is(.how-list li,.case,.checks li,.faq-list details){border-color:var(--paper-border)}
+:is(.section-paper,.section-paper2) :is(.how-list p,.case p,.faq-list details p,.out-city){color:var(--paper-muted)}
+:is(.section-paper,.section-paper2) .case:hover{background:linear-gradient(90deg,color-mix(in oklab,var(--primary) 16%,transparent),transparent)}
+:is(.section-paper,.section-paper2) .case a{border-color:var(--paper-border)}
+:is(.section-paper,.section-paper2) .faq-list summary:after{color:oklch(.58 .14 70)}
+:is(.section-paper,.section-paper2) .cities a{border-color:var(--paper-border);color:var(--paper-fg)}
+:is(.section-paper,.section-paper2) .cities a:hover{color:var(--primary-foreground)}
+:is(.section-paper,.section-paper2) .dash-line{opacity:.9}
+:is(.section-paper,.section-paper2) .btn-ghost{background:transparent;color:var(--paper-fg);border-color:var(--paper-border)}
+:is(.section-paper,.section-paper2) .btn-ghost:hover{background:oklch(.2 .035 262/6%)}
